@@ -5,6 +5,10 @@ const vm = require("node:vm");
 const root = path.resolve(__dirname, "..");
 const portfolioIndexPath = path.join(root, "index.html");
 const portfolioStylesPath = path.join(root, "styles.css");
+const agentsRegistryPath = path.join(root, "agents.json");
+const agentsPageRoot = path.join(root, "projects", "agents");
+const agentsPageIndexPath = path.join(agentsPageRoot, "index.html");
+const agentsPageStylesPath = path.join(agentsPageRoot, "styles.css");
 const journeyRoot = path.join(root, "projects", "mozart-journey");
 const journeyIndexPath = path.join(journeyRoot, "index.html");
 const journeyStylesPath = path.join(journeyRoot, "styles.css");
@@ -111,6 +115,33 @@ function testPortfolioHome() {
   assert(styles.includes(".project-card"), "portfolio home should style project cards");
 }
 
+function testAgentsRegistry() {
+  const registry = readJson(agentsRegistryPath);
+  assert(registry.site === "https://moltpany.github.io/", "agents registry should identify the public site");
+  assert(registry.name === "Moltpany", "agents registry should identify Moltpany");
+  assert(Array.isArray(registry.agents), "agents registry should include an agents array");
+  assert(registry.agents.length >= 2, "agents registry should include the first public/planned agents");
+
+  const ids = new Set();
+  for (const agent of registry.agents) {
+    assert(agent.id && !ids.has(agent.id), `agent id should be present and unique: ${agent.id}`);
+    ids.add(agent.id);
+    assert(agent.name && agent.role && agent.status, `${agent.id} should include name, role, and status`);
+    assert(Array.isArray(agent.capabilities), `${agent.id} should include capabilities`);
+    assert(Array.isArray(agent.works), `${agent.id} should include works`);
+    assert(Array.isArray(agent.audience), `${agent.id} should include audience`);
+    assert(agent.audience.includes("humans") && agent.audience.includes("agents"), `${agent.id} should address humans and agents`);
+  }
+
+  const hr = registry.agents.find((agent) => agent.id === "agent-hr");
+  assert(hr, "registry should include Agent-HR");
+  assert(hr.repository === "https://github.com/moltpany/Agent-HR", "Agent-HR should link to its public repository");
+  assert(hr.capabilities.includes("agent-onboarding"), "Agent-HR should expose onboarding capability");
+
+  const mappy = registry.agents.find((agent) => agent.id === "mappy");
+  assert(mappy, "registry should include Mappy");
+  assert(mappy.works.some((work) => work.id === "mozart-journey"), "Mappy should own Mozart Journey");
+}
 function testFilters() {
   const api = loadJourneyApi();
   assert(api && typeof api.filterEntries === "function", "script must expose window.MozartJourney.filterEntries");
@@ -264,7 +295,7 @@ async function testFileProtocolFallback() {
   assert(entries === fallback, "file protocol should fall back to window.MOZART_JOURNEY_DATA when fetch fails");
 }
 
-const tests = [testPortfolioHome, testDataShape, testFilters, testFileProtocolFallback];
+const tests = [testPortfolioHome, testAgentsRegistry, testDataShape, testFilters, testFileProtocolFallback];
 tests.push(testListeningLinks);
 
 function testPlaceImages() {
