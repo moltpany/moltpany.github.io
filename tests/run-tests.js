@@ -137,6 +137,17 @@ function testFilters() {
   assert(early.length > 0, "period filter should return early entries");
   assert(early.every((entry) => entry.year >= 1756 && entry.year <= 1772), "period filter should honor inclusive bounds");
 
+  const k488Search = api.filterEntries(entries, { city: "all", genre: "all", period: "all", query: "K. 488" });
+  assert(k488Search.some((entry) => entry.id === "vienna-1786-piano-concerto-23"), "search should find works by catalogue number");
+  assert(k488Search.every((entry) => {
+    const haystack = [entry.work, entry.catalogue, entry.city, entry.country, entry.genre, entry.year].join(" ").toLowerCase();
+    return haystack.includes("k. 488");
+  }), "search should only keep entries matching the query");
+
+  const concertoSearch = api.filterEntries(entries, { city: "Vienna", genre: "all", period: "1782-1791", query: "concerto" });
+  assert(concertoSearch.length > 0, "search should compose with city and period filters");
+  assert(concertoSearch.every((entry) => entry.city === "Vienna" && entry.year >= 1782 && entry.year <= 1791), "search should preserve existing filters");
+
   const london = entries.find((entry) => entry.id === "london-1764-symphony-1");
   const coords = api.getEntryCoordinates(london);
   assert(coords[0] === london.place.lat && coords[1] === london.place.lng, "map coordinates should prefer detailed place coordinates");
@@ -305,6 +316,8 @@ function testSourceSummaryIsIntegrated() {
   assert(html.includes("detail-listening-target"), "detail page should show the exact listening target");
   assert(html.includes("detail-place-image"), "detail page should include a place image slot");
   assert(html.includes("detail-map-link"), "detail page should include a jump back to map control");
+  assert(html.includes('id="search-filter"'), "filters should include a search box for fast work lookup");
+  assert(html.includes("collection-nav"), "collections should include an anchor navigation area for long mobile lists");
   assert(html.includes('data-theme="light"'), "page should declare an initial light theme");
   assert(html.includes('id="theme-toggle"'), "top navigation should include a theme toggle button");
   assert(html.includes("timeline-selection"), "timeline should show selected-work feedback without forcing navigation");
@@ -317,8 +330,15 @@ function testSourceSummaryIsIntegrated() {
   assert(script.includes("popup-detail-link"), "map popups should provide an explicit jump to detail control");
   assert(script.includes("timeline-detail-link"), "timeline selection should provide an explicit jump to detail control");
   assert(script.includes("focusEntryOnMap(entry, true)"), "detail map control should jump back to the selected map location");
+  assert(script.includes("queryMatches"), "filtering should support text search");
+  assert(script.includes("renderCollectionNav"), "collections should render a compact navigation list");
+  assert(script.includes("detail-collection-link"), "detail collection labels should be clickable links");
+  assert(script.includes("collection-${collection.id}"), "collection cards should expose stable anchor ids");
   assert(script.includes('collection-item")') && script.includes("is-active"), "collection clicks should have an active visual state");
   assert(styles.includes(".collection-item.is-active"), "collection active state should be styled");
+  assert(styles.includes(".collection-nav"), "collection navigation should be styled");
+  assert(styles.includes(".search-input"), "search input should be styled consistently");
+  assert(styles.includes("min(68vh, 520px)"), "mobile timeline should keep an internal scrollbar");
   assert(styles.includes(".timeline-selection[hidden]"), "hidden timeline selection controls should not remain visible");
   assert(styles.includes(".popup-detail-link"), "map popup detail controls should be styled");
   assert(styles.includes(".detail-map-link[hidden]"), "hidden detail map links should not remain visible");

@@ -186,7 +186,8 @@ label {
   font-size: 0.85rem;
 }
 
-select {
+select,
+.search-input {
   min-width: 150px;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -194,6 +195,11 @@ select {
   background: var(--panel);
   color: var(--ink);
   font: inherit;
+}
+
+.search-input {
+  min-width: min(260px, 100%);
+  padding-right: 12px;
 }
 
 .explorer {
@@ -213,6 +219,31 @@ select {
   gap: 16px;
 }
 
+.collection-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.collection-nav a {
+  border: 1px solid rgba(184, 138, 50, 0.45);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: #fff8ea;
+  color: var(--accent-strong);
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.collection-nav a:hover,
+.collection-nav a:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
 .collection-card {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -222,6 +253,7 @@ select {
   padding: 18px;
   background: var(--panel);
   box-shadow: var(--shadow);
+  scroll-margin-top: 16px;
 }
 
 .collection-card-head h3 {
@@ -326,6 +358,7 @@ select {
 .timeline-panel {
   max-height: 682px;
   overflow: auto;
+  scrollbar-gutter: stable;
 }
 
 .timeline-list {
@@ -449,7 +482,8 @@ select {
   margin: 0 0 22px;
 }
 
-.detail-collections span {
+.detail-collections span,
+.detail-collections a {
   border: 1px solid rgba(184, 138, 50, 0.45);
   border-radius: 999px;
   padding: 5px 10px;
@@ -458,6 +492,13 @@ select {
   font-family: Arial, "Microsoft YaHei", sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
+  text-decoration: none;
+}
+
+.detail-collections a:hover,
+.detail-collections a:focus-visible {
+  border-color: var(--accent);
+  outline: none;
 }
 
 .detail-listening {
@@ -679,6 +720,7 @@ html[data-theme="dark"] .hero {
 }
 
 html[data-theme="dark"] select,
+html[data-theme="dark"] .search-input,
 html[data-theme="dark"] .collection-card,
 html[data-theme="dark"] .map-panel,
 html[data-theme="dark"] .timeline-panel,
@@ -711,7 +753,9 @@ html[data-theme="dark"] .detail-listening a {
   color: var(--accent-strong);
 }
 
-html[data-theme="dark"] .detail-collections span {
+html[data-theme="dark"] .collection-nav a,
+html[data-theme="dark"] .detail-collections span,
+html[data-theme="dark"] .detail-collections a {
   background: #2b221a;
 }
 
@@ -792,7 +836,8 @@ html[data-theme="dark"] .leaflet-bar a:focus {
   }
 
   label,
-  select {
+  select,
+  .search-input {
     width: 100%;
   }
 
@@ -801,7 +846,9 @@ html[data-theme="dark"] .leaflet-bar a:focus {
   }
 
   .timeline-panel {
-    max-height: none;
+    max-height: min(68vh, 520px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 

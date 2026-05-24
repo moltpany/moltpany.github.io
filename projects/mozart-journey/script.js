@@ -72,12 +72,29 @@
 
   function filterEntries(entries, filters) {
     const period = parsePeriod(filters.period);
+    const query = normalizeSearchQuery(filters.query);
     return entries.filter((entry) => {
       const cityMatches = !filters.city || filters.city === "all" || entry.city === filters.city;
       const genreMatches = !filters.genre || filters.genre === "all" || entry.genre === filters.genre;
       const periodMatches = !period || (entry.year >= period.start && entry.year <= period.end);
-      return cityMatches && genreMatches && periodMatches;
+      const queryMatches = !query || getEntrySearchText(entry).includes(query);
+      return cityMatches && genreMatches && periodMatches && queryMatches;
     });
+  }
+
+  function normalizeSearchQuery(query) {
+    return String(query || "").trim().toLowerCase();
+  }
+
+  function getEntrySearchText(entry) {
+    return [
+      entry.work,
+      entry.catalogue,
+      entry.city,
+      entry.country,
+      entry.genre,
+      entry.year,
+    ].filter(Boolean).join(" ").toLowerCase();
   }
 
   function getFilterOptions(entries, key) {
@@ -223,10 +240,12 @@
   }
 
   function currentFilters() {
+    const search = $("search-filter");
     return {
       city: $("city-filter").value,
       genre: $("genre-filter").value,
       period: $("period-filter").value,
+      query: search ? search.value : "",
     };
   }
 
@@ -235,6 +254,10 @@
     buildSelect($("genre-filter"), getFilterOptions(entries, "genre"), "全部类型");
     for (const id of ["city-filter", "genre-filter", "period-filter"]) {
       $(id).addEventListener("change", applyFilters);
+    }
+    const search = $("search-filter");
+    if (search) {
+      search.addEventListener("input", applyFilters);
     }
   }
 
@@ -343,10 +366,13 @@
       return;
     }
 
+    const groups = getCollectionGroups(entries);
     container.innerHTML = "";
-    for (const collection of getCollectionGroups(entries)) {
+    renderCollectionNav(groups);
+    for (const collection of groups) {
       const section = document.createElement("article");
       section.className = "collection-card";
+      section.id = `collection-${collection.id}`;
 
       const items = collection.entries.map((entry) => `
         <button type="button" class="collection-item" data-id="${entry.id}" aria-pressed="false">
@@ -370,6 +396,21 @@
       container.appendChild(section);
     }
     highlightSelected();
+  }
+
+  function renderCollectionNav(collections) {
+    const nav = $("collection-nav");
+    if (!nav) {
+      return;
+    }
+
+    nav.replaceChildren();
+    for (const collection of collections) {
+      const link = document.createElement("a");
+      link.href = `#collection-${collection.id}`;
+      link.textContent = `${collection.title} (${collection.entries.length})`;
+      nav.appendChild(link);
+    }
   }
 
   function highlightSelected() {
@@ -445,7 +486,9 @@
     }
 
     for (const collection of collections) {
-      const item = document.createElement("span");
+      const item = document.createElement("a");
+      item.className = "detail-collection-link";
+      item.href = `#collection-${collection.id}`;
       item.textContent = collection.title;
       container.appendChild(item);
     }
