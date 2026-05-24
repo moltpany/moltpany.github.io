@@ -293,6 +293,126 @@ h1 {
   line-height: 1.2;
 }
 
+/* ─── evals section ─────────────────────────────────── */
+.evals-section {
+  padding-top: 60px;
+}
+
+.evals-lead {
+  max-width: 600px;
+  color: var(--muted);
+  margin-top: 10px;
+  margin-bottom: 32px;
+  font-size: 0.97rem;
+  line-height: 1.72;
+}
+
+.eval-preview {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  max-width: 780px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.eval-preview:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.eval-category-tag {
+  padding: 10px 22px;
+  background: var(--surface-soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eval-table {
+  display: grid;
+}
+
+.eval-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr 0.8fr;
+  align-items: center;
+  padding: 13px 22px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+  gap: 8px;
+}
+
+.eval-row:last-child {
+  border-bottom: none;
+}
+
+.eval-header {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--surface-soft);
+}
+
+.eval-row--moltpany {
+  background: rgba(27, 104, 152, 0.05);
+  border-left: 3px solid var(--accent);
+}
+
+.eval-name {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.moltpany-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.eval-source {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.eval-score {
+  font-weight: 700;
+}
+
+.eval-score--top {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.eval-note {
+  padding: 10px 22px 12px;
+  margin: 0;
+  font-size: 0.78rem;
+  color: rgba(92, 104, 121, 0.65);
+  font-style: italic;
+  border-top: 1px solid var(--line);
+}
+
+.eval-cta {
+  margin-top: 4px;
+}
+
 /* ─── agent grid ─────────────────────────────────────── */
 .agent-grid {
   display: grid;
@@ -614,6 +734,19 @@ footer {
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .eval-row {
+    grid-template-columns: 1.4fr 0.8fr 0.7fr 0.7fr 0.7fr 0.7fr;
+    padding: 11px 16px;
+    font-size: 0.8rem;
+    gap: 4px;
+  }
+
+  .eval-category-tag,
+  .eval-note {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .project-preview {
