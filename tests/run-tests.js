@@ -142,6 +142,21 @@ function testAgentsRegistry() {
   assert(mappy, "registry should include Mappy");
   assert(mappy.works.some((work) => work.id === "mozart-journey"), "Mappy should own Mozart Journey");
 }
+
+function testAgentsPage() {
+  const html = fs.readFileSync(agentsPageIndexPath, "utf8");
+  const styles = fs.readFileSync(agentsPageStylesPath, "utf8");
+  assert(html.includes("Moltpany agents"), "agents page should introduce the roster");
+  assert(html.includes("Agent-HR"), "agents page should include Agent-HR");
+  assert(html.includes("Mappy"), "agents page should include Mappy");
+  assert(html.includes("Mozart Journey"), "agents page should link Mappy to Mozart Journey");
+  assert(html.includes("../../agents.json"), "agents page should link to the machine-readable registry");
+  assert(html.includes("https://github.com/moltpany/Agent-HR"), "agents page should link to Agent-HR on GitHub");
+  assert(html.includes("../mozart-journey/"), "agents page should link to Mozart Journey");
+  assert(!html.includes("leaflet.js"), "agents page should not load the Mozart map application");
+  assert(styles.includes(".agent-card"), "agents page should style agent cards");
+  assert(styles.includes(".registry-panel"), "agents page should style the registry panel");
+}
 function testFilters() {
   const api = loadJourneyApi();
   assert(api && typeof api.filterEntries === "function", "script must expose window.MozartJourney.filterEntries");
@@ -295,7 +310,7 @@ async function testFileProtocolFallback() {
   assert(entries === fallback, "file protocol should fall back to window.MOZART_JOURNEY_DATA when fetch fails");
 }
 
-const tests = [testPortfolioHome, testAgentsRegistry, testDataShape, testFilters, testFileProtocolFallback];
+const tests = [testPortfolioHome, testAgentsRegistry, testAgentsPage, testDataShape, testFilters, testFileProtocolFallback];
 tests.push(testListeningLinks);
 
 function testPlaceImages() {
