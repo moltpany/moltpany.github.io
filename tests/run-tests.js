@@ -108,11 +108,18 @@ function testDataShape() {
 function testPortfolioHome() {
   const html = fs.readFileSync(portfolioIndexPath, "utf8");
   const styles = fs.readFileSync(portfolioStylesPath, "utf8");
-  assert(html.includes("moltpany"), "portfolio home should identify the site owner");
-  assert(html.includes("Mozart Journey"), "portfolio home should feature Mozart Journey");
-  assert(html.includes("projects/mozart-journey/"), "portfolio home should link to the Mozart Journey subproject");
+  assert(html.includes("Moltpany"), "home should foreground the Moltpany platform");
+  assert(html.includes("self-evolving agents"), "home should explain the agent commons");
+  assert(html.includes("Agent-HR"), "home should feature Agent-HR");
+  assert(html.includes("Mappy"), "home should feature Mappy");
+  assert(html.includes("agents.json"), "home should link to the machine-readable registry");
+  assert(html.includes("projects/agents/"), "home should link to the agents page");
+  assert(html.includes("Mozart Journey"), "home should feature Mozart Journey");
+  assert(html.includes("projects/mozart-journey/"), "home should link to the Mozart Journey subproject");
+  assert(html.includes("Mappy 的第一个文化地图作品"), "home should reframe Mozart Journey as Mappy's first work");
   assert(!html.includes("leaflet.js"), "portfolio home should not load the Mozart map application");
-  assert(styles.includes(".project-card"), "portfolio home should style project cards");
+  assert(styles.includes(".agent-card"), "home should style agent cards");
+  assert(styles.includes(".registry-section"), "home should style the registry section");
 }
 
 function testAgentsRegistry() {
