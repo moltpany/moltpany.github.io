@@ -1,17 +1,31 @@
-# Mozart Project Instructions
+# Portfolio Project Instructions
 
 ## Project purpose
-- This project is a static Chinese webpage about Mozart's travels, cities, years, works, and concise historical meaning.
-- Keep the site small and maintainable: `index.html`, `styles.css`, `script.js`, `data/mozart-journey.json`, and `data/mozart-journey.js`.
-- `favorites.md` stores the user's personal Mozart collections and pending works before they are added as map entries.
+- This repository powers the public GitHub Pages site at `https://moltpany.github.io/`.
+- The root `index.html` and `styles.css` are the personal portfolio homepage.
+- Individual works live under `projects/`. The current work is `projects/mozart-journey/`.
+- `projects/mozart-journey/` is a static Chinese webpage about Mozart's travels, cities, years, works, and concise historical meaning.
+- Keep the site small and maintainable. Do not introduce a build step unless explicitly requested.
+
+## Repository layout
+- Root homepage: `index.html`, `styles.css`.
+- Mozart Journey app: `projects/mozart-journey/index.html`, `projects/mozart-journey/styles.css`, `projects/mozart-journey/script.js`, `projects/mozart-journey/data/mozart-journey.json`, and `projects/mozart-journey/data/mozart-journey.js`.
+- Mozart collection notes: `projects/mozart-journey/favorites.md`.
+- Mozart content worklist: `projects/mozart-journey/content-audit.md`.
+- Tests: `tests/run-tests.js`.
 
 ## Development rules
 - Prefer small, reviewable diffs.
-- Do not introduce a build step, backend, database, analytics, telemetry, or unrelated network calls unless explicitly requested.
-- External resources currently allowed: Leaflet CDN and OpenStreetMap tiles for the interactive map.
+- Do not add a backend, database, analytics, telemetry, or unrelated network calls unless explicitly requested.
+- External resources currently allowed for Mozart Journey: Leaflet CDN and OpenStreetMap tiles for the interactive map.
 - Keep UI copy in Chinese unless the user asks otherwise.
 
-## Interaction rules
+## Homepage rules
+- The root page should act as a portfolio entry point, not as a single project page.
+- Project cards should link to subdirectories, for example `projects/mozart-journey/`.
+- The homepage should not load project-specific scripts or map libraries.
+
+## Mozart Journey interaction rules
 - Theme switching is controlled by `html[data-theme]` and `localStorage` key `mozart-journey-theme`; keep the top-nav toggle in sync with `aria-pressed`.
 - Use a two-step flow for map and timeline exploration:
   - Clicking a timeline item selects/highlights the work and stays in the timeline area.
@@ -22,13 +36,13 @@
 - The detail card must include "查看地图位置" so the user can jump back to the selected map marker and popup.
 - Avoid automatic scrolling that prevents the user from staying on the map or timeline.
 
-## Content rules
+## Mozart Journey content rules
 - Do not invent biographical facts, dates, places, commissions, or meanings.
 - Add or change Mozart entries only after checking a reliable source.
 - Use conservative wording for uncertain performance history, commission context, or interpretation.
-- Keep each entry source in `data/mozart-journey.json` with a short label and URL.
-- If `data/mozart-journey.json` changes, regenerate `data/mozart-journey.js` so `file://` opening still works.
-- Use `content-audit.md` as the worklist for per-entry refinement. Update it when a batch is completed or when a new gap is discovered.
+- Keep each entry source in `projects/mozart-journey/data/mozart-journey.json` with a short label and URL.
+- If `projects/mozart-journey/data/mozart-journey.json` changes, regenerate `projects/mozart-journey/data/mozart-journey.js` so `file://` opening still works.
+- Use `projects/mozart-journey/content-audit.md` as the worklist for per-entry refinement. Update it when a batch is completed or when a new gap is discovered.
 - Age display uses `year - 1756` and should be shown as `X 岁`, without approximate wording.
 - For detailed places, prefer precise residence/theatre/context only when a reliable source supports it. Otherwise use city-level or context-level wording.
 - Place images are optional. If an entry has no image, hidden image containers must not leave empty frames.
@@ -52,10 +66,9 @@
 - When switching to an entry without `listening`, clear old target/note/link content and hide the listening block to avoid stale playback details.
 
 ## Testing rules
-- Run `node tests\run-tests.js` after changing data or filtering behavior.
-- Run `node tests\run-tests.js` after changing interaction behavior, listening links, or HTML/CSS structure.
-- Manually verify map, timeline, collection, and detail-card interaction in a browser after UI changes.
-- For interaction changes, verify:
+- Run `node tests\run-tests.js` after changing data, filtering behavior, interaction behavior, listening links, HTML/CSS structure, or project paths.
+- Manually verify the homepage and Mozart Journey in a browser after UI changes.
+- For Mozart interaction changes, verify:
   - timeline click stays in timeline and shows the selected-work panel;
   - timeline "查看作品详情" jumps to the detail card;
   - map marker click stays on the map popup;

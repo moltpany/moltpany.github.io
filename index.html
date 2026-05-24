@@ -1,153 +1,74 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>莫扎特足迹互动地图</title>
-    <link rel="preconnect" href="https://unpkg.com">
-    <link rel="preconnect" href="https://tile.openstreetmap.org">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235f1c18'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23f6f1e8' font-family='serif'%3EM%3C/text%3E%3C/svg%3E">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <title>moltpany 的作品</title>
+    <meta name="description" content="moltpany 的个人作品主页，整理网页、地图、数据可视化和音乐相关项目。">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231e3a5f'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='%23ffffff' font-family='serif'%3Em%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="hero">
-      <nav class="topbar" aria-label="页面导航">
-        <a href="#map" class="brand">Mozart Journey</a>
+    <header class="site-header">
+      <nav class="topbar" aria-label="主页导航">
+        <a class="brand" href="/">moltpany</a>
         <div class="nav-links">
-          <a href="#collections">收藏</a>
-          <a href="#timeline">时间线</a>
-          <a href="#detail">作品详情</a>
-          <a href="#sources">来源</a>
-          <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">暗黑</button>
+          <a href="#projects">作品</a>
+          <a href="https://github.com/moltpany" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </nav>
-      <div class="hero-content">
-        <p class="eyebrow">1756-1791 · 欧洲城市与作品</p>
-        <h1>莫扎特的足迹</h1>
-        <p class="hero-copy">沿着地图与年份时间线，查看莫扎特在伦敦、维也纳、米兰、萨尔茨堡、巴黎、慕尼黑与布拉格等地留下的代表作品。</p>
-      </div>
+
+      <section class="intro" aria-labelledby="home-title">
+        <p class="eyebrow">Personal Works</p>
+        <h1 id="home-title">作品主页</h1>
+        <p class="intro-copy">这里集中展示我做过的网页、数据可视化、音乐地图和其他小型项目。每个作品都尽量保持可阅读、可维护，也方便继续扩展。</p>
+      </section>
     </header>
 
     <main>
-      <section class="controls-section" aria-labelledby="filters-title">
-        <div>
-          <p class="section-kicker">筛选</p>
-          <h2 id="filters-title">按城市、时期和类型探索</h2>
-        </div>
-        <form class="filters" aria-label="足迹筛选">
-          <label>
-            城市
-            <select id="city-filter"></select>
-          </label>
-          <label>
-            时期
-            <select id="period-filter">
-              <option value="all">全部时期</option>
-              <option value="1756-1772">1756-1772 童年与旅行</option>
-              <option value="1773-1781">1773-1781 萨尔茨堡与求职</option>
-              <option value="1782-1791">1782-1791 维也纳成熟期</option>
-            </select>
-          </label>
-          <label>
-            类型
-            <select id="genre-filter"></select>
-          </label>
-        </form>
-      </section>
-
-      <section class="explorer" aria-label="莫扎特足迹地图与时间线">
-        <div class="map-panel">
-          <div class="panel-header">
-            <div>
-              <p class="section-kicker">地图</p>
-              <h2 id="map-title">欧洲足迹</h2>
-            </div>
-            <p id="result-count" class="result-count" aria-live="polite"></p>
-          </div>
-          <div id="map" role="application" aria-label="莫扎特旅行城市互动地图"></div>
-          <p id="map-warning" class="map-warning" hidden>地图底图需要联网加载；下方时间线和作品详情仍可正常阅读。</p>
-        </div>
-
-        <aside class="timeline-panel" id="timeline" aria-labelledby="timeline-title">
-          <div class="panel-header compact">
-            <div>
-              <p class="section-kicker">时间线</p>
-              <h2 id="timeline-title">年份与作品</h2>
-            </div>
-          </div>
-          <div id="timeline-selection" class="timeline-selection" hidden>
-            <span id="timeline-selection-text"></span>
-            <button id="timeline-detail-link" type="button">查看作品详情</button>
-          </div>
-          <div id="timeline-list" class="timeline-list"></div>
-        </aside>
-      </section>
-
-      <section class="detail-section" id="detail" aria-live="polite">
-        <div class="detail-main">
-          <p class="section-kicker">作品详情</p>
-          <h2 id="detail-work">选择一个地点或年份</h2>
-          <p id="detail-meta" class="detail-meta">点击地图点位或时间线节点后，这里会显示作品背景与意义。</p>
-          <div id="detail-collections" class="detail-collections" hidden></div>
-          <div id="detail-listening" class="detail-listening" hidden>
-            <strong id="detail-listening-target" class="listening-target"></strong>
-            <span id="detail-listening-note"></span>
-            <div id="detail-listening-links"></div>
-          </div>
-          <div id="detail-place" class="place-note" hidden>
-            <span id="detail-place-kind"></span>
-            <strong id="detail-place-name"></strong>
-            <span id="detail-place-address"></span>
-            <p id="detail-place-note"></p>
-            <a id="detail-place-source" href="#" target="_blank" rel="noreferrer">查看地点来源</a>
-            <figure id="detail-place-image" class="place-image" hidden>
-              <img id="detail-place-image-img" alt="" loading="lazy">
-              <figcaption>
-                <span id="detail-place-image-caption"></span>
-                <a id="detail-place-image-source" href="#" target="_blank" rel="noreferrer">图片来源</a>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="detail-grid">
-            <article>
-              <h3>创作背景</h3>
-              <p id="detail-context">等待选择。</p>
-            </article>
-            <article>
-              <h3>含义</h3>
-              <p id="detail-meaning">等待选择。</p>
-            </article>
-          </div>
-          <div class="detail-actions">
-            <button id="detail-map-link" class="detail-map-link" type="button" hidden>查看地图位置</button>
-            <a id="detail-source" class="source-link" href="#" target="_blank" rel="noreferrer" hidden>查看参考来源</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="collections-section" id="collections" aria-labelledby="collections-title">
+      <section class="projects-section" id="projects" aria-labelledby="projects-title">
         <div class="section-heading">
-          <p class="section-kicker">我的收藏</p>
-          <h2 id="collections-title">按你的听感场景整理</h2>
+          <p class="eyebrow">Projects</p>
+          <h2 id="projects-title">当前作品</h2>
         </div>
-        <div id="collection-list" class="collection-list"></div>
-      </section>
 
-      <section class="sources-section" id="sources" aria-labelledby="sources-title">
-        <p class="section-kicker">资料说明</p>
-        <h2 id="sources-title">保守表述，便于后续扩展</h2>
-        <p>第一版选取少量关键节点，来源字段保存在 JSON 数据中。对委约、首演或用途不确定的作品，页面采用“通常认为”“具体场合不清楚”等保守表达。</p>
-        <div id="source-list" class="source-list"></div>
+        <div class="project-grid">
+          <article class="project-card">
+            <a class="project-preview" href="projects/mozart-journey/" aria-label="打开 Mozart Journey">
+              <span class="preview-map" aria-hidden="true">
+                <span class="route route-one"></span>
+                <span class="route route-two"></span>
+                <span class="pin pin-salzburg"></span>
+                <span class="pin pin-vienna"></span>
+                <span class="pin pin-prague"></span>
+              </span>
+            </a>
+            <div class="project-body">
+              <p class="project-type">互动地图 · 音乐史</p>
+              <h3>Mozart Journey</h3>
+              <p>沿着欧洲城市、年份和作品，整理莫扎特的旅行足迹、代表作品、收藏曲目和参考来源。</p>
+              <a class="project-link" href="projects/mozart-journey/">进入作品</a>
+            </div>
+          </article>
+
+          <article class="project-card placeholder-card" aria-label="后续作品占位">
+            <div class="placeholder-preview" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="project-body">
+              <p class="project-type">Coming Soon</p>
+              <h3>更多作品整理中</h3>
+              <p>后续可以继续加入论文展示、实验可视化、报告页面或其他个人项目。</p>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
 
     <footer>
-      <p>静态网页原型 · Leaflet + OpenStreetMap · 内容可在 <code>data/mozart-journey.json</code> 中维护</p>
+      <p>© 2026 moltpany · 静态作品集主页</p>
     </footer>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="data/mozart-journey.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>

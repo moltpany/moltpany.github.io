@@ -3,10 +3,15 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const root = path.resolve(__dirname, "..");
-const dataPath = path.join(root, "data", "mozart-journey.json");
-const scriptPath = path.join(root, "script.js");
-const favoritesPath = path.join(root, "favorites.md");
-const auditPath = path.join(root, "content-audit.md");
+const portfolioIndexPath = path.join(root, "index.html");
+const portfolioStylesPath = path.join(root, "styles.css");
+const journeyRoot = path.join(root, "projects", "mozart-journey");
+const journeyIndexPath = path.join(journeyRoot, "index.html");
+const journeyStylesPath = path.join(journeyRoot, "styles.css");
+const dataPath = path.join(journeyRoot, "data", "mozart-journey.json");
+const scriptPath = path.join(journeyRoot, "script.js");
+const favoritesPath = path.join(journeyRoot, "favorites.md");
+const auditPath = path.join(journeyRoot, "content-audit.md");
 
 function assert(condition, message) {
   if (!condition) {
@@ -94,6 +99,16 @@ function testDataShape() {
       assert(entry.listening.appleMusicSearch || entry.listening.appleMusic || entry.listening.youtubeSearch, `${entry.id} listening must include at least one playable link`);
     }
   }
+}
+
+function testPortfolioHome() {
+  const html = fs.readFileSync(portfolioIndexPath, "utf8");
+  const styles = fs.readFileSync(portfolioStylesPath, "utf8");
+  assert(html.includes("moltpany"), "portfolio home should identify the site owner");
+  assert(html.includes("Mozart Journey"), "portfolio home should feature Mozart Journey");
+  assert(html.includes("projects/mozart-journey/"), "portfolio home should link to the Mozart Journey subproject");
+  assert(!html.includes("leaflet.js"), "portfolio home should not load the Mozart map application");
+  assert(styles.includes(".project-card"), "portfolio home should style project cards");
 }
 
 function testFilters() {
@@ -238,7 +253,7 @@ async function testFileProtocolFallback() {
   assert(entries === fallback, "file protocol should fall back to window.MOZART_JOURNEY_DATA when fetch fails");
 }
 
-const tests = [testDataShape, testFilters, testFileProtocolFallback];
+const tests = [testPortfolioHome, testDataShape, testFilters, testFileProtocolFallback];
 tests.push(testListeningLinks);
 
 function testPlaceImages() {
@@ -282,9 +297,9 @@ function testContentAudit() {
 tests.push(testContentAudit);
 
 function testSourceSummaryIsIntegrated() {
-  const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
+  const html = fs.readFileSync(journeyIndexPath, "utf8");
   const script = fs.readFileSync(scriptPath, "utf8");
-  const styles = fs.readFileSync(path.join(root, "styles.css"), "utf8");
+  const styles = fs.readFileSync(journeyStylesPath, "utf8");
   assert(html.includes("detail-collections"), "detail page should include a collection label container");
   assert(html.includes("detail-listening"), "detail page should include a listening links container");
   assert(html.includes("detail-listening-target"), "detail page should show the exact listening target");
