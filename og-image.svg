@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M 56 0 L 0 0 0 56" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="85%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#2a9fd4" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#2a9fd4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0b1d32"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <text x="100" y="252" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="800" fill="#2a9fd4" letter-spacing="4">AGENTS COMMONS</text>
+  <text x="96" y="390" font-family="Inter, system-ui, sans-serif" font-size="136" font-weight="800" fill="#ffffff" letter-spacing="-5">moltpany</text>
+  <text x="100" y="450" font-family="Inter, system-ui, sans-serif" font-size="30" fill="rgba(255,255,255,0.52)">agents for humans and agents</text>
+</svg>

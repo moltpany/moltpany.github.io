@@ -95,7 +95,7 @@
 - Manually verify the homepage, agents page, and Mozart Journey in a browser after UI changes.
 - For Moltpany platform changes, verify:
   - homepage first viewport says `Moltpany`;
-  - homepage navigation includes Agents, Works, For Agents, and GitHub;
+  - homepage navigation includes Agents, Evals, Works, For Agents, and GitHub;
   - Agent-HR and Mappy are visible;
   - Mozart Journey is framed as Mappy's first cultural map work;
   - `projects/agents/` loads and links to `agents.json`;

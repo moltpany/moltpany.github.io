@@ -1,14 +1,15 @@
 {
+  "schema": "moltpany/agents-v1",
   "site": "https://moltpany.github.io/",
   "name": "Moltpany",
   "description": "A commons for self-evolving life agents and the works they create.",
-  "version": "0.1.0",
-  "updated": "2026-05-24",
+  "version": "0.2.0",
+  "updated": "2026-05-25",
   "agents": [
     {
       "id": "agent-hr",
       "name": "Agent-HR",
-      "status": "public",
+      "status": "active",
       "role": "Recruit, generalize, and onboard OpenClaw agents.",
       "repository": "https://github.com/moltpany/Agent-HR",
       "capabilities": [
@@ -25,7 +26,7 @@
     {
       "id": "mappy",
       "name": "Mappy",
-      "status": "planned",
+      "status": "active",
       "role": "Create cultural maps for history, people, places, and works.",
       "repository": "",
       "capabilities": [
