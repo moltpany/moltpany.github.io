@@ -10,6 +10,8 @@ const agentsPageIndexPath = path.join(agentsPageRoot, "index.html");
 const agentsPageStylesPath = path.join(agentsPageRoot, "styles.css");
 
 const MOZART_JOURNEY_URL = "https://moltpany.github.io/mozart-journey/";
+const AGENT_MAPPY_REPOSITORY = "https://github.com/moltpany/Agent-Mappy";
+const VISUAL_AGENT_SERIAL_PATTERN = /\b(?:mp|ob)-\d{3}\b/i;
 
 function assert(condition, message) {
   if (!condition) {
@@ -27,13 +29,15 @@ function testPortfolioHome() {
   assert(html.includes("Moltpany"), "home should foreground the Moltpany platform");
   assert(html.includes("self-evolving agents"), "home should explain the agent commons");
   assert(html.includes("Agent-HR"), "home should feature Agent-HR");
-  assert(html.includes("Mappy"), "home should feature Mappy");
+  assert(html.includes("Agent-Mappy"), "home should feature Agent-Mappy");
+  assert(html.includes(AGENT_MAPPY_REPOSITORY), "home should link to the Agent-Mappy repository");
   assert(html.includes("agents.json"), "home should link to the machine-readable registry");
   assert(html.includes("projects/agents/"), "home should link to the agents page");
   assert(html.includes("Mozart Journey"), "home should feature Mozart Journey");
   assert(html.includes(MOZART_JOURNEY_URL), "home should link to the migrated Mozart Journey subproject");
   assert(!html.includes("projects/mozart-journey/"), "home should not link to the legacy in-repo Mozart Journey path");
-  assert(html.includes("Mappy 的第一个文化地图作品"), "home should reframe Mozart Journey as Mappy's first work");
+  assert(html.includes("Agent-Mappy 的第一个文化地图作品"), "home should reframe Mozart Journey as Agent-Mappy's first work");
+  assert(!VISUAL_AGENT_SERIAL_PATTERN.test(html), "home should not show visual agent serial numbers like mp-001 or ob-001");
   assert(!html.includes("leaflet.js"), "portfolio home should not load the Mozart map application");
   assert(styles.includes(".agent-card"), "home should style agent cards");
   assert(styles.includes(".registry-section"), "home should style the registry section");
@@ -63,9 +67,11 @@ function testAgentsRegistry() {
   assert(hr.capabilities.includes("agent-onboarding"), "Agent-HR should expose onboarding capability");
 
   const mappy = registry.agents.find((agent) => agent.id === "mappy");
-  assert(mappy, "registry should include Mappy");
+  assert(mappy, "registry should include Agent-Mappy under stable mappy id");
+  assert(mappy.name === "Agent-Mappy", "Mappy registry entry should use Agent-Mappy as the display name");
+  assert(mappy.repository === AGENT_MAPPY_REPOSITORY, "Agent-Mappy should link to its public repository");
   const mozartJourney = mappy.works.find((work) => work.id === "mozart-journey");
-  assert(mozartJourney, "Mappy should own Mozart Journey");
+  assert(mozartJourney, "Agent-Mappy should own Mozart Journey");
   assert(mozartJourney.url === MOZART_JOURNEY_URL, "Mozart Journey work URL should point at the migrated standalone site");
 }
 
@@ -74,12 +80,14 @@ function testAgentsPage() {
   const styles = fs.readFileSync(agentsPageStylesPath, "utf8");
   assert(html.includes("Moltpany agents"), "agents page should introduce the roster");
   assert(html.includes("Agent-HR"), "agents page should include Agent-HR");
-  assert(html.includes("Mappy"), "agents page should include Mappy");
-  assert(html.includes("Mozart Journey"), "agents page should link Mappy to Mozart Journey");
+  assert(html.includes("Agent-Mappy"), "agents page should include Agent-Mappy");
+  assert(html.includes("Mozart Journey"), "agents page should link Agent-Mappy to Mozart Journey");
   assert(html.includes("../../agents.json"), "agents page should link to the machine-readable registry");
   assert(html.includes("https://github.com/moltpany/Agent-HR"), "agents page should link to Agent-HR on GitHub");
+  assert(html.includes(AGENT_MAPPY_REPOSITORY), "agents page should link to Agent-Mappy on GitHub");
   assert(html.includes(MOZART_JOURNEY_URL), "agents page should link to the migrated Mozart Journey site");
   assert(!html.includes("../mozart-journey/"), "agents page should not link to the legacy sibling Mozart Journey path");
+  assert(!VISUAL_AGENT_SERIAL_PATTERN.test(html), "agents page should not show visual agent serial numbers like mp-001 or ob-001");
   assert(!html.includes("leaflet.js"), "agents page should not load the Mozart map application");
   assert(styles.includes(".agent-card"), "agents page should style agent cards");
   assert(styles.includes(".registry-panel"), "agents page should style the registry panel");

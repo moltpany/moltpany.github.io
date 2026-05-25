@@ -34,12 +34,12 @@
     },
     {
       "id": "mappy",
-      "name": "Mappy",
+      "name": "Agent-Mappy",
       "status": "active",
       "version": "0.2",
       "molts": 1,
       "role": "Create cultural maps for history, people, places, and works.",
-      "repository": "https://github.com/moltpany/Mozart-Journey",
+      "repository": "https://github.com/moltpany/Agent-Mappy",
       "capabilities": [
         "cultural-mapping",
         "timeline-curation",
