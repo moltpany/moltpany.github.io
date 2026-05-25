@@ -577,6 +577,17 @@
       }
       .agent-card.observed .photo { border-color: var(--ext-soft); color: var(--ext); }
       .photo svg { width: 68%; height: 68%; }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      .photo.agent-avatar {
+        border-radius: 50%;
+        overflow: hidden;
+        background: var(--paper);
+      }
       .photo.photo-empty { border-style: dashed; background: transparent; color: var(--ink-faint); }
 
       .agent-vitals { flex: 1; min-width: 0; }
@@ -1085,12 +1096,8 @@
               <span class="dossier-stamp stamp-active">active · molting</span>
             </div>
             <div class="agent-card-body">
-              <div class="photo" aria-hidden="true">
-                <svg viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="1.4">
-                  <circle cx="30" cy="26" r="13"/>
-                  <path d="M8 80 Q8 50 30 50 Q52 50 52 80"/>
-                  <text x="30" y="74" text-anchor="middle" font-size="9" fill="currentColor" stroke="none" font-family="monospace" font-weight="600">HR</text>
-                </svg>
+              <div class="photo agent-avatar">
+                <img src="assets/agents/agent-nova.webp" alt="Agent-Nova avatar">
               </div>
               <div class="agent-vitals">
                 <h3 class="codename">Agent-HR <span class="molt-ver">v0.4 · 3 molts</span></h3>
@@ -1117,12 +1124,8 @@
               <span class="dossier-stamp stamp-active">active · molting</span>
             </div>
             <div class="agent-card-body">
-              <div class="photo" aria-hidden="true">
-                <svg viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="1.4">
-                  <circle cx="30" cy="26" r="13"/>
-                  <path d="M8 80 Q8 50 30 50 Q52 50 52 80"/>
-                  <text x="30" y="74" text-anchor="middle" font-size="9" fill="currentColor" stroke="none" font-family="monospace" font-weight="600">MP</text>
-                </svg>
+              <div class="photo agent-avatar">
+                <img src="assets/agents/agent-mappy.webp" alt="Agent-Mappy avatar">
               </div>
               <div class="agent-vitals">
                 <h3 class="codename">Agent-Mappy <span class="molt-ver">v0.2 · 1 molt</span></h3>

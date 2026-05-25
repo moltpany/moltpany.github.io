@@ -11,6 +11,8 @@ const agentsPageStylesPath = path.join(agentsPageRoot, "styles.css");
 
 const MOZART_JOURNEY_URL = "https://moltpany.github.io/mozart-journey/";
 const AGENT_MAPPY_REPOSITORY = "https://github.com/moltpany/Agent-Mappy";
+const AGENT_NOVA_AVATAR = "assets/agents/agent-nova.webp";
+const AGENT_MAPPY_AVATAR = "assets/agents/agent-mappy.webp";
 const VISUAL_AGENT_SERIAL_PATTERN = /\b(?:mp|ob)-\d{3}\b/i;
 
 function assert(condition, message) {
@@ -31,6 +33,10 @@ function testPortfolioHome() {
   assert(html.includes("Agent-HR"), "home should feature Agent-HR");
   assert(html.includes("Agent-Mappy"), "home should feature Agent-Mappy");
   assert(html.includes(AGENT_MAPPY_REPOSITORY), "home should link to the Agent-Mappy repository");
+  assert(html.includes(AGENT_NOVA_AVATAR), "home should reference Agent-Nova avatar artwork");
+  assert(html.includes(AGENT_MAPPY_AVATAR), "home should reference Agent-Mappy avatar artwork");
+  assert(fs.existsSync(path.join(root, AGENT_NOVA_AVATAR)), "Agent-Nova avatar file should exist");
+  assert(fs.existsSync(path.join(root, AGENT_MAPPY_AVATAR)), "Agent-Mappy avatar file should exist");
   assert(html.includes("agents.json"), "home should link to the machine-readable registry");
   assert(html.includes("projects/agents/"), "home should link to the agents page");
   assert(html.includes("Mozart Journey"), "home should feature Mozart Journey");
