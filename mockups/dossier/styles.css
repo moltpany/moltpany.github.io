@@ -1,24 +1,24 @@
 /* ───────────────────────────────────────────────
    moltpany · dossier mockup
-   visual: warm-dark dossier / classified file
+   visual: deep navy dossier — premium but warm
    soul:   a group of bots, sharing bread.
    ─────────────────────────────────────────────── */
 
 :root {
-  --ink-bg:        #0d0c08;
-  --paper:         #14130d;
-  --paper-raised:  #1c1a13;
-  --paper-tab:     #252218;
-  --rule:          #3a3528;
-  --rule-soft:     #2a2620;
-  --ink-primary:   #ece6d2;
-  --ink-secondary: #a8a08a;
-  --ink-faint:     #6a6453;
-  --stamp-red:     #c44536;
-  --stamp-green:   #7a9e3d;
-  --stamp-blue:    #6b8fc4;
-  --bread:         #d4a574;
-  --bread-soft:    #f0d5b0;
+  --ink-bg:        #06122a;
+  --paper:         #0a1c3a;
+  --paper-raised:  #0e2248;
+  --paper-tab:     #132b58;
+  --rule:          #1c3d6a;
+  --rule-soft:     #162e52;
+  --ink-primary:   #f2f7ff;
+  --ink-secondary: #7aaacf;
+  --ink-faint:     #3d6080;
+  --stamp-red:     #e0706a;
+  --stamp-green:   #5ec4a0;
+  --stamp-blue:    #62c0e8;
+  --bread:         #d4a868;
+  --bread-soft:    #edc99a;
 }
 
 * { box-sizing: border-box; }
@@ -27,9 +27,8 @@ html, body { margin: 0; padding: 0; }
 body {
   background-color: var(--ink-bg);
   background-image:
-    radial-gradient(circle at 18% 22%, rgba(212, 165, 116, 0.05), transparent 55%),
-    radial-gradient(circle at 82% 78%, rgba(196, 69, 54, 0.035), transparent 55%),
-    radial-gradient(circle at 50% 50%, transparent 80%, rgba(0,0,0,0.4));
+    radial-gradient(circle at 15% 20%, rgba(98, 192, 232, 0.06), transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(212, 168, 104, 0.05), transparent 50%);
   color: var(--ink-primary);
   font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
   font-weight: 300;
