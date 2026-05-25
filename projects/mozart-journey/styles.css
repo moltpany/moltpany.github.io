@@ -34,6 +34,14 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   margin: 0;
   background: var(--paper);
@@ -86,6 +94,8 @@ a {
 }
 
 .theme-toggle {
+  min-width: 54px;
+  min-height: 32px;
   border: 1px solid rgba(255, 248, 234, 0.36);
   border-radius: 999px;
   padding: 6px 12px;

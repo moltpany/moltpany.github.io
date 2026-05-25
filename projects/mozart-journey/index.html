@@ -1,9 +1,25 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>莫扎特足迹互动地图</title>
+    <script>
+      // Pre-init theme before render to avoid flash of wrong theme/label
+      (function () {
+        try {
+          var stored = window.localStorage && window.localStorage.getItem("mozart-journey-theme");
+          var theme = (stored === "dark" || stored === "light")
+            ? stored
+            : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.dataset.initialThemeLabel = theme === "dark" ? "白天" : "黑夜";
+        } catch (e) {
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.initialThemeLabel = "黑夜";
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://unpkg.com">
     <link rel="preconnect" href="https://tile.openstreetmap.org">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235f1c18'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23f6f1e8' font-family='serif'%3EM%3C/text%3E%3C/svg%3E">
@@ -19,9 +35,20 @@
           <a href="#timeline">时间线</a>
           <a href="#detail">作品详情</a>
           <a href="#sources">来源</a>
-          <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">暗黑</button>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="切换显示模式"></button>
         </div>
       </nav>
+      <script>
+        // Fill the toggle label immediately so dark-mode visitors don't see a flash
+        (function () {
+          var btn = document.getElementById("theme-toggle");
+          if (!btn) return;
+          var theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+          btn.textContent = document.documentElement.dataset.initialThemeLabel || (theme === "dark" ? "白天" : "黑夜");
+          btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+          btn.setAttribute("aria-label", theme === "dark" ? "切换到白天模式" : "切换到黑夜模式");
+        })();
+      </script>
       <div class="hero-content">
         <p class="eyebrow">1756-1791 · 欧洲城市与作品</p>
         <h1>莫扎特的足迹</h1>

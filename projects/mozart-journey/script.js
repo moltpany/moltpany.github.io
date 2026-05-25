@@ -175,9 +175,9 @@
     const button = $("theme-toggle");
     if (button) {
       const isDark = normalized === "dark";
-      button.textContent = isDark ? "白天" : "暗黑";
+      button.textContent = isDark ? "白天" : "黑夜";
       button.setAttribute("aria-pressed", isDark ? "true" : "false");
-      button.setAttribute("aria-label", isDark ? "切换到白天模式" : "切换到暗黑模式");
+      button.setAttribute("aria-label", isDark ? "切换到白天模式" : "切换到黑夜模式");
     }
     if (persist) {
       saveTheme(normalized);
@@ -305,7 +305,7 @@
       marker.bindPopup(`
         <strong>${entry.city}, ${entry.year}</strong><br>
         ${entry.work} ${entry.catalogue}${placeLine}
-        <br><button type="button" class="popup-detail-link" data-id="${entry.id}">查看作品详情</button>
+        <br><button type="button" class="popup-detail-link" data-id="${entry.id}" aria-label="查看 ${entry.work} ${entry.catalogue} 的作品详情">查看作品详情</button>
       `);
       marker.on("click", () => selectEntry(entry.id, false, false));
       marker.on("popupopen", () => {
@@ -536,12 +536,14 @@
       return;
     }
 
+    const listeningTargetText = entry.listening.target || `${entry.work} ${entry.catalogue}`;
     for (const [label, url] of actions) {
       const link = document.createElement("a");
       link.href = url;
       link.target = "_blank";
       link.rel = "noreferrer";
       link.textContent = label;
+      link.setAttribute("aria-label", `在 ${label} 试听 ${listeningTargetText}`);
       links.appendChild(link);
     }
     container.hidden = false;
@@ -674,7 +676,7 @@
 
   function applyFilters() {
     state.filtered = filterEntries(state.entries, currentFilters()).sort(byYearThenCity);
-    setText("result-count", `${state.filtered.length} 个节点`);
+    setText("result-count", `${state.filtered.length} 处足迹`);
     renderMarkers(state.filtered);
     renderTimeline(state.filtered);
     const stillVisible = state.filtered.some((entry) => entry.id === state.selectedId);

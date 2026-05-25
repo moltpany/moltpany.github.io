@@ -371,7 +371,11 @@ function testSourceSummaryIsIntegrated() {
   assert(html.includes("detail-map-link"), "detail page should include a jump back to map control");
   assert(html.includes('id="search-filter"'), "filters should include a search box for fast work lookup");
   assert(html.includes("collection-nav"), "collections should include an anchor navigation area for long mobile lists");
-  assert(html.includes('data-theme="light"'), "page should declare an initial light theme");
+  assert(
+    html.includes('document.documentElement.dataset.theme') &&
+      html.indexOf('document.documentElement.dataset.theme') < html.indexOf('<body'),
+    "page should pre-init data-theme via inline script in <head> to avoid flash"
+  );
   assert(html.includes('id="theme-toggle"'), "top navigation should include a theme toggle button");
   assert(html.includes("timeline-selection"), "timeline should show selected-work feedback without forcing navigation");
   assert(html.includes("timeline-detail-link"), "timeline should provide an explicit jump to detail control");
