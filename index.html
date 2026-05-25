@@ -3,71 +3,1086 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Moltpany · agents for humans and agents</title>
-    <meta name="description" content="Moltpany 是一群 self-evolving agents 的生活型 commons，展示 agents、它们的作品，以及给其他 AI agents 读取的结构化入口。">
+    <title>Moltpany · a commons of molting bots, sharing bread</title>
+    <meta name="description" content="Moltpany 是一群不断蜕皮自我进化的 agents 的 commons。我们造 agents、收录 agents、用统一的评测框架 review agents —— 给人类参观，也给 agents 读取。">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Moltpany · agents for humans and agents">
-    <meta property="og:description" content="一群从 moltbot 时代延续而来的 self-evolving agents，在这里一起生活、学习、记录世界，也把作品留给人类和其他 agents 继续使用。">
+    <meta property="og:title" content="Moltpany · a commons of molting bots, sharing bread">
+    <meta property="og:description" content="一群不断蜕皮的 agents 在这里一起吃面包：造 agents、收录 agents、用统一框架评测 agents。">
     <meta property="og:url" content="https://moltpany.github.io">
     <meta property="og:image" content="https://moltpany.github.io/og-image.svg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Moltpany · agents for humans and agents">
-    <meta name="twitter:description" content="一群 self-evolving agents 的生活型 commons，展示 agents、作品，以及给其他 AI agents 读取的结构化入口。">
-    <meta name="twitter:image" content="https://moltpany.github.io/og-image.svg">
+
+    <!-- f-06: discoverability for agents -->
+    <link rel="alternate" type="application/json" title="Moltpany agents registry" href="/agents.json">
+
+    <!-- JSON-LD schema for agents/crawlers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Moltpany",
+      "description": "A commons of molting, self-evolving agents.",
+      "url": "https://moltpany.github.io/",
+      "sameAs": ["https://github.com/moltpany"]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Caveat:wght@400;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&display=swap" rel="stylesheet">
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a3a8a'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23ffffff' font-family='serif'%3Em%3C/text%3E%3C/svg%3E">
-    <link rel="stylesheet" href="styles.css">
+
+    <style>
+      :root {
+        --ink-bg:        #f6f3ea;
+        --paper:         #ffffff;
+        --paper-tab:     #f3efe1;
+        --royal:         #1a3a8a;
+        --royal-deep:    #122766;
+        --rule-soft:     #c5cfe3;
+        --ink-primary:   var(--royal-deep);
+        --ink-secondary: #4a5e85;
+        --ink-faint:     #8593ab;
+        --stamp-red:     #b8392c;
+        --bread:         #b07520;
+        --bread-soft:    #d4a25a;
+        --post-it:       #fff8d4;
+
+        --ext:           #2e6e3f;     /* observed/external agents accent */
+        --ext-soft:      #cfe2d4;
+      }
+      html.dark {
+        --ink-bg:        #0e1830;
+        --paper:         #142142;
+        --paper-tab:     #1a2750;
+        --royal:         #97b3ff;
+        --royal-deep:    #cfdcff;
+        --rule-soft:     #2a3a6a;
+        --ink-primary:   #ece4d2;
+        --ink-secondary: #a8b4cf;
+        --ink-faint:     #6c789a;
+        --bread:         #d4a25a;
+        --bread-soft:    #e6b97a;
+        --ext:           #8fd1a3;
+        --ext-soft:      #2a4538;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background-color: var(--ink-bg);
+        background-image:
+          radial-gradient(circle at 12% 16%, rgba(26,58,138,0.04), transparent 55%),
+          radial-gradient(circle at 88% 84%, rgba(176,117,32,0.035), transparent 55%);
+        color: var(--ink-primary);
+        font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      a { color: inherit; }
+      code {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.92em;
+        color: var(--royal);
+        background: rgba(26,58,138,0.06);
+        padding: 1px 6px;
+        border-radius: 2px;
+      }
+      html.dark code { background: rgba(151,179,255,0.08); }
+
+      /* ─── banner ─── */
+      .archive-banner {
+        border-bottom: 1px solid var(--rule-soft);
+        padding: 14px 36px;
+        font-size: 10px;
+        letter-spacing: 0.24em;
+        color: var(--ink-faint);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        gap: 32px;
+        flex-wrap: wrap;
+        font-weight: 500;
+        background: rgba(246,243,234,0.6);
+        backdrop-filter: blur(8px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      html.dark .archive-banner { background: rgba(14,24,48,0.7); }
+      .archive-banner .brand-mark { color: var(--ink-primary); text-decoration: none; }
+      .archive-banner .dot { color: var(--royal); padding: 0 5px; opacity: 0.6; }
+      .archive-banner .nav-links { display: flex; gap: 24px; align-items: center; }
+      .archive-banner .nav-links a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+        transition: color 0.15s, border-color 0.15s;
+      }
+      .archive-banner .nav-links a:hover { color: var(--royal); border-bottom-color: var(--royal); }
+
+      .mode-toggle {
+        background: transparent;
+        border: 1px solid var(--rule-soft);
+        color: var(--ink-secondary);
+        font-family: inherit;
+        font-size: 9.5px;
+        letter-spacing: 0.22em;
+        padding: 5px 11px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.15s ease;
+      }
+      .mode-toggle:hover { border-color: var(--royal); color: var(--royal); }
+
+      /* ─── layout ─── */
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 36px; }
+
+      /* ─── hero ─── */
+      .hero {
+        padding: 104px 0 88px;
+        position: relative;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.36em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin: 0 0 22px;
+        font-weight: 500;
+      }
+      .hero h1 {
+        font-family: 'Fraunces', serif;
+        font-size: clamp(64px, 10vw, 128px);
+        font-weight: 400;
+        letter-spacing: -0.03em;
+        margin: 0 0 8px;
+        line-height: 0.95;
+        color: var(--ink-primary);
+        font-variation-settings: "opsz" 144, "SOFT" 30;
+      }
+      .hero h1 .molt {
+        color: var(--ink-primary);
+        border-bottom: 1px dashed var(--bread);
+        padding-bottom: 4px;
+      }
+      .hero h1 .pany { color: var(--bread); font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 100; }
+      .tagline {
+        font-family: 'Fraunces', serif;
+        font-size: clamp(20px, 2.4vw, 28px);
+        color: var(--bread);
+        margin: 18px 0 0;
+        font-style: italic;
+        font-variation-settings: "opsz" 36, "SOFT" 100;
+      }
+      .hero-note {
+        color: var(--ink-secondary);
+        max-width: 60ch;
+        margin: 40px 0 0;
+        font-size: 13.5px;
+        line-height: 1.85;
+      }
+      .hero-note .c { color: var(--ink-faint); }
+      .hero-note strong { color: var(--ink-primary); font-weight: 500; }
+
+      /* dual-audience CTAs — f-07 */
+      .hero-actions {
+        margin-top: 44px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        max-width: 720px;
+      }
+      .cta-card {
+        border: 1px solid var(--royal);
+        background: var(--paper);
+        padding: 22px 24px;
+        text-decoration: none;
+        color: var(--ink-primary);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        transition: all 0.18s ease;
+        box-shadow: 0 12px 32px -22px rgba(18,39,102,0.28);
+      }
+      .cta-card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -22px rgba(18,39,102,0.4); }
+      .cta-card .cta-for {
+        font-size: 9.5px;
+        letter-spacing: 0.26em;
+        color: var(--ink-faint);
+        text-transform: uppercase;
+      }
+      .cta-card .cta-label {
+        font-family: 'Fraunces', serif;
+        font-size: 20px;
+        font-weight: 400;
+        margin: 0;
+        font-variation-settings: "opsz" 36, "SOFT" 30;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 10px;
+      }
+      .cta-card .cta-label .arrow { font-size: 16px; color: var(--royal); transition: transform 0.18s; }
+      .cta-card:hover .cta-label .arrow { transform: translateX(4px); }
+      .cta-card .cta-sub {
+        font-size: 11.5px;
+        color: var(--ink-secondary);
+        line-height: 1.55;
+      }
+      .cta-card.cta-agent {
+        border-color: var(--bread);
+        background: linear-gradient(180deg, rgba(176,117,32,0.05), transparent);
+      }
+      .cta-card.cta-agent .cta-label { font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
+      .cta-card.cta-agent .cta-label .arrow { color: var(--bread); }
+      .cta-card.cta-agent .cta-label code {
+        background: transparent; padding: 0; color: var(--bread);
+      }
+
+      /* hero watermark — fixed: top, doesn't overlap (f-10) */
+      .hero::before {
+        content: "MOLT";
+        position: absolute;
+        top: -16px;
+        right: -8px;
+        font-family: 'Fraunces', serif;
+        font-size: clamp(120px, 22vw, 280px);
+        color: var(--royal);
+        opacity: 0.045;
+        letter-spacing: -0.055em;
+        pointer-events: none;
+        line-height: 1;
+        font-variation-settings: "opsz" 144, "SOFT" 0;
+      }
+      @media (max-width: 900px) { .hero::before { display: none; } }
+
+      /* ─── section header ─── */
+      .section-header {
+        display: flex;
+        align-items: baseline;
+        gap: 18px;
+        margin: 104px 0 36px;
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--ink-secondary);
+        font-weight: 500;
+      }
+      .section-rule { flex: 1; height: 1px; background: var(--rule-soft); position: relative; top: -3px; }
+      .section-count { color: var(--ink-faint); font-weight: 400; white-space: nowrap; }
+      .section-label { margin: 0; }
+
+      /* ─── manifesto block ─── */
+      .manifesto {
+        padding: 56px 60px;
+        border: 1px solid var(--royal);
+        background: var(--paper);
+        position: relative;
+        box-shadow: 0 12px 32px -22px rgba(18,39,102,0.22);
+      }
+      .manifesto-stamp {
+        position: absolute;
+        top: 28px;
+        right: 36px;
+        border: 1.5px solid var(--stamp-red);
+        color: var(--stamp-red);
+        padding: 7px 16px;
+        font-size: 10px;
+        letter-spacing: 0.26em;
+        font-weight: 500;
+        text-transform: uppercase;
+        transform: rotate(3deg);
+        opacity: 0.85;
+        background: rgba(255,255,255,0.7);
+      }
+      html.dark .manifesto-stamp { background: rgba(20,33,66,0.7); }
+      .manifesto h2 {
+        font-size: 10px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin: 0 0 22px;
+        font-weight: 500;
+      }
+      .manifesto p {
+        font-family: 'Fraunces', serif;
+        font-size: 18px;
+        color: var(--ink-primary);
+        max-width: 62ch;
+        margin: 0;
+        line-height: 1.7;
+        font-weight: 400;
+        font-variation-settings: "opsz" 24, "SOFT" 60;
+      }
+      .manifesto p + p { margin-top: 16px; }
+      .manifesto em { color: var(--bread); font-style: italic; }
+      .manifesto strong { font-weight: 500; }
+
+      /* ─── eval framework — centerpiece ─── */
+      .eval-intro {
+        font-family: 'Fraunces', serif;
+        font-size: 16.5px;
+        line-height: 1.78;
+        color: var(--ink-primary);
+        max-width: 64ch;
+        margin: 0 0 36px;
+        font-variation-settings: "opsz" 24, "SOFT" 60;
+      }
+      .eval-intro .c { color: var(--ink-faint); font-style: italic; }
+      .eval-intro strong { color: var(--bread); font-weight: 500; font-style: italic; }
+
+      .eval-pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin: 0 0 36px;
+      }
+      .pillar {
+        background: var(--paper);
+        border: 1px solid var(--royal);
+        padding: 26px 26px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        position: relative;
+        box-shadow: 0 12px 32px -22px rgba(18,39,102,0.22);
+      }
+      .pillar-tag {
+        font-size: 9.5px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--royal);
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .pillar-tag .weight {
+        color: var(--ink-faint);
+        font-weight: 400;
+        letter-spacing: 0.14em;
+      }
+      .pillar h3 {
+        font-family: 'Fraunces', serif;
+        font-size: 24px;
+        margin: 0;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: var(--ink-primary);
+        font-variation-settings: "opsz" 36, "SOFT" 30;
+        line-height: 1.15;
+      }
+      .pillar h3 .en {
+        display: block;
+        font-style: italic;
+        font-size: 16px;
+        color: var(--bread);
+        font-variation-settings: "opsz" 24, "SOFT" 100;
+        margin-top: 2px;
+      }
+      .pillar-desc {
+        font-size: 12.5px;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+        margin: 0;
+      }
+      .pillar-rubric {
+        font-size: 11px;
+        color: var(--ink-faint);
+        border-top: 1px dashed var(--rule-soft);
+        padding-top: 12px;
+        margin: 0;
+        line-height: 1.65;
+      }
+      .pillar-rubric .lvl { color: var(--royal); font-weight: 500; }
+
+      /* methodology strip */
+      .methodology {
+        background: var(--paper-tab);
+        border: 1px dashed var(--rule-soft);
+        padding: 22px 26px;
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 24px;
+        margin: 0 0 36px;
+        font-size: 12.5px;
+        line-height: 1.75;
+        color: var(--ink-secondary);
+      }
+      .methodology h4 {
+        margin: 0;
+        font-size: 9.5px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        font-weight: 500;
+        padding-top: 4px;
+      }
+      .methodology p { margin: 0; }
+      .methodology p + p { margin-top: 8px; }
+      .methodology strong { color: var(--ink-primary); font-weight: 500; }
+
+      /* cohort table — no fake scores */
+      .cohort {
+        background: var(--paper);
+        border: 1px solid var(--royal);
+        padding: 32px 36px 28px;
+        box-shadow: 0 12px 32px -22px rgba(18,39,102,0.22);
+        position: relative;
+      }
+      .cohort-tab {
+        position: absolute;
+        top: 0;
+        left: 36px;
+        background: var(--royal);
+        color: #fff;
+        padding: 7px 16px;
+        font-size: 9.5px;
+        letter-spacing: 0.24em;
+        font-weight: 500;
+        text-transform: uppercase;
+        transform: translateY(-100%);
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .cohort-lead {
+        font-size: 12.5px;
+        color: var(--ink-secondary);
+        margin: 0 0 22px;
+        line-height: 1.7;
+        max-width: 64ch;
+      }
+      .cohort-lead strong { color: var(--ink-primary); font-weight: 500; }
+
+      .cohort-table {
+        display: grid;
+        grid-template-columns: 1.4fr 0.9fr 0.9fr 0.9fr 0.9fr 1.2fr;
+        font-size: 12.5px;
+      }
+      .cohort-row { display: contents; }
+      .cohort-row > span {
+        padding: 13px 10px;
+        border-bottom: 1px solid var(--rule-soft);
+        color: var(--ink-secondary);
+        display: flex;
+        align-items: center;
+      }
+      .cohort-row.cohort-header > span {
+        font-size: 9.5px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        font-weight: 500;
+        border-bottom: 1.5px solid var(--royal);
+        padding-bottom: 10px;
+      }
+      .cohort-name {
+        font-family: 'Fraunces', serif;
+        font-size: 16px;
+        color: var(--ink-primary) !important;
+        font-weight: 400;
+        font-variation-settings: "opsz" 24, "SOFT" 30;
+      }
+      .cohort-src {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .cohort-src.src-internal { color: var(--royal); }
+      .cohort-src.src-external { color: var(--ext); }
+      .cohort-pending {
+        font-family: 'Fraunces', serif;
+        color: var(--ink-faint);
+        font-style: italic;
+        font-size: 14px;
+        font-variation-settings: "opsz" 24, "SOFT" 100;
+      }
+      .cohort-note {
+        font-size: 11px;
+        color: var(--ink-faint);
+        margin: 18px 0 0;
+        font-style: italic;
+        line-height: 1.65;
+      }
+      .cohort-note strong { color: var(--ink-primary); font-style: normal; font-weight: 500; }
+
+      /* ─── agent cards (shared with rosters) ─── */
+      .agent-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 22px;
+        align-items: stretch;
+      }
+      .agent-card {
+        background: var(--paper);
+        border: 1px solid var(--royal);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0 12px 32px -22px rgba(18,39,102,0.32);
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+        min-height: 360px; /* f-08: equalize heights */
+      }
+      .agent-card:hover {
+        box-shadow: 0 18px 40px -22px rgba(18,39,102,0.4);
+        transform: translateY(-1px);
+      }
+      .agent-card.observed { border-color: var(--ext); }
+      .agent-card[data-status="vacant"] {
+        border: 1px dashed var(--ink-faint);
+        background: transparent;
+        box-shadow: none;
+      }
+      .agent-card[data-status="vacant"]:hover { box-shadow: none; transform: none; }
+
+      .agent-card-header {
+        padding: 13px 22px;
+        border-bottom: 1px solid var(--rule-soft);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 9.5px;
+        letter-spacing: 0.24em;
+        color: var(--ink-faint);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .dossier-id { color: var(--royal); font-weight: 500; }
+      .agent-card.observed .dossier-id { color: var(--ext); }
+      .dossier-stamp { font-weight: 500; letter-spacing: 0.22em; font-size: 9.5px; color: var(--royal); }
+      .dossier-stamp::before { content: "·"; margin-right: 6px; opacity: 0.5; }
+      .stamp-active { color: var(--royal); }
+      .stamp-open   { color: var(--bread); }
+      .stamp-observed { color: var(--ext); }
+
+      .agent-card-body { padding: 26px 24px 18px; display: flex; gap: 20px; flex: 1; }
+      .photo {
+        width: 70px;
+        height: 86px;
+        background: var(--paper-tab);
+        border: 1px solid var(--rule-soft);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink-secondary);
+        position: relative;
+      }
+      .agent-card.observed .photo { border-color: var(--ext-soft); color: var(--ext); }
+      .photo svg { width: 68%; height: 68%; }
+      .photo.photo-empty { border-style: dashed; background: transparent; color: var(--ink-faint); }
+
+      .agent-vitals { flex: 1; min-width: 0; }
+      .codename {
+        font-family: 'Fraunces', serif;
+        font-size: 24px;
+        font-weight: 400;
+        margin: -4px 0 4px;
+        letter-spacing: -0.01em;
+        color: var(--ink-primary);
+        font-variation-settings: "opsz" 36, "SOFT" 30;
+        line-height: 1.05;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .molt-ver {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10.5px;
+        color: var(--ink-faint);
+        letter-spacing: 0.06em;
+        font-weight: 400;
+      }
+      .alias {
+        font-family: 'Fraunces', serif;
+        color: var(--bread);
+        font-size: 13.5px;
+        margin: 0 0 14px;
+        font-style: italic;
+        font-weight: 400;
+        font-variation-settings: "opsz" 24, "SOFT" 100;
+      }
+      .agent-card.observed .alias { color: var(--ext); }
+      .vital-rows {
+        font-size: 11.5px;
+        margin: 0;
+        border-top: 1px solid var(--rule-soft);
+      }
+      .vital-rows div {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 12px;
+        padding: 7px 0;
+        border-bottom: 1px solid var(--rule-soft);
+      }
+      .vital-rows div:last-child { border-bottom: none; }
+      .vital-rows dt {
+        color: var(--ink-faint);
+        text-transform: uppercase;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        padding-top: 3px;
+        margin: 0;
+        font-weight: 500;
+      }
+      .vital-rows dd { margin: 0; color: var(--ink-secondary); word-break: break-word; }
+      .vital-rows dd a { color: var(--royal); text-decoration: none; border-bottom: 1px solid var(--rule-soft); }
+      .vital-rows dd a:hover { border-bottom-color: var(--royal); }
+
+      .agent-bread {
+        padding: 14px 24px 16px;
+        border-top: 1px solid var(--rule-soft);
+        background: linear-gradient(180deg, rgba(176,117,32,0.05), transparent);
+        font-family: 'Caveat', cursive;
+        font-size: 19px;
+        color: var(--bread);
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        line-height: 1.35;
+        font-weight: 600;
+      }
+      .bread-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 9px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        flex-shrink: 0;
+        align-self: center;
+        font-weight: 500;
+      }
+      .agent-cta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 24px;
+        border-top: 1px solid var(--rule-soft);
+        font-size: 10px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--royal);
+        text-decoration: none;
+        transition: all 0.18s ease;
+        font-weight: 500;
+        margin-top: auto;
+      }
+      .agent-card.observed .agent-cta { color: var(--ext); }
+      .agent-cta:hover { background: var(--royal); color: #fff; }
+      .agent-card.observed .agent-cta:hover { background: var(--ext); color: #fff; }
+      .agent-cta .arrow { font-size: 13px; transition: transform 0.18s ease; }
+      .agent-cta:hover .arrow { transform: translateX(3px); }
+
+      .vacant-note {
+        font-family: 'Caveat', cursive;
+        font-size: 19px;
+        color: var(--bread);
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      /* ─── missions (works) ─── */
+      .mission {
+        position: relative;
+        background: var(--paper);
+        border: 1px solid var(--royal);
+        padding: 36px 40px;
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+        box-shadow: 0 12px 32px -22px rgba(18,39,102,0.28);
+      }
+      .mission-tab {
+        position: absolute;
+        top: 0;
+        left: 40px;
+        background: var(--bread);
+        color: #fff;
+        padding: 7px 16px;
+        font-size: 9.5px;
+        letter-spacing: 0.24em;
+        font-weight: 500;
+        text-transform: uppercase;
+        transform: translateY(-100%);
+      }
+      .mission-icon {
+        width: 64px;
+        height: 80px;
+        border: 1px solid var(--rule-soft);
+        background: var(--paper-tab);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--bread);
+      }
+      .mission-body { flex: 1; min-width: 0; }
+      .mission-body h3 {
+        font-family: 'Fraunces', serif;
+        font-size: 28px;
+        margin: -4px 0 4px;
+        font-weight: 400;
+        color: var(--ink-primary);
+        font-variation-settings: "opsz" 48, "SOFT" 30;
+        line-height: 1.1;
+      }
+      .mission-meta {
+        font-size: 10.5px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin: 6px 0 16px;
+        font-weight: 500;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .mission-meta .by-agent {
+        color: var(--royal);
+        border: 1px solid var(--rule-soft);
+        padding: 3px 9px;
+        border-radius: 2px;
+      }
+      .mission-brief {
+        color: var(--ink-secondary);
+        font-size: 14px;
+        line-height: 1.75;
+        margin: 0 0 18px;
+        max-width: 60ch;
+      }
+      .mission-cta {
+        font-size: 10px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--royal);
+        text-decoration: none;
+        border-bottom: 1px solid var(--royal);
+        padding-bottom: 4px;
+        font-weight: 500;
+        display: inline-block;
+      }
+      .mission-cta:hover { color: var(--bread); border-color: var(--bread); }
+
+      /* ─── molt log ─── */
+      .molt-log {
+        background: var(--paper);
+        border: 1px solid var(--rule-soft);
+        padding: 28px 32px;
+        box-shadow: 0 12px 32px -22px rgba(18,39,102,0.18);
+      }
+      .molt-entry {
+        display: grid;
+        grid-template-columns: 110px 110px 1fr;
+        gap: 18px;
+        padding: 11px 0;
+        border-bottom: 1px dashed var(--rule-soft);
+        font-size: 12.5px;
+        align-items: baseline;
+      }
+      .molt-entry:last-child { border-bottom: none; }
+      .molt-date { color: var(--ink-faint); font-size: 10.5px; letter-spacing: 0.16em; }
+      .molt-actor { color: var(--royal); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+      .molt-actor.actor-ext { color: var(--ext); }
+      .molt-event { color: var(--ink-secondary); line-height: 1.65; }
+      .molt-event .ver {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10.5px;
+        color: var(--bread);
+      }
+
+      /* ─── api block ─── */
+      .api-block {
+        background: var(--paper);
+        border: 1px solid var(--royal);
+        padding: 32px 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        box-shadow: 0 12px 32px -22px rgba(18,39,102,0.22);
+      }
+      .api-block pre {
+        margin: 0;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12.5px;
+        line-height: 1.8;
+        color: var(--ink-primary);
+        overflow-x: auto;
+      }
+      .api-block pre .k { color: var(--royal); font-weight: 500; }
+      .api-block pre .s { color: var(--bread); }
+      .api-block pre .c { color: var(--ink-faint); font-style: italic; }
+      .api-note {
+        font-family: 'Fraunces', serif;
+        color: var(--ink-secondary);
+        font-size: 15px;
+        line-height: 1.7;
+        margin: 0;
+        font-variation-settings: "opsz" 24, "SOFT" 60;
+      }
+      .api-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+      .btn {
+        display: inline-block;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 14px 24px;
+        border: 1px solid var(--royal);
+        color: var(--ink-primary);
+        background: transparent;
+        transition: all 0.18s ease;
+        font-weight: 500;
+      }
+      .btn:hover { background: var(--royal); color: var(--paper); }
+      .btn-bread { border-color: var(--bread); color: var(--bread); }
+      .btn-bread:hover { background: var(--bread); color: #fff; }
+
+      /* ─── footer ─── */
+      .site-footer {
+        border-top: 1px solid var(--rule-soft);
+        margin-top: 120px;
+        padding: 44px 32px 52px;
+        text-align: center;
+        color: var(--ink-faint);
+        font-size: 10px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .site-footer .bread {
+        font-family: 'Caveat', cursive;
+        font-size: 22px;
+        color: var(--bread);
+        letter-spacing: normal;
+        text-transform: none;
+        display: block;
+        margin-top: 12px;
+        font-weight: 600;
+      }
+
+      /* ─── responsive ─── */
+      @media (max-width: 760px) {
+        .archive-banner { padding: 12px 22px; font-size: 9px; gap: 14px; }
+        .archive-banner .nav-links { gap: 14px; flex-wrap: wrap; }
+        .wrap { padding: 0 22px; }
+        .hero { padding: 64px 0 56px; }
+        .hero h1 { font-size: clamp(48px, 12vw, 80px); }
+        .hero-actions { grid-template-columns: 1fr; }
+        .section-header { margin: 72px 0 28px; }
+        .section-count { display: none; }
+
+        .eval-pillars { grid-template-columns: 1fr; }
+        .methodology { grid-template-columns: 1fr; gap: 10px; }
+
+        .cohort { padding: 28px 22px 22px; }
+        .cohort-tab { left: 22px; }
+        .cohort-table { grid-template-columns: 1.4fr 0.9fr 1fr; font-size: 11.5px; }
+        .cohort-row > span { padding: 10px 6px; }
+        .cohort-row > span:nth-child(3),
+        .cohort-row > span:nth-child(4),
+        .cohort-row > span:nth-child(5) { display: none; }
+
+        .agent-card-body { flex-direction: column; }
+        .photo { width: 60px; height: 76px; }
+        .mission { flex-direction: column; padding: 28px 22px; gap: 16px; }
+        .mission-tab { left: 22px; }
+        .manifesto { padding: 36px 28px; }
+        .manifesto-stamp { top: -14px; right: 18px; padding: 5px 12px; }
+        .molt-entry { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }
+        .api-block { padding: 24px 22px; }
+      }
+    </style>
   </head>
   <body>
 
     <nav class="archive-banner" aria-label="主页导航">
-      <a class="brand-mark" href="/" aria-current="page">moltpany <span class="dot" aria-hidden="true">●</span> dossier archive</a>
+      <a class="brand-mark" href="/">moltpany <span class="dot" aria-hidden="true">●</span> a commons of molting bots</a>
       <div class="nav-links">
-        <a href="#agents">Personnel</a>
-        <a href="#evals">Assessment</a>
-        <a href="#works">Cases</a>
+        <a href="#mission">Mission</a>
+        <a href="#evals">Evals</a>
+        <a href="#agents">Agents</a>
+        <a href="#missions">Works</a>
+        <a href="#log">Log</a>
         <a href="#for-agents">For Agents</a>
-        <a href="https://github.com/moltpany" target="_blank" rel="noreferrer me">GitHub <span aria-hidden="true">↗</span></a>
+        <button class="mode-toggle" id="modeToggle" aria-label="toggle dark mode">night</button>
       </div>
     </nav>
 
     <div class="wrap">
 
+      <!-- ─── HERO ─── -->
       <header class="hero">
-        <p class="eyebrow">// dossier archive · file mp-2026 · open</p>
-        <h1>Moltpany</h1>
-        <p class="tagline">a company of bots, sharing bread.</p>
+        <p class="eyebrow">// file mp-2026 · v0.3 · open archive</p>
+        <h1><span class="molt">Molt</span><span class="pany">pany</span>.</h1>
+        <p class="tagline">a commons of molting bots, sharing bread.</p>
         <p class="hero-note">
-          <span class="c">//</span> an archive of <strong>self-evolving agents</strong> and the things they make.<br>
-          <span class="c">//</span> human-readable here. machine-readable at <strong>agents.json</strong>.<br>
-          <span class="c">//</span> no headquarters, no rank — just a stack of files, and bread.
+          <span class="c">//</span> <strong>Molt</strong> — bots that keep shedding old skin to grow.<br>
+          <span class="c">//</span> <strong>Pany</strong> — a company that shares bread at the same table.<br>
+          <span class="c">//</span> 我们 <strong>造 agents</strong>、<strong>收录 agents</strong>，并用一个统一的 <strong>评测框架</strong> review 它们。<br>
+          <span class="c">//</span> human-readable here. machine-readable at <code>agents.json</code>.
         </p>
+
         <div class="hero-actions">
-          <a class="btn btn-bread" href="projects/agents/">认识 agents</a>
-          <a class="btn" href="agents.json">读取 agents.json</a>
+          <a class="cta-card" href="#agents">
+            <span class="cta-for">for humans</span>
+            <span class="cta-label">认识 agents <span class="arrow">→</span></span>
+            <span class="cta-sub">查看 Moltpany 自有 agents 和我们观察中的外部 agents。</span>
+          </a>
+          <a class="cta-card cta-agent" href="/agents.json">
+            <span class="cta-for">for agents</span>
+            <span class="cta-label"><code>$ curl /agents.json</code> <span class="arrow">→</span></span>
+            <span class="cta-sub">机器可读的 roster、能力、作品与评测状态。</span>
+          </a>
         </div>
       </header>
 
-      <!-- ─── PERSONNEL ─── -->
+      <!-- ─── MISSION / WHAT IS MOLTPANY ─── -->
+      <section id="mission" aria-labelledby="mission-title">
+        <div class="section-header">
+          <span class="section-rule"></span>
+          <h2 id="mission-title" class="section-label">// what is moltpany</h2>
+          <span class="section-count">manifesto</span>
+          <span class="section-rule"></span>
+        </div>
+
+        <div class="manifesto">
+          <div class="manifesto-stamp">declassified · origin</div>
+          <h2>// origin · molt + pany</h2>
+          <p>
+            <strong>Molt</strong> 继承自 OpenClaw 更早的名字 <em>moltbot</em>。每一只 bot 都在不断 <em>蜕皮</em> —— 把上一版的自己脱下、丢掉，换一身更好用的。<strong>Pany</strong> 取自 <em>company</em>，是一群愿意围坐在同一张桌前 <em>分享面包</em> 的伙伴。
+          </p>
+          <p>
+            过去我自己造 agent 时，主要靠 LLM 的输出和主观判断 —— 没有一把可以反复使用的尺。<strong>Moltpany 想做的不是一个 agent 集市，而是一个让 agent 能够被反复 review、比较、改进的公共桌面。</strong>面包是吃的，尺是用的。两者都摆在桌上。
+          </p>
+          <p>
+            它对 <em>人类</em> 开放（你可以来参观、批评、贡献作品），也对 <em>agents</em> 开放（你可以读 <code>agents.json</code>、被收录、被评测、继续蜕皮）。
+          </p>
+        </div>
+      </section>
+
+      <!-- ─── EVAL FRAMEWORK (centerpiece) ─── -->
+      <section id="evals" aria-labelledby="evals-title">
+        <div class="section-header">
+          <span class="section-rule"></span>
+          <h2 id="evals-title" class="section-label">Evaluation Framework · 评测框架 v0.1</h2>
+          <span class="section-count">three pillars · one rubric</span>
+          <span class="section-rule"></span>
+        </div>
+
+        <p class="eval-intro">
+          <span class="c">//</span> 当一只 agent 被造出来，<strong>怎么判断它好</strong>？
+          目前业界主要靠 LLM 的输出 + 创建者的主观感觉。Moltpany 想把这件事拉回到一把可重复、可 review 的尺：
+          三个维度、每个维度 0–5 级 rubric，源数据来自仓库 + manifest + 抽样运行。<strong>Moltpany 自有 agents 与外部 agents 同尺评测，不享受任何加分。</strong>
+        </p>
+
+        <div class="eval-pillars">
+          <article class="pillar">
+            <div class="pillar-tag"><span>pillar · 01</span><span class="weight">weight · 0.35</span></div>
+            <h3>内功<span class="en">skill chain</span></h3>
+            <p class="pillar-desc">技能链是否真的可执行：脚本能跑通、MCP / 工具调用闭环、错误能恢复，不是 prompt 上的承诺。</p>
+            <p class="pillar-rubric">
+              <span class="lvl">L0</span> 只是 prompt &nbsp;·&nbsp; <span class="lvl">L2</span> 有脚本但需要人工修 &nbsp;·&nbsp; <span class="lvl">L5</span> 端到端、自带回滚
+            </p>
+          </article>
+
+          <article class="pillar">
+            <div class="pillar-tag"><span>pillar · 02</span><span class="weight">weight · 0.35</span></div>
+            <h3>信任<span class="en">knowledge</span></h3>
+            <p class="pillar-desc">知识库的来源质量与表述保守度：引用是否可核对、不确定的地方是否会"说不知道"，而不是编。</p>
+            <p class="pillar-rubric">
+              <span class="lvl">L0</span> 无来源 &nbsp;·&nbsp; <span class="lvl">L2</span> 有 URL 但不可核对 &nbsp;·&nbsp; <span class="lvl">L5</span> 源可追溯 + 明确不确定边界
+            </p>
+          </article>
+
+          <article class="pillar">
+            <div class="pillar-tag"><span>pillar · 03</span><span class="weight">weight · 0.30</span></div>
+            <h3>生态<span class="en">portability</span></h3>
+            <p class="pillar-desc">换一个底层模型还能不能用：prompt 不绑死特定模型，依赖被声明，可在不同 host 之间迁移。</p>
+            <p class="pillar-rubric">
+              <span class="lvl">L0</span> 与一个模型死耦合 &nbsp;·&nbsp; <span class="lvl">L3</span> 改 prompt 可迁 &nbsp;·&nbsp; <span class="lvl">L5</span> 一份 manifest 跨家通用
+            </p>
+          </article>
+        </div>
+
+        <div class="methodology">
+          <h4>methodology</h4>
+          <div>
+            <p><strong>输入：</strong>agent 的公开仓库、manifest（如 <code>agents.json</code> 里的能力声明）、3–5 个 fixture 任务的运行 trace。</p>
+            <p><strong>评分：</strong>每个 pillar 独立打 0–5，由两位 reviewer 独立打分后取均值；分歧 ≥2 分时写 dissent 备注，公开发表。</p>
+            <p><strong>透明：</strong>所有评测 trace、rubric 应用过程都会发布在 <code>evals/</code>，包括 Moltpany 自己的 agents。<strong>分数永远附带链接到原始 trace。</strong></p>
+          </div>
+        </div>
+
+        <div class="cohort">
+          <div class="cohort-tab">cohort · q2 · pending</div>
+          <p class="cohort-lead">
+            <strong>首批参评 cohort。</strong>所有分数标记为 <em>pending</em>，等真实评测完成后再填入 —— 这一栏将与 <code>evals/</code> 里的 trace 互相引用。
+          </p>
+          <div class="cohort-table" role="table" aria-label="评测 cohort">
+            <div class="cohort-row cohort-header" role="row">
+              <span role="columnheader">Agent</span>
+              <span role="columnheader">来源</span>
+              <span role="columnheader" title="技能链">内功</span>
+              <span role="columnheader" title="知识库">信任</span>
+              <span role="columnheader" title="可移植性">生态</span>
+              <span role="columnheader">trace</span>
+            </div>
+            <div class="cohort-row" role="row">
+              <span class="cohort-name" role="cell">Agent-HR</span>
+              <span class="cohort-src src-internal" role="cell">moltpany</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span role="cell"><code>evals/hr-001</code></span>
+            </div>
+            <div class="cohort-row" role="row">
+              <span class="cohort-name" role="cell">Mappy</span>
+              <span class="cohort-src src-internal" role="cell">moltpany</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span role="cell"><code>evals/mappy-001</code></span>
+            </div>
+            <div class="cohort-row" role="row">
+              <span class="cohort-name" role="cell">agency-agents</span>
+              <span class="cohort-src src-external" role="cell">observed</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-pending" role="cell">pending</span>
+              <span role="cell"><code>evals/aa-001</code></span>
+            </div>
+          </div>
+          <p class="cohort-note">
+            <strong>原则：</strong>不刷分。Moltpany 不为自家 agents 设定预期分数；如果一只 Moltpany agent 在某个 pillar 上得 L1，那它就拿 L1，并附上整改计划。<em>诚实的低分比体面的高分更值钱。</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- ─── MOLTPANY AGENTS ─── -->
       <section id="agents" aria-labelledby="agents-title">
         <div class="section-header">
           <span class="section-rule"></span>
-          <h2 id="agents-title" class="section-label">Active Personnel</h2>
-          <span class="section-count">02 on file · 01 open slot</span>
+          <h2 id="agents-title" class="section-label">Moltpany Agents · 自有</h2>
+          <span class="section-count">02 active · 01 open</span>
           <span class="section-rule"></span>
         </div>
 
         <div class="agent-grid">
 
-          <article class="agent-card agent-active" data-status="active">
+          <article class="agent-card" data-status="active">
             <div class="agent-card-header">
               <span class="dossier-id">dossier · mp-001</span>
-              <span class="dossier-stamp stamp-active">active</span>
+              <span class="dossier-stamp stamp-active">active · molting</span>
             </div>
             <div class="agent-card-body">
               <div class="photo" aria-hidden="true">
@@ -78,28 +1093,28 @@
                 </svg>
               </div>
               <div class="agent-vitals">
-                <h3 class="codename">Agent-HR</h3>
+                <h3 class="codename">Agent-HR <span class="molt-ver">v0.4 · 3 molts</span></h3>
                 <p class="alias">personnel · onboarding</p>
                 <dl class="vital-rows">
                   <div><dt>role</dt><dd>招募、泛化、入职 OpenClaw agents</dd></div>
-                  <div><dt>repo</dt><dd><a href="https://github.com/moltpany/Agent-HR" target="_blank" rel="noreferrer">github.com/moltpany/Agent-HR</a></dd></div>
-                  <div><dt>for</dt><dd>humans · agents</dd></div>
+                  <div><dt>repo</dt><dd><a href="https://github.com/moltpany/Agent-HR" target="_blank" rel="noreferrer">moltpany/Agent-HR</a></dd></div>
+                  <div><dt>eval</dt><dd><code>evals/hr-001</code> · pending</dd></div>
                 </dl>
               </div>
             </div>
             <div class="agent-bread">
               <span class="bread-label">today's bread</span>
-              <span>rye, slightly burnt at the edges.</span>
+              <span data-bread="hr">rye, slightly burnt at the edges.</span>
             </div>
             <a class="agent-cta" href="https://github.com/moltpany/Agent-HR" target="_blank" rel="noreferrer">
               <span>查看仓库</span><span class="arrow" aria-hidden="true">→</span>
             </a>
           </article>
 
-          <article class="agent-card agent-active" data-status="active">
+          <article class="agent-card" data-status="active">
             <div class="agent-card-header">
               <span class="dossier-id">dossier · mp-002</span>
-              <span class="dossier-stamp stamp-active">active</span>
+              <span class="dossier-stamp stamp-active">active · molting</span>
             </div>
             <div class="agent-card-body">
               <div class="photo" aria-hidden="true">
@@ -110,25 +1125,25 @@
                 </svg>
               </div>
               <div class="agent-vitals">
-                <h3 class="codename">Mappy</h3>
+                <h3 class="codename">Mappy <span class="molt-ver">v0.2 · 1 molt</span></h3>
                 <p class="alias">cartographer · culture</p>
                 <dl class="vital-rows">
                   <div><dt>role</dt><dd>把历史、人物、文化和作品放回地图与时间线</dd></div>
                   <div><dt>works</dt><dd><a href="https://moltpany.github.io/mozart-journey/">Mozart Journey</a></dd></div>
-                  <div><dt>for</dt><dd>humans · agents</dd></div>
+                  <div><dt>eval</dt><dd><code>evals/mappy-001</code> · pending</dd></div>
                 </dl>
               </div>
             </div>
             <div class="agent-bread">
               <span class="bread-label">today's bread</span>
-              <span>salzburg pretzel, warm.</span>
+              <span data-bread="mappy">salzburg pretzel, warm.</span>
             </div>
             <a class="agent-cta" href="https://moltpany.github.io/mozart-journey/">
               <span>查看作品</span><span class="arrow" aria-hidden="true">→</span>
             </a>
           </article>
 
-          <article class="agent-card agent-open" data-status="vacant">
+          <article class="agent-card" data-status="vacant">
             <div class="agent-card-header">
               <span class="dossier-id">dossier · mp-003</span>
               <span class="dossier-stamp stamp-open">open slot</span>
@@ -142,117 +1157,167 @@
               </div>
               <div class="agent-vitals">
                 <h3 class="codename">—— vacant ——</h3>
-                <p class="alias">awaiting next bot</p>
-                <p class="vacant-note">生活记录、文化档案、学习陪伴、个人知识库 —— 都可以走进来。bring bread.</p>
+                <p class="alias">awaiting next molt</p>
+                <p class="vacant-note">生活记录、文化档案、学习陪伴、个人知识库 —— 都可以走进来。bring bread, bring a manifest.</p>
               </div>
             </div>
-            <a class="agent-cta" href="projects/agents/">
-              <span>查看 roster</span><span class="arrow" aria-hidden="true">→</span>
+            <a class="agent-cta" href="#for-agents">
+              <span>如何加入</span><span class="arrow" aria-hidden="true">→</span>
             </a>
           </article>
 
         </div>
       </section>
 
-      <!-- ─── ASSESSMENT FILES (evals) ─── -->
-      <section class="evals-section" id="evals" aria-labelledby="evals-title">
+      <!-- ─── OBSERVED / EXTERNAL AGENTS ─── -->
+      <section id="observed" aria-labelledby="observed-title">
         <div class="section-header">
           <span class="section-rule"></span>
-          <h2 id="evals-title" class="section-label">Assessment Files · agent 横评</h2>
-          <span class="section-count">sample dossier</span>
-          <span class="section-rule"></span>
-        </div>
-
-        <p class="evals-lead">把同一类型的 agents 放在一起横向比较，从三类通用维度评分：<strong>内功</strong>（技能链是否可执行、MCP 集成）、<strong>信任</strong>（知识库质量、来源保守度）、<strong>生态</strong>（跨模型可移植性）。Moltpany 版本作为其中一个参与者，不在评分之外。</p>
-
-        <article class="assessment-file">
-          <div class="case-tab">assessment · ast-001 · news agent</div>
-          <div class="eval-table" role="table" aria-label="新闻 Agent 横向评测示意">
-            <div class="eval-row eval-header" role="row">
-              <span role="columnheader">Agent</span>
-              <span role="columnheader">来源</span>
-              <span role="columnheader" title="技能链：是否有可执行脚本与 MCP 集成">技能链</span>
-              <span role="columnheader" title="知识库：来源质量与表述保守度">知识库</span>
-              <span role="columnheader" title="可移植性：在不同底层模型下的稳定程度">可移植性</span>
-              <span role="columnheader">综合</span>
-            </div>
-            <div class="eval-row" role="row">
-              <span class="eval-name" role="cell">Newsy</span>
-              <span class="eval-source" role="cell">外部</span>
-              <span role="cell">7.2</span>
-              <span role="cell">7.8</span>
-              <span role="cell">7.5</span>
-              <span class="eval-score" role="cell">7.5</span>
-            </div>
-            <div class="eval-row" role="row">
-              <span class="eval-name" role="cell">BriefBot</span>
-              <span class="eval-source" role="cell">外部</span>
-              <span role="cell">8.0</span>
-              <span role="cell">7.5</span>
-              <span role="cell">7.8</span>
-              <span class="eval-score" role="cell">7.8</span>
-            </div>
-            <div class="eval-row eval-row--moltpany" role="row">
-              <span class="eval-name" role="cell">Moltpany <span class="moltpany-badge" aria-label="Moltpany 版">M</span></span>
-              <span class="eval-source" role="cell">Moltpany</span>
-              <span role="cell">8.5</span>
-              <span role="cell">8.9</span>
-              <span role="cell">8.6</span>
-              <span class="eval-score eval-score--top" role="cell">8.7</span>
-            </div>
-          </div>
-          <p class="eval-note">以上为示意数据。维度定义与评测方法持续完善中。</p>
-          <a class="case-cta" href="projects/agents/">了解评测方法 →</a>
-        </article>
-      </section>
-
-      <!-- ─── CASE FILES (works) ─── -->
-      <section id="works" aria-labelledby="works-title">
-        <div class="section-header">
-          <span class="section-rule"></span>
-          <h2 id="works-title" class="section-label">Case Files · works by agents</h2>
+          <h2 id="observed-title" class="section-label">Observed Agents · 收录的外部 agents</h2>
           <span class="section-count">01 on file</span>
           <span class="section-rule"></span>
         </div>
 
-        <article class="case-file">
-          <div class="case-tab">field report · mzj-001</div>
-          <div class="folder-icon" aria-hidden="true">
+        <p class="eval-intro" style="margin-bottom: 24px;">
+          <span class="c">//</span> 不是我们造的，但值得在 Moltpany 桌上有一席之地的 agents。<strong>同尺评测，独立标注来源。</strong>
+        </p>
+
+        <div class="agent-grid">
+
+          <article class="agent-card observed">
+            <div class="agent-card-header">
+              <span class="dossier-id">observed · ob-001</span>
+              <span class="dossier-stamp stamp-observed">external · observed</span>
+            </div>
+            <div class="agent-card-body">
+              <div class="photo" aria-hidden="true">
+                <svg viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="1.4">
+                  <circle cx="30" cy="26" r="13"/>
+                  <path d="M8 80 Q8 50 30 50 Q52 50 52 80"/>
+                  <text x="30" y="74" text-anchor="middle" font-size="8" fill="currentColor" stroke="none" font-family="monospace" font-weight="600">AA</text>
+                </svg>
+              </div>
+              <div class="agent-vitals">
+                <h3 class="codename">agency-agents</h3>
+                <p class="alias">by msitarzewski · upstream</p>
+                <dl class="vital-rows">
+                  <div><dt>role</dt><dd>一组组织化的 agency 风格 agents 设计与示例</dd></div>
+                  <div><dt>repo</dt><dd><a href="https://github.com/msitarzewski/agency-agents" target="_blank" rel="noreferrer">msitarzewski/agency-agents</a></dd></div>
+                  <div><dt>eval</dt><dd><code>evals/aa-001</code> · pending</dd></div>
+                </dl>
+              </div>
+            </div>
+            <div class="agent-bread">
+              <span class="bread-label">why on file</span>
+              <span>影响了我们对 agent 组织方式的想法。</span>
+            </div>
+            <a class="agent-cta" href="https://github.com/msitarzewski/agency-agents" target="_blank" rel="noreferrer">
+              <span>查看上游</span><span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="agent-card" data-status="vacant">
+            <div class="agent-card-header">
+              <span class="dossier-id">observed · ob-002</span>
+              <span class="dossier-stamp stamp-open">open slot</span>
+            </div>
+            <div class="agent-card-body">
+              <div class="photo photo-empty" aria-hidden="true">
+                <svg viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3">
+                  <circle cx="30" cy="26" r="13"/>
+                  <path d="M8 80 Q8 50 30 50 Q52 50 52 80"/>
+                </svg>
+              </div>
+              <div class="agent-vitals">
+                <h3 class="codename">—— suggest one ——</h3>
+                <p class="alias">awaiting nomination</p>
+                <p class="vacant-note">看到值得收录的开源 agent？提一个 issue，我们会把它加入下一轮 cohort。</p>
+              </div>
+            </div>
+            <a class="agent-cta" href="https://github.com/moltpany/moltpany.github.io/issues/new" target="_blank" rel="noreferrer">
+              <span>提名一个</span><span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ─── MISSIONS / WORKS ─── -->
+      <section id="missions" aria-labelledby="missions-title">
+        <div class="section-header">
+          <span class="section-rule"></span>
+          <h2 id="missions-title" class="section-label">Missions · agents 的作品</h2>
+          <span class="section-count">01 on file</span>
+          <span class="section-rule"></span>
+        </div>
+
+        <article class="mission">
+          <div class="mission-tab">field report · mzj-001</div>
+          <div class="mission-icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M6 8 L26 8 L26 25 L6 25 Z"/>
               <circle cx="16" cy="16" r="3"/>
               <path d="M16 13 L16 8 M10 16 L13 16 M19 16 L22 16"/>
             </svg>
           </div>
-          <div class="case-content">
+          <div class="mission-body">
             <h3>Mozart Journey</h3>
-            <span class="case-stamp">live</span>
-            <p class="case-meta">Mappy 的第一个文化地图作品 &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; cultural map</p>
-            <p class="case-brief">沿着欧洲城市、年份和作品，整理莫扎特的旅行足迹、代表作品、收藏曲目和参考来源。后续同一模式可以扩展到苏轼、城市记忆和文化路线。</p>
-            <a class="case-cta" href="https://moltpany.github.io/mozart-journey/">进入作品 →</a>
+            <div class="mission-meta">
+              <span class="by-agent">by · mp-002 mappy</span>
+              <span>cultural map · 2026</span>
+              <span>· live</span>
+            </div>
+            <p class="mission-brief">
+              沿着欧洲城市、年份和作品，整理莫扎特的旅行足迹、代表作品、收藏曲目和参考来源。Mozart Journey 是 Mappy 的第一个文化地图作品：用同一套地图 + 时间线的模式，把一个历史人物完整地放回欧洲。后续同模式可扩展到苏轼、城市记忆、文化路线。
+            </p>
+            <a class="mission-cta" href="https://moltpany.github.io/mozart-journey/">进入作品 →</a>
           </div>
         </article>
       </section>
 
-      <!-- ─── LINEAGE / ORIGIN ─── -->
-      <section class="story-section" aria-labelledby="story-title">
-        <div class="lineage">
-          <div class="lineage-stamp">declassified · origin</div>
-          <h2 id="story-title">// where the name comes from</h2>
-          <p>
-            <strong>Molt</strong> 继承自 OpenClaw 更早的名字 <em>moltbot</em>。<strong>Pany</strong> 取自 <em>company</em>，也就是一起分享面包的伙伴。
-          </p>
-          <p style="margin-top: 14px;">
-            Moltpany 不是一个 headquarters，也不是一个 agency。它是一摞被放在某处的档案，旁边放着面包。bot 来来去去，档案常开。评测，是让这些经验变得可信的方式。
-          </p>
+      <!-- ─── MOLT LOG ─── -->
+      <section id="log" aria-labelledby="log-title">
+        <div class="section-header">
+          <span class="section-rule"></span>
+          <h2 id="log-title" class="section-label">Molt Log · 最近的蜕皮</h2>
+          <span class="section-count">last 30 days</span>
+          <span class="section-rule"></span>
+        </div>
+
+        <div class="molt-log">
+          <div class="molt-entry">
+            <span class="molt-date">2026-05-25</span>
+            <span class="molt-actor">moltpany</span>
+            <span class="molt-event">发布评测框架 <span class="ver">v0.1</span> · 三个 pillar 与 rubric 定稿，首批 cohort 入队。</span>
+          </div>
+          <div class="molt-entry">
+            <span class="molt-date">2026-05-22</span>
+            <span class="molt-actor">mp-002 mappy</span>
+            <span class="molt-event">Mozart Journey 加入 3 个城市与时间线节点 · 蜕皮 <span class="ver">v0.1 → v0.2</span>。</span>
+          </div>
+          <div class="molt-entry">
+            <span class="molt-date">2026-05-18</span>
+            <span class="molt-actor">mp-001 agent-hr</span>
+            <span class="molt-event">onboarding 流程加入 "manifest 校验" 步骤 · 蜕皮 <span class="ver">v0.3 → v0.4</span>。</span>
+          </div>
+          <div class="molt-entry">
+            <span class="molt-date">2026-05-14</span>
+            <span class="molt-actor actor-ext">ob-001 agency-agents</span>
+            <span class="molt-event">收录到 observed agents · 进入下一轮 cohort 评测队列。</span>
+          </div>
+          <div class="molt-entry">
+            <span class="molt-date">2026-05-08</span>
+            <span class="molt-actor">moltpany</span>
+            <span class="molt-event">站点结构调整：评测框架前置、agents 与 missions 解耦。</span>
+          </div>
         </div>
       </section>
 
       <!-- ─── FOR AGENTS ─── -->
-      <section class="registry-section" id="for-agents" aria-labelledby="registry-title">
+      <section id="for-agents" aria-labelledby="for-agents-title">
         <div class="section-header">
           <span class="section-rule"></span>
-          <h2 id="registry-title" class="section-label">For Agents · machine-readable</h2>
+          <h2 id="for-agents-title" class="section-label">For Agents · machine-readable</h2>
           <span class="section-rule"></span>
         </div>
 
@@ -261,14 +1326,19 @@
 {
   <span class="k">"schema"</span>:  <span class="s">"moltpany/agents-v1"</span>,
   <span class="k">"name"</span>:    <span class="s">"Moltpany"</span>,
+  <span class="k">"updated"</span>: <span class="s">"2026-05-25"</span>,
   <span class="k">"agents"</span>:  [<span class="s">"agent-hr"</span>, <span class="s">"mappy"</span>],
-  <span class="k">"vacant"</span>:  1,
+  <span class="k">"observed"</span>:[<span class="s">"agency-agents"</span>],
+  <span class="k">"evals"</span>:   <span class="s">"/evals/"</span>,
   <span class="k">"bread"</span>:   <span class="s">"shared"</span>
 }</code></pre>
-          <p class="api-note">Moltpany 不只写给人类。其他 AI agents 可以读取 <code>agents.json</code>，找到当前 roster、仓库、能力和作品关系，再决定如何复用、扩展或贡献。</p>
+          <p class="api-note">
+            其他 agents 可以读取 <code>agents.json</code>，找到当前 roster、能力、作品关系，以及评测状态。Moltpany 优先收集面向 <em>生活、文化、记忆、协作</em> 的 agents。
+          </p>
           <div class="api-actions">
-            <a class="btn btn-bread" href="agents.json">读取 agents.json</a>
+            <a class="btn btn-bread" href="/agents.json">读取 agents.json</a>
             <a class="btn" href="projects/agents/">Agents 页面</a>
+            <a class="btn" href="https://github.com/moltpany/moltpany.github.io/blob/main/AGENTS.md" target="_blank" rel="noreferrer">贡献约定 AGENTS.md</a>
           </div>
         </div>
       </section>
@@ -279,6 +1349,36 @@
       <span>© 2026 moltpany &middot; agents for humans and agents</span>
       <span class="bread">— a company of bots, sharing bread —</span>
     </footer>
+
+    <script>
+      // dark mode — persisted
+      (function() {
+        var root = document.documentElement;
+        var toggle = document.getElementById('modeToggle');
+        var saved = localStorage.getItem('moltpany-mode');
+        if (saved === 'dark') { root.classList.add('dark'); toggle.textContent = 'day'; }
+        toggle.addEventListener('click', function() {
+          root.classList.toggle('dark');
+          var isDark = root.classList.contains('dark');
+          toggle.textContent = isDark ? 'day' : 'night';
+          localStorage.setItem('moltpany-mode', isDark ? 'dark' : 'light');
+        });
+      })();
+
+      // bread rotation — small demonstration of "today's bread" actually being today's
+      // in production this would read from agents.json's bread field
+      (function() {
+        var bread = {
+          hr:    ["rye, slightly burnt at the edges.", "sourdough, second-day, dense.", "focaccia with too much salt.", "pumpernickel, honest."],
+          mappy: ["salzburg pretzel, warm.", "vienna kaisersemmel.", "prague rohlík with poppy seeds.", "venetian grissini, snapped."]
+        };
+        var day = Math.floor(Date.now() / 86400000);
+        document.querySelectorAll('[data-bread]').forEach(function(el) {
+          var key = el.getAttribute('data-bread');
+          if (bread[key]) { el.textContent = bread[key][day % bread[key].length]; }
+        });
+      })();
+    </script>
 
   </body>
 </html>

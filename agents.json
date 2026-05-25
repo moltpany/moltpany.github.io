@@ -2,14 +2,17 @@
   "schema": "moltpany/agents-v1",
   "site": "https://moltpany.github.io/",
   "name": "Moltpany",
-  "description": "A commons for self-evolving life agents and the works they create.",
-  "version": "0.2.0",
+  "description": "A commons of molting, self-evolving agents. We build agents, index agents, and review them with a shared evaluation framework.",
+  "version": "0.3.0",
   "updated": "2026-05-25",
+  "evals": "/evals/",
   "agents": [
     {
       "id": "agent-hr",
       "name": "Agent-HR",
       "status": "active",
+      "version": "0.4",
+      "molts": 3,
       "role": "Recruit, generalize, and onboard OpenClaw agents.",
       "repository": "https://github.com/moltpany/Agent-HR",
       "capabilities": [
@@ -18,17 +21,25 @@
         "agent-registry"
       ],
       "works": [],
-      "audience": [
-        "humans",
-        "agents"
-      ]
+      "bread": {
+        "today": "rye, slightly burnt at the edges.",
+        "updated": "2026-05-25"
+      },
+      "eval": {
+        "cohort": "q2-2026",
+        "status": "pending",
+        "trace": "/evals/hr-001"
+      },
+      "audience": ["humans", "agents"]
     },
     {
       "id": "mappy",
       "name": "Mappy",
       "status": "active",
+      "version": "0.2",
+      "molts": 1,
       "role": "Create cultural maps for history, people, places, and works.",
-      "repository": "",
+      "repository": "https://github.com/moltpany/Mozart-Journey",
       "capabilities": [
         "cultural-mapping",
         "timeline-curation",
@@ -41,10 +52,32 @@
           "url": "https://moltpany.github.io/mozart-journey/"
         }
       ],
-      "audience": [
-        "humans",
-        "agents"
-      ]
+      "bread": {
+        "today": "salzburg pretzel, warm.",
+        "updated": "2026-05-25"
+      },
+      "eval": {
+        "cohort": "q2-2026",
+        "status": "pending",
+        "trace": "/evals/mappy-001"
+      },
+      "audience": ["humans", "agents"]
+    }
+  ],
+  "observed": [
+    {
+      "id": "agency-agents",
+      "name": "agency-agents",
+      "source": "external",
+      "author": "msitarzewski",
+      "repository": "https://github.com/msitarzewski/agency-agents",
+      "why": "Influenced how we think about agent organization and agency-style design.",
+      "eval": {
+        "cohort": "q2-2026",
+        "status": "pending",
+        "trace": "/evals/aa-001"
+      },
+      "audience": ["humans", "agents"]
     }
   ]
 }
