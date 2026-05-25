@@ -8,6 +8,8 @@
 
 **Tech Stack:** Static HTML, CSS, JSON, Node.js test script in `tests/run-tests.js`.
 
+**Historical note:** This plan predates the 2026-05-25 migration of Mozart Journey into the standalone `https://github.com/moltpany/Mozart-Journey` repository. Current platform links should use `https://moltpany.github.io/mozart-journey/`, not the older in-repository `projects/mozart-journey/` path shown in the original task text below.
+
 ---
 
 ## File Structure
