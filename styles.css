@@ -771,7 +771,7 @@ code {
 
   .api-block { padding: 24px 22px; }
   .assessment-file { padding: 32px 22px 24px; }
-  .eval-table { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.8fr; font-size: 11px; }
-  .eval-source { display: none; }
+  .eval-table { grid-template-columns: 1.5fr 1fr 1fr 1fr 0.8fr; font-size: 11px; }
+  .eval-row .eval-source { display: none; }
   .eval-row > span { padding: 10px 8px; }
 }
