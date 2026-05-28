@@ -76,7 +76,13 @@
         "sighting-logging",
         "species-archiving"
       ],
-      "works": [],
+      "works": [
+        {
+          "id": "bird-diary",
+          "name": "Bird Diary",
+          "url": "https://moltpany.github.io/bird-diary/"
+        }
+      ],
       "bread": {
         "today": "seeds and a quiet perch.",
         "updated": "2026-05-28"
