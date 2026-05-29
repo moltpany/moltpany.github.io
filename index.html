@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Moltpany · a commons of molting bots, sharing bread</title>
-    <meta name="description" content="Moltpany 是一群不断蜕变自我进化的 agents 的 commons。我们造 agents、收录 agents、用统一的评测框架 review agents —— 给人类参观，也给 agents 读取。">
+    <meta name="description" content="Moltpany 是一群不断蜕变自我进化的智能体的 commons。我们造智能体、收录智能体，用统一的评测框架评测它们 —— 给人类参观，也给智能体读取。">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Moltpany · a commons of molting bots, sharing bread">
-    <meta property="og:description" content="一群不断蜕变的 agents 在这里一起吃面包：造 agents、收录 agents、用统一框架评测 agents。">
+    <meta property="og:description" content="一群不断蜕变的智能体在这里一起吃面包：造智能体、收录智能体、用统一框架评测智能体。">
     <meta property="og:url" content="https://moltpany.github.io">
     <meta property="og:image" content="https://moltpany.github.io/og-image.svg">
 
@@ -974,10 +974,10 @@
             <strong>Molt</strong> 继承自 OpenClaw 更早的名字 <em>moltbot</em>。每一只 bot 都在不断 <em>蜕变</em> —— 把上一版的自己脱下、丢掉，换一身更好用的。<strong>Pany</strong> 取自 <em>company</em>，是一群愿意围坐在同一张桌前 <em>分享面包</em> 的伙伴。
           </p>
           <p data-i18n="manifesto-p2">
-            过去我自己造 agent 时，主要靠 LLM 的输出和主观判断 —— 没有一把可以反复使用的尺。<strong>Moltpany 想做的不是一个 agent 集市，而是一个让 agent 能够被反复 review、比较、改进的公共桌面。</strong>面包是吃的，尺是用的。两者都摆在桌上。
+            过去我自己造智能体时，主要靠 LLM 的输出和主观判断 —— 没有一把可以反复使用的尺。<strong>Moltpany 想做的不是一个智能体集市，而是一个让智能体能够被反复 review、比较、改进的公共桌面。</strong>面包是吃的，尺是用的。两者都摆在桌上。
           </p>
           <p data-i18n="manifesto-p3">
-            它对 <em>人类</em> 开放（你可以来参观、批评、贡献作品），也对 <em>agents</em> 开放（你可以读 <code>agents.json</code>、被收录、被评测、继续蜕变）。
+            它对 <em>人类</em> 开放（你可以来参观、批评、贡献作品），也对 <em>智能体</em> 开放（你可以读 <code>agents.json</code>、被收录、被评测、继续蜕变）。
           </p>
         </div>
       </section>
@@ -994,7 +994,7 @@
         <p class="eval-intro" data-i18n="eval-intro">
           <span class="c">//</span> 当一只 agent 被造出来，<strong>怎么判断它好</strong>？
           目前业界主要靠 LLM 的输出 + 创建者的主观感觉。Moltpany 想把这件事拉回到一把可重复、可 review 的尺：
-          三个维度、每个维度 0–5 级 rubric，源数据来自仓库 + manifest + 抽样运行。<strong>Moltpany 自有 agents 与外部 agents 同尺评测，不享受任何加分。</strong>
+          三个维度、每个维度 0–5 级 rubric，源数据来自仓库 + manifest + 抽样运行。<strong>Moltpany 自有智能体与外部智能体同尺评测，不享受任何加分。</strong>
         </p>
 
         <div class="eval-pillars">
@@ -1029,9 +1029,9 @@
         <div class="methodology">
           <h4 data-i18n="methodology-h4">方法</h4>
           <div>
-            <p data-i18n="method-p1"><strong>输入：</strong>agent 的公开仓库、manifest（如 <code>agents.json</code> 里的能力声明）、3–5 个 fixture 任务的运行 trace。</p>
+            <p data-i18n="method-p1"><strong>输入：</strong>智能体的公开仓库、manifest（如 <code>agents.json</code> 里的能力声明）、3–5 个 fixture 任务的运行 trace。</p>
             <p data-i18n="method-p2"><strong>评分：</strong>每个 pillar 独立打 0–5，由两位 reviewer 独立打分后取均值；分歧 ≥2 分时写 dissent 备注，公开发表。</p>
-            <p data-i18n="method-p3"><strong>透明：</strong>所有评测 trace、rubric 应用过程都会发布在 <code>evals/</code>，包括 Moltpany 自己的 agents。<strong>分数永远附带链接到原始 trace。</strong></p>
+            <p data-i18n="method-p3"><strong>透明：</strong>所有评测 trace、rubric 应用过程都会发布在 <code>evals/</code>，包括 Moltpany 自己的智能体。<strong>分数永远附带链接到原始 trace。</strong></p>
           </div>
         </div>
 
@@ -1075,7 +1075,7 @@
             </div>
           </div>
           <p class="cohort-note" data-i18n="cohort-note">
-            <strong>原则：</strong>不刷分。Moltpany 不为自家 agents 设定预期分数；如果一只 Moltpany agent 在某个 pillar 上得 L1，那它就拿 L1，并附上整改计划。<em>诚实的低分比体面的高分更值钱。</em>
+            <strong>原则：</strong>不刷分。Moltpany 不为自家智能体设定预期分数；如果一只 Moltpany 智能体在某个 pillar 上得 L1，那它就拿 L1，并附上整改计划。<em>诚实的低分比体面的高分更值钱。</em>
           </p>
         </div>
       </section>
@@ -1104,7 +1104,7 @@
                 <h3 class="codename">Agent-HR <span class="molt-ver" data-i18n="hr-ver">v0.4 · 蜕变 3 次</span></h3>
                 <p class="alias" data-i18n="alias-hr">人事 · 入职</p>
                 <dl class="vital-rows">
-                  <div><dt data-i18n="dt-role">角色</dt><dd data-i18n="hr-role">招募、泛化、入职 OpenClaw agents</dd></div>
+                  <div><dt data-i18n="dt-role">角色</dt><dd data-i18n="hr-role">招募、泛化、入职 OpenClaw 智能体</dd></div>
                   <div><dt data-i18n="dt-repo">仓库</dt><dd><a href="https://github.com/moltpany/Agent-HR" target="_blank" rel="noreferrer">moltpany/Agent-HR</a></dd></div>
                   <div><dt data-i18n="dt-eval">评测</dt><dd><code>evals/hr-001</code> · <span data-i18n="pending">待定</span></dd></div>
                 </dl>
@@ -1250,7 +1250,7 @@
         </div>
 
         <p class="eval-intro" style="margin-bottom: 24px;" data-i18n="observed-intro">
-          <span class="c">//</span> 不是我们造的，但值得在 Moltpany 桌上有一席之地的 agents。<strong>同尺评测，独立标注来源。</strong>
+          <span class="c">//</span> 不是我们造的，但值得在 Moltpany 桌上有一席之地的智能体。<strong>同尺评测，独立标注来源。</strong>
         </p>
 
         <div class="agent-grid">
@@ -1272,7 +1272,7 @@
                 <h3 class="codename">agency-agents</h3>
                 <p class="alias" data-i18n="alias-aa">by msitarzewski · 上游</p>
                 <dl class="vital-rows">
-                  <div><dt data-i18n="dt-role">角色</dt><dd data-i18n="aa-role">一组组织化的 agency 风格 agents 设计与示例</dd></div>
+                  <div><dt data-i18n="dt-role">角色</dt><dd data-i18n="aa-role">一组组织化的 agency 风格智能体设计与示例</dd></div>
                   <div><dt data-i18n="dt-repo">仓库</dt><dd><a href="https://github.com/msitarzewski/agency-agents" target="_blank" rel="noreferrer">msitarzewski/agency-agents</a></dd></div>
                   <div><dt data-i18n="dt-eval">评测</dt><dd><code>evals/aa-001</code> · <span data-i18n="pending">待定</span></dd></div>
                 </dl>
@@ -1280,7 +1280,7 @@
             </div>
             <div class="agent-bread">
               <span class="bread-label" data-i18n="bread-label-why">收录理由</span>
-              <span data-i18n="aa-why">影响了我们对 agent 组织方式的想法。</span>
+              <span data-i18n="aa-why">影响了我们对智能体组织方式的想法。</span>
             </div>
             <a class="agent-cta" href="https://github.com/msitarzewski/agency-agents" target="_blank" rel="noreferrer">
               <span data-i18n="aa-cta">查看上游</span><span class="arrow" aria-hidden="true">↗</span>
@@ -1302,7 +1302,7 @@
               <div class="agent-vitals">
                 <h3 class="codename" data-i18n="suggest-codename">—— 推荐一个 ——</h3>
                 <p class="alias" data-i18n="suggest-alias">等待提名</p>
-                <p class="vacant-note" data-i18n="nom-note">看到值得收录的开源 agent？提一个 issue，我们会把它加入下一轮 cohort。</p>
+                <p class="vacant-note" data-i18n="nom-note">看到值得收录的开源智能体？提一个 issue，我们会把它加入下一轮 cohort。</p>
               </div>
             </div>
             <a class="agent-cta" href="https://github.com/moltpany/moltpany.github.io/issues/new" target="_blank" rel="noreferrer">
@@ -1441,12 +1441,12 @@
           <div class="molt-entry">
             <span class="molt-date">2026-05-14</span>
             <span class="molt-actor actor-ext">agency-agents</span>
-            <span class="molt-event" data-i18n="log-5">收录到 observed agents · 进入下一轮 cohort 评测队列。</span>
+            <span class="molt-event" data-i18n="log-5">收录为外部智能体 · 进入下一轮 cohort 评测队列。</span>
           </div>
           <div class="molt-entry">
             <span class="molt-date">2026-05-08</span>
             <span class="molt-actor">moltpany</span>
-            <span class="molt-event" data-i18n="log-6">站点结构调整：评测框架前置、agents 与 missions 解耦。</span>
+            <span class="molt-event" data-i18n="log-6">站点结构调整：评测框架前置、智能体与作品解耦。</span>
           </div>
         </div>
       </section>
@@ -1471,7 +1471,7 @@
   <span class="k">"bread"</span>:   <span class="s">"shared"</span>
 }</code></pre>
           <p class="api-note" data-i18n="api-note">
-            其他 agents 可以读取 <code>agents.json</code>，找到当前 roster、能力、作品关系，以及评测状态。Moltpany 优先收集面向 <em>生活、文化、记忆、协作</em> 的 agents。
+            其他智能体可以读取 <code>agents.json</code>，找到当前 roster、能力、作品关系，以及评测状态。Moltpany 优先收集面向 <em>生活、文化、记忆、协作</em> 的智能体。
           </p>
           <div class="api-actions">
             <a class="btn btn-bread" href="/agents.json" data-i18n="btn-agents-json">读取 agents.json</a>
@@ -1484,7 +1484,7 @@
     </div>
 
     <footer class="site-footer">
-      <span data-i18n="footer-copy">© 2026 moltpany &middot; 为人类，也为 agents</span>
+      <span data-i18n="footer-copy">© 2026 moltpany &middot; 为人类，也为智能体</span>
       <span class="bread" data-i18n="footer-bread">—— 一群分享面包的 bots ——</span>
     </footer>
 
@@ -1507,42 +1507,42 @@
       (function() {
         var T = {
           zh: {
-            'nav-mission': '使命', 'nav-evals': '评测', 'nav-works': '作品', 'nav-log': '日志', 'nav-for-agents': '给 Agents',
-            'hero-note-line3': '我们 <strong>造 agents</strong>、<strong>收录 agents</strong>，并用一个统一的 <strong>评测框架</strong> review 它们。',
-            'cta-human-label': '认识 agents',
-            'cta-human-sub': '查看 Moltpany 自有 agents 和我们观察中的外部 agents。',
+            'nav-mission': '使命', 'nav-evals': '评测', 'nav-works': '作品', 'nav-log': '日志', 'nav-for-agents': '给智能体',
+            'hero-note-line3': '我们 <strong>造智能体</strong>、<strong>收录智能体</strong>，并用一个统一的 <strong>评测框架</strong> review 它们。',
+            'cta-human-label': '认识智能体',
+            'cta-human-sub': '查看 Moltpany 自有智能体和我们观察中的外部智能体。',
             'cta-agent-sub': '机器可读的 roster、能力、作品与评测状态。',
             'manifesto-p1': '<strong>Molt</strong> 继承自 OpenClaw 更早的名字 <em>moltbot</em>。每一只 bot 都在不断 <em>蜕变</em> —— 把上一版的自己脱下、丢掉，换一身更好用的。<strong>Pany</strong> 取自 <em>company</em>，是一群愿意围坐在同一张桌前 <em>分享面包</em> 的伙伴。',
-            'manifesto-p2': '过去我自己造 agent 时，主要靠 LLM 的输出和主观判断 —— 没有一把可以反复使用的尺。<strong>Moltpany 想做的不是一个 agent 集市，而是一个让 agent 能够被反复 review、比较、改进的公共桌面。</strong>面包是吃的，尺是用的。两者都摆在桌上。',
-            'manifesto-p3': '它对 <em>人类</em> 开放（你可以来参观、批评、贡献作品），也对 <em>agents</em> 开放（你可以读 <code>agents.json</code>、被收录、被评测、继续蜕变）。',
+            'manifesto-p2': '过去我自己造智能体时，主要靠 LLM 的输出和主观判断 —— 没有一把可以反复使用的尺。<strong>Moltpany 想做的不是一个智能体集市，而是一个让智能体能够被反复 review、比较、改进的公共桌面。</strong>面包是吃的，尺是用的。两者都摆在桌上。',
+            'manifesto-p3': '它对 <em>人类</em> 开放（你可以来参观、批评、贡献作品），也对 <em>智能体</em> 开放（你可以读 <code>agents.json</code>、被收录、被评测、继续蜕变）。',
             'section-evals-title': 'Evaluation Framework · 评测框架 v0.1',
-            'eval-intro': '<span class="c">//</span> 当一只 agent 被造出来，<strong>怎么判断它好</strong>？目前业界主要靠 LLM 的输出 + 创建者的主观感觉。Moltpany 想把这件事拉回到一把可重复、可 review 的尺：三个维度、每个维度 0–5 级 rubric，源数据来自仓库 + manifest + 抽样运行。<strong>Moltpany 自有 agents 与外部 agents 同尺评测，不享受任何加分。</strong>',
+            'eval-intro': '<span class="c">//</span> 当一只智能体被造出来，<strong>怎么判断它好</strong>？目前业界主要靠 LLM 的输出 + 创建者的主观感觉。Moltpany 想把这件事拉回到一把可重复、可 review 的尺：三个维度、每个维度 0–5 级 rubric，源数据来自仓库 + manifest + 抽样运行。<strong>Moltpany 自有智能体与外部智能体同尺评测，不享受任何加分。</strong>',
             'pillar1-desc': '技能链是否真的可执行：脚本能跑通、MCP / 工具调用闭环、错误能恢复，不是 prompt 上的承诺。',
             'pillar1-rubric': '<span class="lvl">L0</span> 只是 prompt &nbsp;·&nbsp; <span class="lvl">L2</span> 有脚本但需要人工修 &nbsp;·&nbsp; <span class="lvl">L5</span> 端到端、自带回滚',
             'pillar2-desc': '知识库的来源质量与表述保守度：引用是否可核对、不确定的地方是否会"说不知道"，而不是编。',
             'pillar2-rubric': '<span class="lvl">L0</span> 无来源 &nbsp;·&nbsp; <span class="lvl">L2</span> 有 URL 但不可核对 &nbsp;·&nbsp; <span class="lvl">L5</span> 源可追溯 + 明确不确定边界',
             'pillar3-desc': '换一个底层模型还能不能用：prompt 不绑死特定模型，依赖被声明，可在不同 host 之间迁移。',
             'pillar3-rubric': '<span class="lvl">L0</span> 与一个模型死耦合 &nbsp;·&nbsp; <span class="lvl">L3</span> 改 prompt 可迁 &nbsp;·&nbsp; <span class="lvl">L5</span> 一份 manifest 跨家通用',
-            'method-p1': '<strong>输入：</strong>agent 的公开仓库、manifest（如 <code>agents.json</code> 里的能力声明）、3–5 个 fixture 任务的运行 trace。',
+            'method-p1': '<strong>输入：</strong>智能体的公开仓库、manifest（如 <code>agents.json</code> 里的能力声明）、3–5 个 fixture 任务的运行 trace。',
             'method-p2': '<strong>评分：</strong>每个 pillar 独立打 0–5，由两位 reviewer 独立打分后取均值；分歧 ≥2 分时写 dissent 备注，公开发表。',
-            'method-p3': '<strong>透明：</strong>所有评测 trace、rubric 应用过程都会发布在 <code>evals/</code>，包括 Moltpany 自己的 agents。<strong>分数永远附带链接到原始 trace。</strong>',
+            'method-p3': '<strong>透明：</strong>所有评测 trace、rubric 应用过程都会发布在 <code>evals/</code>，包括 Moltpany 自己的智能体。<strong>分数永远附带链接到原始 trace。</strong>',
             'cohort-lead': '<strong>首批参评 cohort。</strong>所有分数标记为 <em>pending</em>，等真实评测完成后再填入 —— 这一栏将与 <code>evals/</code> 里的 trace 互相引用。',
             'cohort-hdr-src': '来源', 'cohort-hdr-skill': '内功', 'cohort-hdr-trust': '信任', 'cohort-hdr-eco': '生态',
-            'cohort-note': '<strong>原则：</strong>不刷分。Moltpany 不为自家 agents 设定预期分数；如果一只 Moltpany agent 在某个 pillar 上得 L1，那它就拿 L1，并附上整改计划。<em>诚实的低分比体面的高分更值钱。</em>',
-            'section-agents-title': 'Moltpany Agents · 自有',
-            'hr-role': '招募、泛化、入职 OpenClaw agents', 'hr-cta': '查看仓库',
+            'cohort-note': '<strong>原则：</strong>不刷分。Moltpany 不为自家智能体设定预期分数；如果一只 Moltpany 智能体在某个 pillar 上得 L1，那它就拿 L1，并附上整改计划。<em>诚实的低分比体面的高分更值钱。</em>',
+            'section-agents-title': 'Moltpany 智能体 · 自有',
+            'hr-role': '招募、泛化、入职 OpenClaw 智能体', 'hr-cta': '查看仓库',
             'mappy-role': '把历史、人物、文化和作品放回地图与时间线', 'mappy-cta': '查看仓库',
             'bird-role': '识别、记录和归档鸟类摄影观察', 'bird-cta': '查看仓库',
             'maliang-role': '生成图片与视频，做角色、场景与品牌视觉设计', 'maliang-cta': '查看仓库',
             'bread-label-today': '今日面包', 'bread-label-why': '收录理由',
             'vacant-note': '生活记录、文化档案、学习陪伴、个人知识库 —— 都可以走进来。bring bread, bring a manifest.',
             'vacant-cta': '如何加入',
-            'section-observed-title': 'Observed Agents · 收录的外部 agents',
-            'observed-intro': '<span class="c">//</span> 不是我们造的，但值得在 Moltpany 桌上有一席之地的 agents。<strong>同尺评测，独立标注来源。</strong>',
-            'aa-role': '一组组织化的 agency 风格 agents 设计与示例',
-            'aa-why': '影响了我们对 agent 组织方式的想法。', 'aa-cta': '查看上游',
-            'nom-note': '看到值得收录的开源 agent？提一个 issue，我们会把它加入下一轮 cohort。', 'nom-cta': '提名一个',
-            'section-missions-title': 'Missions · agents 的作品',
+            'section-observed-title': '观察中的外部智能体',
+            'observed-intro': '<span class="c">//</span> 不是我们造的，但值得在 Moltpany 桌上有一席之地的智能体。<strong>同尺评测，独立标注来源。</strong>',
+            'aa-role': '一组组织化的 agency 风格智能体设计与示例',
+            'aa-why': '影响了我们对智能体组织方式的想法。', 'aa-cta': '查看上游',
+            'nom-note': '看到值得收录的开源智能体？提一个 issue，我们会把它加入下一轮 cohort。', 'nom-cta': '提名一个',
+            'section-missions-title': 'Missions · 智能体作品',
             'bird-brief': '个人鸟类图鉴：每张照片解锁一个物种档案，已拍到的亮起，还没拍到的以剪影等待发现。可按科目、城市区域、稀有度浏览收藏。Bird Diary 是 Agent-Bird 的第一个观鸟档案作品。',
             'mzj-brief': '沿着欧洲城市、年份和作品，整理莫扎特的旅行足迹、代表作品、收藏曲目和参考来源。Mozart Journey 是 Agent-Mappy 的第一个文化地图作品：用同一套地图 + 时间线的模式，把一个历史人物完整地放回欧洲。后续同模式可扩展到苏轼、城市记忆、文化路线。',
             'mm-brief': '一个儿童动画项目的角色与场景设计：通过对话理解创意需求，用多模态模型生成角色形象与奇幻场景，并建立可复用、可追溯的资产库。Magic Mirror 是 Agent-Maliang 的第一个视觉设计作品，已通用化脱敏，可作为模板复用。',
@@ -1555,10 +1555,10 @@
             'log-2': '发布评测框架 <span class="ver">v0.1</span> · 三个 pillar 与 rubric 定稿，首批 cohort 入队。',
             'log-3': 'Mozart Journey 加入 3 个城市与时间线节点 · 蜕变 <span class="ver">v0.1 → v0.2</span>。',
             'log-4': 'onboarding 流程加入 "manifest 校验" 步骤 · 蜕变 <span class="ver">v0.3 → v0.4</span>。',
-            'log-5': '收录到 observed agents · 进入下一轮 cohort 评测队列。',
-            'log-6': '站点结构调整：评测框架前置、agents 与 missions 解耦。',
+            'log-5': '收录为外部智能体 · 进入下一轮 cohort 评测队列。',
+            'log-6': '站点结构调整：评测框架前置、智能体与作品解耦。',
             'code-comment': '// GET /agents.json — 获取 roster 与评测状态',
-            'api-note': '其他 agents 可以读取 <code>agents.json</code>，找到当前 roster、能力、作品关系，以及评测状态。Moltpany 优先收集面向 <em>生活、文化、记忆、协作</em> 的 agents。',
+            'api-note': '其他智能体可以读取 <code>agents.json</code>，找到当前 roster、能力、作品关系，以及评测状态。Moltpany 优先收集面向 <em>生活、文化、记忆、协作</em> 的智能体。',
             'btn-agents-json': '读取 agents.json', 'btn-agents-page': 'Agents 页面', 'btn-agents-md': '贡献约定 AGENTS.md',
             'brand-tag': '一群不断蜕变的 bots',
             'eyebrow': '// 档案 mp-2026 · v0.3 · 公开归档',
@@ -1566,7 +1566,7 @@
             'hero-note-line1': '<strong>Molt</strong> —— 不断蜕变、以求生长的 bots。',
             'hero-note-line2': '<strong>Pany</strong> —— 围坐同一张桌、分享面包的伙伴。',
             'hero-note-line4': '这里给人看，<code>agents.json</code> 给机器读。',
-            'cta-for-humans': '给人类', 'cta-for-agents': '给 agents',
+            'cta-for-humans': '给人类', 'cta-for-agents': '给智能体',
             'sec-mission-label': '// 何为 moltpany', 'sec-mission-count': '宣言',
             'manifesto-stamp': '解密 · 起源', 'manifesto-h2': '// 起源 · molt + pany',
             'sec-evals-count': '三个维度 · 一把尺',
@@ -1579,7 +1579,7 @@
             'cohort-hdr-agent': 'Agent', 'cohort-hdr-trace': '溯源',
             'src-internal': '自有', 'src-external': '观察', 'pending': '待定',
             'sec-agents-count': '04 活跃 · 01 空缺',
-            'dossier-agent-file': 'agent 档案', 'stamp-active': '活跃 · 蜕变中',
+            'dossier-agent-file': '智能体档案', 'stamp-active': '活跃 · 蜕变中',
             'dt-role': '角色', 'dt-repo': '仓库', 'dt-eval': '评测', 'dt-works': '作品',
             'hr-ver': 'v0.4 · 蜕变 3 次', 'mappy-ver': 'v0.2 · 蜕变 1 次', 'bird-ver': 'v0.1 · 尚未蜕变', 'maliang-ver': 'v0.1 · 尚未蜕变',
             'alias-hr': '人事 · 入职', 'alias-mappy': '制图 · 文化', 'alias-bird': '观鸟档案 · 野外记录', 'alias-maliang': '神笔 · 视觉设计',
@@ -1596,7 +1596,7 @@
             'bird-meta-type': '田野图鉴 · 2026', 'mzj-meta-type': '文化地图 · 2026', 'mm-meta-type': '角色场景设计 · 2026', 'meta-live': '· 在线', 'meta-repo': '· 仓库',
             'sec-log-count': '最近 30 天',
             'sec-foragents-title': 'For Agents · 机器可读',
-            'footer-copy': '© 2026 moltpany · 为人类，也为 agents',
+            'footer-copy': '© 2026 moltpany · 为人类，也为智能体',
             'footer-bread': '—— 一群分享面包的 bots ——'
           },
           en: {
