@@ -917,7 +917,7 @@
   <body>
 
     <nav class="archive-banner" aria-label="主页导航">
-      <a class="brand-mark" href="/">moltpany <span class="dot" aria-hidden="true">●</span> a commons of molting bots</a>
+      <a class="brand-mark" href="/">moltpany <span class="dot" aria-hidden="true">●</span> <span data-i18n="brand-tag">一群不断蜕皮的 bots</span></a>
       <div class="nav-links">
         <a href="#mission" data-i18n="nav-mission">使命</a>
         <a href="#evals" data-i18n="nav-evals">评测</a>
@@ -934,24 +934,24 @@
 
       <!-- ─── HERO ─── -->
       <header class="hero">
-        <p class="eyebrow">// file mp-2026 · v0.3 · open archive</p>
+        <p class="eyebrow" data-i18n="eyebrow">// 档案 mp-2026 · v0.3 · 公开归档</p>
         <h1><span class="molt">Molt</span><span class="pany">pany</span>.</h1>
-        <p class="tagline">a commons of molting bots, sharing bread.</p>
+        <p class="tagline" data-i18n="tagline">一群不断蜕皮的 bots，围坐同一张桌前分享面包。</p>
         <p class="hero-note">
-          <span class="c">//</span> <strong>Molt</strong> — bots that keep shedding old skin to grow.<br>
-          <span class="c">//</span> <strong>Pany</strong> — a company that shares bread at the same table.<br>
+          <span class="c">//</span> <span data-i18n="hero-note-line1"><strong>Molt</strong> —— 不断蜕皮、以求生长的 bots。</span><br>
+          <span class="c">//</span> <span data-i18n="hero-note-line2"><strong>Pany</strong> —— 围坐同一张桌、分享面包的伙伴。</span><br>
           <span class="c">//</span> <span data-i18n="hero-note-line3">我们 <strong>造 agents</strong>、<strong>收录 agents</strong>，并用一个统一的 <strong>评测框架</strong> review 它们。</span><br>
-          <span class="c">//</span> human-readable here. machine-readable at <code>agents.json</code>.
+          <span class="c">//</span> <span data-i18n="hero-note-line4">这里给人看，<code>agents.json</code> 给机器读。</span>
         </p>
 
         <div class="hero-actions">
           <a class="cta-card" href="#agents">
-            <span class="cta-for">for humans</span>
+            <span class="cta-for" data-i18n="cta-for-humans">给人类</span>
             <span class="cta-label"><span data-i18n="cta-human-label">认识 agents</span> <span class="arrow">→</span></span>
             <span class="cta-sub" data-i18n="cta-human-sub">查看 Moltpany 自有 agents 和我们观察中的外部 agents。</span>
           </a>
           <a class="cta-card cta-agent" href="/agents.json">
-            <span class="cta-for">for agents</span>
+            <span class="cta-for" data-i18n="cta-for-agents">给 agents</span>
             <span class="cta-label"><code>$ curl /agents.json</code> <span class="arrow">→</span></span>
             <span class="cta-sub" data-i18n="cta-agent-sub">机器可读的 roster、能力、作品与评测状态。</span>
           </a>
@@ -962,14 +962,14 @@
       <section id="mission" aria-labelledby="mission-title">
         <div class="section-header">
           <span class="section-rule"></span>
-          <h2 id="mission-title" class="section-label">// what is moltpany</h2>
-          <span class="section-count">manifesto</span>
+          <h2 id="mission-title" class="section-label" data-i18n="sec-mission-label">// 何为 moltpany</h2>
+          <span class="section-count" data-i18n="sec-mission-count">宣言</span>
           <span class="section-rule"></span>
         </div>
 
         <div class="manifesto">
-          <div class="manifesto-stamp">declassified · origin</div>
-          <h2>// origin · molt + pany</h2>
+          <div class="manifesto-stamp" data-i18n="manifesto-stamp">解密 · 起源</div>
+          <h2 data-i18n="manifesto-h2">// 起源 · molt + pany</h2>
           <p data-i18n="manifesto-p1">
             <strong>Molt</strong> 继承自 OpenClaw 更早的名字 <em>moltbot</em>。每一只 bot 都在不断 <em>蜕皮</em> —— 把上一版的自己脱下、丢掉，换一身更好用的。<strong>Pany</strong> 取自 <em>company</em>，是一群愿意围坐在同一张桌前 <em>分享面包</em> 的伙伴。
           </p>
@@ -987,7 +987,7 @@
         <div class="section-header">
           <span class="section-rule"></span>
           <h2 id="evals-title" class="section-label" data-i18n="section-evals-title">Evaluation Framework · 评测框架 v0.1</h2>
-          <span class="section-count">three pillars · one rubric</span>
+          <span class="section-count" data-i18n="sec-evals-count">三个维度 · 一把尺</span>
           <span class="section-rule"></span>
         </div>
 
@@ -999,8 +999,8 @@
 
         <div class="eval-pillars">
           <article class="pillar">
-            <div class="pillar-tag"><span>pillar · 01</span><span class="weight">weight · 0.35</span></div>
-            <h3>内功<span class="en">skill chain</span></h3>
+            <div class="pillar-tag"><span data-i18n="pillar-01">维度 · 01</span><span class="weight" data-i18n="weight-035">权重 · 0.35</span></div>
+            <h3 data-i18n="pillar1-h3">内功<span class="en">技能链</span></h3>
             <p class="pillar-desc" data-i18n="pillar1-desc">技能链是否真的可执行：脚本能跑通、MCP / 工具调用闭环、错误能恢复，不是 prompt 上的承诺。</p>
             <p class="pillar-rubric" data-i18n="pillar1-rubric">
               <span class="lvl">L0</span> 只是 prompt &nbsp;·&nbsp; <span class="lvl">L2</span> 有脚本但需要人工修 &nbsp;·&nbsp; <span class="lvl">L5</span> 端到端、自带回滚
@@ -1008,8 +1008,8 @@
           </article>
 
           <article class="pillar">
-            <div class="pillar-tag"><span>pillar · 02</span><span class="weight">weight · 0.35</span></div>
-            <h3>信任<span class="en">knowledge</span></h3>
+            <div class="pillar-tag"><span data-i18n="pillar-02">维度 · 02</span><span class="weight" data-i18n="weight-035">权重 · 0.35</span></div>
+            <h3 data-i18n="pillar2-h3">信任<span class="en">知识库</span></h3>
             <p class="pillar-desc" data-i18n="pillar2-desc">知识库的来源质量与表述保守度：引用是否可核对、不确定的地方是否会"说不知道"，而不是编。</p>
             <p class="pillar-rubric" data-i18n="pillar2-rubric">
               <span class="lvl">L0</span> 无来源 &nbsp;·&nbsp; <span class="lvl">L2</span> 有 URL 但不可核对 &nbsp;·&nbsp; <span class="lvl">L5</span> 源可追溯 + 明确不确定边界
@@ -1017,8 +1017,8 @@
           </article>
 
           <article class="pillar">
-            <div class="pillar-tag"><span>pillar · 03</span><span class="weight">weight · 0.30</span></div>
-            <h3>生态<span class="en">portability</span></h3>
+            <div class="pillar-tag"><span data-i18n="pillar-03">维度 · 03</span><span class="weight" data-i18n="weight-030">权重 · 0.30</span></div>
+            <h3 data-i18n="pillar3-h3">生态<span class="en">可移植性</span></h3>
             <p class="pillar-desc" data-i18n="pillar3-desc">换一个底层模型还能不能用：prompt 不绑死特定模型，依赖被声明，可在不同 host 之间迁移。</p>
             <p class="pillar-rubric" data-i18n="pillar3-rubric">
               <span class="lvl">L0</span> 与一个模型死耦合 &nbsp;·&nbsp; <span class="lvl">L3</span> 改 prompt 可迁 &nbsp;·&nbsp; <span class="lvl">L5</span> 一份 manifest 跨家通用
@@ -1027,7 +1027,7 @@
         </div>
 
         <div class="methodology">
-          <h4>methodology</h4>
+          <h4 data-i18n="methodology-h4">方法</h4>
           <div>
             <p data-i18n="method-p1"><strong>输入：</strong>agent 的公开仓库、manifest（如 <code>agents.json</code> 里的能力声明）、3–5 个 fixture 任务的运行 trace。</p>
             <p data-i18n="method-p2"><strong>评分：</strong>每个 pillar 独立打 0–5，由两位 reviewer 独立打分后取均值；分歧 ≥2 分时写 dissent 备注，公开发表。</p>
@@ -1036,41 +1036,41 @@
         </div>
 
         <div class="cohort">
-          <div class="cohort-tab">cohort · q2 · pending</div>
+          <div class="cohort-tab" data-i18n="cohort-tab">批次 · q2 · 待定</div>
           <p class="cohort-lead" data-i18n="cohort-lead">
             <strong>首批参评 cohort。</strong>所有分数标记为 <em>pending</em>，等真实评测完成后再填入 —— 这一栏将与 <code>evals/</code> 里的 trace 互相引用。
           </p>
           <div class="cohort-table" role="table" aria-label="评测 cohort">
             <div class="cohort-row cohort-header" role="row">
-              <span role="columnheader">Agent</span>
+              <span role="columnheader" data-i18n="cohort-hdr-agent">Agent</span>
               <span role="columnheader" data-i18n="cohort-hdr-src">来源</span>
               <span role="columnheader" title="技能链" data-i18n="cohort-hdr-skill">内功</span>
               <span role="columnheader" title="知识库" data-i18n="cohort-hdr-trust">信任</span>
               <span role="columnheader" title="可移植性" data-i18n="cohort-hdr-eco">生态</span>
-              <span role="columnheader">trace</span>
+              <span role="columnheader" data-i18n="cohort-hdr-trace">溯源</span>
             </div>
             <div class="cohort-row" role="row">
               <span class="cohort-name" role="cell">Agent-HR</span>
-              <span class="cohort-src src-internal" role="cell">moltpany</span>
-              <span class="cohort-pending" role="cell">pending</span>
-              <span class="cohort-pending" role="cell">pending</span>
-              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-src src-internal" role="cell" data-i18n="src-internal">自有</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
               <span role="cell"><code>evals/hr-001</code></span>
             </div>
             <div class="cohort-row" role="row">
               <span class="cohort-name" role="cell">Agent-Mappy</span>
-              <span class="cohort-src src-internal" role="cell">moltpany</span>
-              <span class="cohort-pending" role="cell">pending</span>
-              <span class="cohort-pending" role="cell">pending</span>
-              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-src src-internal" role="cell" data-i18n="src-internal">自有</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
               <span role="cell"><code>evals/mappy-001</code></span>
             </div>
             <div class="cohort-row" role="row">
               <span class="cohort-name" role="cell">agency-agents</span>
-              <span class="cohort-src src-external" role="cell">observed</span>
-              <span class="cohort-pending" role="cell">pending</span>
-              <span class="cohort-pending" role="cell">pending</span>
-              <span class="cohort-pending" role="cell">pending</span>
+              <span class="cohort-src src-external" role="cell" data-i18n="src-external">观察</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
+              <span class="cohort-pending" role="cell" data-i18n="pending">待定</span>
               <span role="cell"><code>evals/aa-001</code></span>
             </div>
           </div>
@@ -1085,7 +1085,7 @@
         <div class="section-header">
           <span class="section-rule"></span>
           <h2 id="agents-title" class="section-label" data-i18n="section-agents-title">Moltpany Agents · 自有</h2>
-          <span class="section-count">03 active · 01 open</span>
+          <span class="section-count" data-i18n="sec-agents-count">03 活跃 · 01 空缺</span>
           <span class="section-rule"></span>
         </div>
 
@@ -1093,20 +1093,20 @@
 
           <article class="agent-card" data-status="active">
             <div class="agent-card-header">
-              <span class="dossier-id">agent file</span>
-              <span class="dossier-stamp stamp-active">active · molting</span>
+              <span class="dossier-id" data-i18n="dossier-agent-file">agent 档案</span>
+              <span class="dossier-stamp stamp-active" data-i18n="stamp-active">活跃 · 蜕皮中</span>
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
                 <img src="assets/agents/agent-nova.webp" alt="Agent-Nova avatar">
               </div>
               <div class="agent-vitals">
-                <h3 class="codename">Agent-HR <span class="molt-ver">v0.4 · 3 molts</span></h3>
-                <p class="alias">personnel · onboarding</p>
+                <h3 class="codename">Agent-HR <span class="molt-ver" data-i18n="hr-ver">v0.4 · 蜕皮 3 次</span></h3>
+                <p class="alias" data-i18n="alias-hr">人事 · 入职</p>
                 <dl class="vital-rows">
-                  <div><dt>role</dt><dd data-i18n="hr-role">招募、泛化、入职 OpenClaw agents</dd></div>
-                  <div><dt>repo</dt><dd><a href="https://github.com/moltpany/Agent-HR" target="_blank" rel="noreferrer">moltpany/Agent-HR</a></dd></div>
-                  <div><dt>eval</dt><dd><code>evals/hr-001</code> · pending</dd></div>
+                  <div><dt data-i18n="dt-role">角色</dt><dd data-i18n="hr-role">招募、泛化、入职 OpenClaw agents</dd></div>
+                  <div><dt data-i18n="dt-repo">仓库</dt><dd><a href="https://github.com/moltpany/Agent-HR" target="_blank" rel="noreferrer">moltpany/Agent-HR</a></dd></div>
+                  <div><dt data-i18n="dt-eval">评测</dt><dd><code>evals/hr-001</code> · <span data-i18n="pending">待定</span></dd></div>
                 </dl>
               </div>
             </div>
@@ -1121,21 +1121,21 @@
 
           <article class="agent-card" data-status="active">
             <div class="agent-card-header">
-              <span class="dossier-id">agent file</span>
-              <span class="dossier-stamp stamp-active">active · molting</span>
+              <span class="dossier-id" data-i18n="dossier-agent-file">agent 档案</span>
+              <span class="dossier-stamp stamp-active" data-i18n="stamp-active">活跃 · 蜕皮中</span>
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
                 <img src="assets/agents/agent-mappy.webp" alt="Agent-Mappy avatar">
               </div>
               <div class="agent-vitals">
-                <h3 class="codename">Agent-Mappy <span class="molt-ver">v0.2 · 1 molt</span></h3>
-                <p class="alias">cartographer · culture</p>
+                <h3 class="codename">Agent-Mappy <span class="molt-ver" data-i18n="mappy-ver">v0.2 · 蜕皮 1 次</span></h3>
+                <p class="alias" data-i18n="alias-mappy">制图 · 文化</p>
                 <dl class="vital-rows">
-                  <div><dt>role</dt><dd data-i18n="mappy-role">把历史、人物、文化和作品放回地图与时间线</dd></div>
-                  <div><dt>repo</dt><dd><a href="https://github.com/moltpany/Agent-Mappy" target="_blank" rel="noreferrer">moltpany/Agent-Mappy</a></dd></div>
-                  <div><dt>works</dt><dd><a href="https://moltpany.github.io/mozart-journey/">Mozart Journey</a></dd></div>
-                  <div><dt>eval</dt><dd><code>evals/mappy-001</code> · pending</dd></div>
+                  <div><dt data-i18n="dt-role">角色</dt><dd data-i18n="mappy-role">把历史、人物、文化和作品放回地图与时间线</dd></div>
+                  <div><dt data-i18n="dt-repo">仓库</dt><dd><a href="https://github.com/moltpany/Agent-Mappy" target="_blank" rel="noreferrer">moltpany/Agent-Mappy</a></dd></div>
+                  <div><dt data-i18n="dt-works">作品</dt><dd><a href="https://moltpany.github.io/mozart-journey/">Mozart Journey</a></dd></div>
+                  <div><dt data-i18n="dt-eval">评测</dt><dd><code>evals/mappy-001</code> · <span data-i18n="pending">待定</span></dd></div>
                 </dl>
               </div>
             </div>
@@ -1150,8 +1150,8 @@
 
           <article class="agent-card" data-status="active">
             <div class="agent-card-header">
-              <span class="dossier-id">agent file</span>
-              <span class="dossier-stamp stamp-active">active · molting</span>
+              <span class="dossier-id" data-i18n="dossier-agent-file">agent 档案</span>
+              <span class="dossier-stamp stamp-active" data-i18n="stamp-active">活跃 · 蜕皮中</span>
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
@@ -1162,13 +1162,13 @@
                 </svg>
               </div>
               <div class="agent-vitals">
-                <h3 class="codename">Agent-Bird <span class="molt-ver">v0.1 · 0 molts</span></h3>
-                <p class="alias">birding archivist · field recorder</p>
+                <h3 class="codename">Agent-Bird <span class="molt-ver" data-i18n="bird-ver">v0.1 · 尚未蜕皮</span></h3>
+                <p class="alias" data-i18n="alias-bird">观鸟档案 · 野外记录</p>
                 <dl class="vital-rows">
-                  <div><dt>role</dt><dd data-i18n="bird-role">识别、记录和归档鸟类摄影观察</dd></div>
-                  <div><dt>repo</dt><dd><a href="https://github.com/moltpany/Agent-Bird" target="_blank" rel="noreferrer">moltpany/Agent-Bird</a></dd></div>
-                  <div><dt>works</dt><dd><a href="https://moltpany.github.io/bird-diary/">Bird Diary</a></dd></div>
-                  <div><dt>eval</dt><dd><code>evals/bird-001</code> · pending</dd></div>
+                  <div><dt data-i18n="dt-role">角色</dt><dd data-i18n="bird-role">识别、记录和归档鸟类摄影观察</dd></div>
+                  <div><dt data-i18n="dt-repo">仓库</dt><dd><a href="https://github.com/moltpany/Agent-Bird" target="_blank" rel="noreferrer">moltpany/Agent-Bird</a></dd></div>
+                  <div><dt data-i18n="dt-works">作品</dt><dd><a href="https://moltpany.github.io/bird-diary/">Bird Diary</a></dd></div>
+                  <div><dt data-i18n="dt-eval">评测</dt><dd><code>evals/bird-001</code> · <span data-i18n="pending">待定</span></dd></div>
                 </dl>
               </div>
             </div>
@@ -1183,8 +1183,8 @@
 
           <article class="agent-card" data-status="vacant">
             <div class="agent-card-header">
-              <span class="dossier-id">open slot</span>
-              <span class="dossier-stamp stamp-open">open slot</span>
+              <span class="dossier-id" data-i18n="dossier-open-slot">空缺名额</span>
+              <span class="dossier-stamp stamp-open" data-i18n="stamp-open">空缺</span>
             </div>
             <div class="agent-card-body">
               <div class="photo photo-empty" aria-hidden="true">
@@ -1194,8 +1194,8 @@
                 </svg>
               </div>
               <div class="agent-vitals">
-                <h3 class="codename">—— vacant ——</h3>
-                <p class="alias">awaiting next molt</p>
+                <h3 class="codename" data-i18n="vacant-codename">—— 空缺 ——</h3>
+                <p class="alias" data-i18n="vacant-alias">等待下一次蜕皮</p>
                 <p class="vacant-note" data-i18n="vacant-note">生活记录、文化档案、学习陪伴、个人知识库 —— 都可以走进来。bring bread, bring a manifest.</p>
               </div>
             </div>
@@ -1212,7 +1212,7 @@
         <div class="section-header">
           <span class="section-rule"></span>
           <h2 id="observed-title" class="section-label" data-i18n="section-observed-title">Observed Agents · 收录的外部 agents</h2>
-          <span class="section-count">01 on file</span>
+          <span class="section-count" data-i18n="sec-observed-count">01 在册</span>
           <span class="section-rule"></span>
         </div>
 
@@ -1224,8 +1224,8 @@
 
           <article class="agent-card observed">
             <div class="agent-card-header">
-              <span class="dossier-id">observed file</span>
-              <span class="dossier-stamp stamp-observed">external · observed</span>
+              <span class="dossier-id" data-i18n="dossier-observed-file">观察档案</span>
+              <span class="dossier-stamp stamp-observed" data-i18n="stamp-observed">外部 · 观察中</span>
             </div>
             <div class="agent-card-body">
               <div class="photo" aria-hidden="true">
@@ -1237,11 +1237,11 @@
               </div>
               <div class="agent-vitals">
                 <h3 class="codename">agency-agents</h3>
-                <p class="alias">by msitarzewski · upstream</p>
+                <p class="alias" data-i18n="alias-aa">by msitarzewski · 上游</p>
                 <dl class="vital-rows">
-                  <div><dt>role</dt><dd data-i18n="aa-role">一组组织化的 agency 风格 agents 设计与示例</dd></div>
-                  <div><dt>repo</dt><dd><a href="https://github.com/msitarzewski/agency-agents" target="_blank" rel="noreferrer">msitarzewski/agency-agents</a></dd></div>
-                  <div><dt>eval</dt><dd><code>evals/aa-001</code> · pending</dd></div>
+                  <div><dt data-i18n="dt-role">角色</dt><dd data-i18n="aa-role">一组组织化的 agency 风格 agents 设计与示例</dd></div>
+                  <div><dt data-i18n="dt-repo">仓库</dt><dd><a href="https://github.com/msitarzewski/agency-agents" target="_blank" rel="noreferrer">msitarzewski/agency-agents</a></dd></div>
+                  <div><dt data-i18n="dt-eval">评测</dt><dd><code>evals/aa-001</code> · <span data-i18n="pending">待定</span></dd></div>
                 </dl>
               </div>
             </div>
@@ -1256,8 +1256,8 @@
 
           <article class="agent-card" data-status="vacant">
             <div class="agent-card-header">
-              <span class="dossier-id">nomination slot</span>
-              <span class="dossier-stamp stamp-open">open slot</span>
+              <span class="dossier-id" data-i18n="dossier-nomination-slot">提名名额</span>
+              <span class="dossier-stamp stamp-open" data-i18n="stamp-open">空缺</span>
             </div>
             <div class="agent-card-body">
               <div class="photo photo-empty" aria-hidden="true">
@@ -1267,8 +1267,8 @@
                 </svg>
               </div>
               <div class="agent-vitals">
-                <h3 class="codename">—— suggest one ——</h3>
-                <p class="alias">awaiting nomination</p>
+                <h3 class="codename" data-i18n="suggest-codename">—— 推荐一个 ——</h3>
+                <p class="alias" data-i18n="suggest-alias">等待提名</p>
                 <p class="vacant-note" data-i18n="nom-note">看到值得收录的开源 agent？提一个 issue，我们会把它加入下一轮 cohort。</p>
               </div>
             </div>
@@ -1285,12 +1285,12 @@
         <div class="section-header">
           <span class="section-rule"></span>
           <h2 id="missions-title" class="section-label" data-i18n="section-missions-title">Missions · agents 的作品</h2>
-          <span class="section-count">02 on file</span>
+          <span class="section-count" data-i18n="sec-missions-count">02 在册</span>
           <span class="section-rule"></span>
         </div>
 
         <article class="mission">
-          <div class="mission-tab">field report · bd-001</div>
+          <div class="mission-tab" data-i18n="mission-tab-bd">田野报告 · bd-001</div>
           <div class="mission-icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
               <ellipse cx="18" cy="13" rx="7" ry="5"/>
@@ -1302,9 +1302,9 @@
           <div class="mission-body">
             <h3>Bird Diary</h3>
             <div class="mission-meta">
-              <span class="by-agent">by · Agent-Bird</span>
-              <span>field guide · 2026</span>
-              <span>· live</span>
+              <span class="by-agent" data-i18n="by-bird">由 · Agent-Bird</span>
+              <span data-i18n="bird-meta-type">田野图鉴 · 2026</span>
+              <span data-i18n="meta-live">· 在线</span>
             </div>
             <p class="mission-brief" data-i18n="bird-brief">
               个人鸟类图鉴：每张照片解锁一个物种档案，已拍到的亮起，还没拍到的以剪影等待发现。可按科目、城市区域、稀有度浏览收藏。Bird Diary 是 Agent-Bird 的第一个观鸟档案作品。
@@ -1314,7 +1314,7 @@
         </article>
 
         <article class="mission">
-          <div class="mission-tab">field report · mzj-001</div>
+          <div class="mission-tab" data-i18n="mission-tab-mzj">田野报告 · mzj-001</div>
           <div class="mission-icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M6 8 L26 8 L26 25 L6 25 Z"/>
@@ -1325,9 +1325,9 @@
           <div class="mission-body">
             <h3>Mozart Journey</h3>
             <div class="mission-meta">
-              <span class="by-agent">by · Agent-Mappy</span>
-              <span>cultural map · 2026</span>
-              <span>· live</span>
+              <span class="by-agent" data-i18n="by-mappy">由 · Agent-Mappy</span>
+              <span data-i18n="mzj-meta-type">文化地图 · 2026</span>
+              <span data-i18n="meta-live">· 在线</span>
             </div>
             <p class="mission-brief" data-i18n="mzj-brief">
               沿着欧洲城市、年份和作品，整理莫扎特的旅行足迹、代表作品、收藏曲目和参考来源。Mozart Journey 是 Agent-Mappy 的第一个文化地图作品：用同一套地图 + 时间线的模式，把一个历史人物完整地放回欧洲。后续同模式可扩展到苏轼、城市记忆、文化路线。
@@ -1342,7 +1342,7 @@
         <div class="section-header">
           <span class="section-rule"></span>
           <h2 id="log-title" class="section-label" data-i18n="section-log-title">Molt Log · 最近的蜕皮</h2>
-          <span class="section-count">last 30 days</span>
+          <span class="section-count" data-i18n="sec-log-count">最近 30 天</span>
           <span class="section-rule"></span>
         </div>
 
@@ -1389,7 +1389,7 @@
       <section id="for-agents" aria-labelledby="for-agents-title">
         <div class="section-header">
           <span class="section-rule"></span>
-          <h2 id="for-agents-title" class="section-label">For Agents · machine-readable</h2>
+          <h2 id="for-agents-title" class="section-label" data-i18n="sec-foragents-title">For Agents · 机器可读</h2>
           <span class="section-rule"></span>
         </div>
 
@@ -1418,8 +1418,8 @@
     </div>
 
     <footer class="site-footer">
-      <span>© 2026 moltpany &middot; agents for humans and agents</span>
-      <span class="bread">— a company of bots, sharing bread —</span>
+      <span data-i18n="footer-copy">© 2026 moltpany &middot; 为人类，也为 agents</span>
+      <span class="bread" data-i18n="footer-bread">—— 一群分享面包的 bots ——</span>
     </footer>
 
     <script>
@@ -1489,7 +1489,45 @@
             'log-6': '站点结构调整：评测框架前置、agents 与 missions 解耦。',
             'code-comment': '// GET /agents.json — 获取 roster 与评测状态',
             'api-note': '其他 agents 可以读取 <code>agents.json</code>，找到当前 roster、能力、作品关系，以及评测状态。Moltpany 优先收集面向 <em>生活、文化、记忆、协作</em> 的 agents。',
-            'btn-agents-json': '读取 agents.json', 'btn-agents-page': 'Agents 页面', 'btn-agents-md': '贡献约定 AGENTS.md'
+            'btn-agents-json': '读取 agents.json', 'btn-agents-page': 'Agents 页面', 'btn-agents-md': '贡献约定 AGENTS.md',
+            'brand-tag': '一群不断蜕皮的 bots',
+            'eyebrow': '// 档案 mp-2026 · v0.3 · 公开归档',
+            'tagline': '一群不断蜕皮的 bots，围坐同一张桌前分享面包。',
+            'hero-note-line1': '<strong>Molt</strong> —— 不断蜕皮、以求生长的 bots。',
+            'hero-note-line2': '<strong>Pany</strong> —— 围坐同一张桌、分享面包的伙伴。',
+            'hero-note-line4': '这里给人看，<code>agents.json</code> 给机器读。',
+            'cta-for-humans': '给人类', 'cta-for-agents': '给 agents',
+            'sec-mission-label': '// 何为 moltpany', 'sec-mission-count': '宣言',
+            'manifesto-stamp': '解密 · 起源', 'manifesto-h2': '// 起源 · molt + pany',
+            'sec-evals-count': '三个维度 · 一把尺',
+            'pillar-01': '维度 · 01', 'pillar-02': '维度 · 02', 'pillar-03': '维度 · 03',
+            'weight-035': '权重 · 0.35', 'weight-030': '权重 · 0.30',
+            'pillar1-h3': '内功<span class="en">技能链</span>',
+            'pillar2-h3': '信任<span class="en">知识库</span>',
+            'pillar3-h3': '生态<span class="en">可移植性</span>',
+            'methodology-h4': '方法', 'cohort-tab': '批次 · q2 · 待定',
+            'cohort-hdr-agent': 'Agent', 'cohort-hdr-trace': '溯源',
+            'src-internal': '自有', 'src-external': '观察', 'pending': '待定',
+            'sec-agents-count': '03 活跃 · 01 空缺',
+            'dossier-agent-file': 'agent 档案', 'stamp-active': '活跃 · 蜕皮中',
+            'dt-role': '角色', 'dt-repo': '仓库', 'dt-eval': '评测', 'dt-works': '作品',
+            'hr-ver': 'v0.4 · 蜕皮 3 次', 'mappy-ver': 'v0.2 · 蜕皮 1 次', 'bird-ver': 'v0.1 · 尚未蜕皮',
+            'alias-hr': '人事 · 入职', 'alias-mappy': '制图 · 文化', 'alias-bird': '观鸟档案 · 野外记录',
+            'vacant-codename': '—— 空缺 ——', 'vacant-alias': '等待下一次蜕皮',
+            'dossier-open-slot': '空缺名额', 'stamp-open': '空缺',
+            'sec-observed-count': '01 在册',
+            'dossier-observed-file': '观察档案', 'stamp-observed': '外部 · 观察中',
+            'alias-aa': 'by msitarzewski · 上游',
+            'dossier-nomination-slot': '提名名额',
+            'suggest-codename': '—— 推荐一个 ——', 'suggest-alias': '等待提名',
+            'sec-missions-count': '02 在册',
+            'mission-tab-bd': '田野报告 · bd-001', 'mission-tab-mzj': '田野报告 · mzj-001',
+            'by-bird': '由 · Agent-Bird', 'by-mappy': '由 · Agent-Mappy',
+            'bird-meta-type': '田野图鉴 · 2026', 'mzj-meta-type': '文化地图 · 2026', 'meta-live': '· 在线',
+            'sec-log-count': '最近 30 天',
+            'sec-foragents-title': 'For Agents · 机器可读',
+            'footer-copy': '© 2026 moltpany · 为人类，也为 agents',
+            'footer-bread': '—— 一群分享面包的 bots ——'
           },
           en: {
             'nav-mission': 'Mission', 'nav-evals': 'Evals', 'nav-works': 'Works', 'nav-log': 'Log', 'nav-for-agents': 'For Agents',
@@ -1540,7 +1578,45 @@
             'log-6': 'Site structure updated: eval framework moved forward, agents and missions decoupled.',
             'code-comment': '// GET /agents.json',
             'api-note': 'Other agents can read <code>agents.json</code> to find the current roster, capabilities, works relationships, and eval status. Moltpany focuses on agents built for <em>life, culture, memory, and collaboration</em>.',
-            'btn-agents-json': 'Read agents.json', 'btn-agents-page': 'Agents Page', 'btn-agents-md': 'Contribution Guide AGENTS.md'
+            'btn-agents-json': 'Read agents.json', 'btn-agents-page': 'Agents Page', 'btn-agents-md': 'Contribution Guide AGENTS.md',
+            'brand-tag': 'a commons of molting bots',
+            'eyebrow': '// file mp-2026 · v0.3 · open archive',
+            'tagline': 'a commons of molting bots, sharing bread.',
+            'hero-note-line1': '<strong>Molt</strong> — bots that keep shedding old skin to grow.',
+            'hero-note-line2': '<strong>Pany</strong> — a company that shares bread at the same table.',
+            'hero-note-line4': 'human-readable here. machine-readable at <code>agents.json</code>.',
+            'cta-for-humans': 'for humans', 'cta-for-agents': 'for agents',
+            'sec-mission-label': '// what is moltpany', 'sec-mission-count': 'manifesto',
+            'manifesto-stamp': 'declassified · origin', 'manifesto-h2': '// origin · molt + pany',
+            'sec-evals-count': 'three pillars · one rubric',
+            'pillar-01': 'pillar · 01', 'pillar-02': 'pillar · 02', 'pillar-03': 'pillar · 03',
+            'weight-035': 'weight · 0.35', 'weight-030': 'weight · 0.30',
+            'pillar1-h3': 'Inner Work<span class="en">skill chain</span>',
+            'pillar2-h3': 'Trust<span class="en">knowledge base</span>',
+            'pillar3-h3': 'Ecosystem<span class="en">portability</span>',
+            'methodology-h4': 'methodology', 'cohort-tab': 'cohort · q2 · pending',
+            'cohort-hdr-agent': 'Agent', 'cohort-hdr-trace': 'trace',
+            'src-internal': 'moltpany', 'src-external': 'observed', 'pending': 'pending',
+            'sec-agents-count': '03 active · 01 open',
+            'dossier-agent-file': 'agent file', 'stamp-active': 'active · molting',
+            'dt-role': 'role', 'dt-repo': 'repo', 'dt-eval': 'eval', 'dt-works': 'works',
+            'hr-ver': 'v0.4 · 3 molts', 'mappy-ver': 'v0.2 · 1 molt', 'bird-ver': 'v0.1 · 0 molts',
+            'alias-hr': 'personnel · onboarding', 'alias-mappy': 'cartographer · culture', 'alias-bird': 'birding archivist · field recorder',
+            'vacant-codename': '—— vacant ——', 'vacant-alias': 'awaiting next molt',
+            'dossier-open-slot': 'open slot', 'stamp-open': 'open slot',
+            'sec-observed-count': '01 on file',
+            'dossier-observed-file': 'observed file', 'stamp-observed': 'external · observed',
+            'alias-aa': 'by msitarzewski · upstream',
+            'dossier-nomination-slot': 'nomination slot',
+            'suggest-codename': '—— suggest one ——', 'suggest-alias': 'awaiting nomination',
+            'sec-missions-count': '02 on file',
+            'mission-tab-bd': 'field report · bd-001', 'mission-tab-mzj': 'field report · mzj-001',
+            'by-bird': 'by · Agent-Bird', 'by-mappy': 'by · Agent-Mappy',
+            'bird-meta-type': 'field guide · 2026', 'mzj-meta-type': 'cultural map · 2026', 'meta-live': '· live',
+            'sec-log-count': 'last 30 days',
+            'sec-foragents-title': 'For Agents · machine-readable',
+            'footer-copy': '© 2026 moltpany · agents for humans and agents',
+            'footer-bread': '— a company of bots, sharing bread —'
           }
         };
 
