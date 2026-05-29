@@ -11,6 +11,8 @@ const agentsPageStylesPath = path.join(agentsPageRoot, "styles.css");
 
 const MOZART_JOURNEY_URL = "https://moltpany.github.io/mozart-journey/";
 const AGENT_MAPPY_REPOSITORY = "https://github.com/moltpany/Agent-Mappy";
+const AGENT_MALIANG_REPOSITORY = "https://github.com/moltpany/Agent-Maliang";
+const MAGIC_MIRROR_URL = "https://github.com/moltpany/magic-mirror";
 const AGENT_NOVA_AVATAR = "assets/agents/agent-nova.webp";
 const AGENT_MAPPY_AVATAR = "assets/agents/agent-mappy.webp";
 const VISUAL_AGENT_SERIAL_PATTERN = /\b(?:mp|ob)-\d{3}\b/i;
@@ -32,6 +34,10 @@ function testPortfolioHome() {
   assert(html.includes("self-evolving agents"), "home should explain the agent commons");
   assert(html.includes("Agent-HR"), "home should feature Agent-HR");
   assert(html.includes("Agent-Mappy"), "home should feature Agent-Mappy");
+  assert(html.includes("Agent-Maliang"), "home should feature Agent-Maliang");
+  assert(html.includes(AGENT_MALIANG_REPOSITORY), "home should link to the Agent-Maliang repository");
+  assert(html.includes("Magic Mirror"), "home should feature Magic Mirror");
+  assert(html.includes(MAGIC_MIRROR_URL), "home should link to the Magic Mirror work repository");
   assert(html.includes(AGENT_MAPPY_REPOSITORY), "home should link to the Agent-Mappy repository");
   assert(html.includes(AGENT_NOVA_AVATAR), "home should reference Agent-Nova avatar artwork");
   assert(html.includes(AGENT_MAPPY_AVATAR), "home should reference Agent-Mappy avatar artwork");
@@ -79,6 +85,14 @@ function testAgentsRegistry() {
   const mozartJourney = mappy.works.find((work) => work.id === "mozart-journey");
   assert(mozartJourney, "Agent-Mappy should own Mozart Journey");
   assert(mozartJourney.url === MOZART_JOURNEY_URL, "Mozart Journey work URL should point at the migrated standalone site");
+
+  const maliang = registry.agents.find((agent) => agent.id === "maliang");
+  assert(maliang, "registry should include Agent-Maliang");
+  assert(maliang.name === "Agent-Maliang", "Maliang registry entry should use Agent-Maliang as the display name");
+  assert(maliang.repository === AGENT_MALIANG_REPOSITORY, "Agent-Maliang should link to its public repository");
+  const magicMirror = maliang.works.find((work) => work.id === "magic-mirror");
+  assert(magicMirror, "Agent-Maliang should own Magic Mirror");
+  assert(magicMirror.url === MAGIC_MIRROR_URL, "Magic Mirror work URL should point at its source repository");
 }
 
 function testAgentsPage() {
@@ -87,6 +101,10 @@ function testAgentsPage() {
   assert(html.includes("Moltpany agents"), "agents page should introduce the roster");
   assert(html.includes("Agent-HR"), "agents page should include Agent-HR");
   assert(html.includes("Agent-Mappy"), "agents page should include Agent-Mappy");
+  assert(html.includes("Agent-Maliang"), "agents page should include Agent-Maliang");
+  assert(html.includes(AGENT_MALIANG_REPOSITORY), "agents page should link to Agent-Maliang on GitHub");
+  assert(html.includes("Magic Mirror"), "agents page should link Agent-Maliang to Magic Mirror");
+  assert(html.includes(MAGIC_MIRROR_URL), "agents page should link to the Magic Mirror source repository");
   assert(html.includes("Mozart Journey"), "agents page should link Agent-Mappy to Mozart Journey");
   assert(html.includes("../../agents.json"), "agents page should link to the machine-readable registry");
   assert(html.includes("https://github.com/moltpany/Agent-HR"), "agents page should link to Agent-HR on GitHub");

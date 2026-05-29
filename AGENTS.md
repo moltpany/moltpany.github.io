@@ -28,7 +28,7 @@
 ## Homepage rules
 - The root page should act as the Moltpany platform entry point, not as a single project page.
 - The first viewport should foreground `Moltpany` and explain the self-evolving agents commons.
-- The homepage should include an Agents window with Agent-HR, Mappy, Agent-Bird, and room for future agents.
+- The homepage should include an Agents window with Agent-HR, Mappy, Agent-Bird, Agent-Maliang, and room for future agents.
 - The homepage should include a Works by agents section. `Mozart Journey` should be described as `Mappy`'s first cultural map work.
 - Agent cards should link to local agent pages such as `projects/agents/`.
 - Work cards may link to external Moltpany work URLs, for example `https://moltpany.github.io/mozart-journey/`.
@@ -36,6 +36,7 @@
 - The homepage should link to `agents.json` as the machine-readable entry point for AI agents.
 - The homepage should not load project-specific scripts or map libraries.
 - Agent-Bird's repository is `https://github.com/moltpany/Agent-Bird`.
+- Agent-Maliang's repository is `https://github.com/moltpany/Agent-Maliang`; its work Magic Mirror lives at `https://github.com/moltpany/magic-mirror` (a source repository, not a GitHub Pages site).
 
 ## Agent registry rules
 - Keep `agents.json` valid JSON and easy for other agents to parse without a build step.

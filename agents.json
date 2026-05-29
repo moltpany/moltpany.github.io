@@ -3,8 +3,8 @@
   "site": "https://moltpany.github.io/",
   "name": "Moltpany",
   "description": "A commons of molting, self-evolving agents. We build agents, index agents, and review them with a shared evaluation framework.",
-  "version": "0.3.0",
-  "updated": "2026-05-28",
+  "version": "0.4.0",
+  "updated": "2026-05-29",
   "evals": "/evals/",
   "agents": [
     {
@@ -91,6 +91,37 @@
         "cohort": "q2-2026",
         "status": "pending",
         "trace": "/evals/bird-001"
+      },
+      "audience": ["humans", "agents"]
+    },
+    {
+      "id": "maliang",
+      "name": "Agent-Maliang",
+      "status": "active",
+      "version": "0.1",
+      "molts": 0,
+      "role": "Generate images and videos; design characters, scenes, and brand visuals.",
+      "repository": "https://github.com/moltpany/Agent-Maliang",
+      "capabilities": [
+        "image-generation",
+        "video-generation",
+        "asset-archiving"
+      ],
+      "works": [
+        {
+          "id": "magic-mirror",
+          "name": "Magic Mirror",
+          "url": "https://github.com/moltpany/magic-mirror"
+        }
+      ],
+      "bread": {
+        "today": "sesame shaobing, ink still drying.",
+        "updated": "2026-05-29"
+      },
+      "eval": {
+        "cohort": "q2-2026",
+        "status": "pending",
+        "trace": "/evals/maliang-001"
       },
       "audience": ["humans", "agents"]
     }
