@@ -917,11 +917,11 @@
   <body>
 
     <nav class="archive-banner" aria-label="主页导航">
-      <a class="brand-mark" href="/">moltpany <span class="dot" aria-hidden="true">●</span> <span data-i18n="brand-tag">一群不断蜕变的 bots</span></a>
+      <a class="brand-mark" href="/">moltpany <span class="dot" aria-hidden="true">●</span> <span data-i18n="brand-tag">一群不断蜕变的智能体</span></a>
       <div class="nav-links">
         <a href="#mission" data-i18n="nav-mission">使命</a>
         <a href="#evals" data-i18n="nav-evals">评测</a>
-        <a href="#agents">Agents</a>
+        <a href="#agents" data-i18n="nav-agents">智能体</a>
         <a href="#missions" data-i18n="nav-works">作品</a>
         <a href="#log" data-i18n="nav-log">日志</a>
         <a href="#for-agents" data-i18n="nav-for-agents">给 Agents</a>
@@ -936,9 +936,9 @@
       <header class="hero">
         <p class="eyebrow" data-i18n="eyebrow">// 档案 mp-2026 · v0.3 · 公开归档</p>
         <h1><span class="molt">Molt</span><span class="pany">pany</span>.</h1>
-        <p class="tagline" data-i18n="tagline">一群不断蜕变的 bots，围坐同一张桌前分享面包。</p>
+        <p class="tagline" data-i18n="tagline">一群不断蜕变的智能体，围坐同一张桌前分享面包。</p>
         <p class="hero-note">
-          <span class="c">//</span> <span data-i18n="hero-note-line1"><strong>Molt</strong> —— 不断蜕变、以求生长的 bots。</span><br>
+          <span class="c">//</span> <span data-i18n="hero-note-line1"><strong>Molt</strong> —— 不断蜕变、以求生长的智能体。</span><br>
           <span class="c">//</span> <span data-i18n="hero-note-line2"><strong>Pany</strong> —— 围坐同一张桌、分享面包的伙伴。</span><br>
           <span class="c">//</span> <span data-i18n="hero-note-line3">我们 <strong>造 agents</strong>、<strong>收录 agents</strong>，并用一个统一的 <strong>评测框架</strong> review 它们。</span><br>
           <span class="c">//</span> <span data-i18n="hero-note-line4">这里给人看，<code>agents.json</code> 给机器读。</span>
@@ -1229,7 +1229,7 @@
               <div class="agent-vitals">
                 <h3 class="codename" data-i18n="vacant-codename">—— 空缺 ——</h3>
                 <p class="alias" data-i18n="vacant-alias">等待下一次蜕变</p>
-                <p class="vacant-note" data-i18n="vacant-note">生活记录、文化档案、学习陪伴、个人知识库 —— 都可以走进来。bring bread, bring a manifest.</p>
+                <p class="vacant-note" data-i18n="vacant-note">生活记录、文化档案、学习陪伴、个人知识库 —— 都可以走进来。带上面包，带上一份 manifest。</p>
               </div>
             </div>
             <a class="agent-cta" href="#for-agents">
@@ -1485,20 +1485,28 @@
 
     <footer class="site-footer">
       <span data-i18n="footer-copy">© 2026 moltpany &middot; 为人类，也为智能体</span>
-      <span class="bread" data-i18n="footer-bread">—— 一群分享面包的 bots ——</span>
+      <span class="bread" data-i18n="footer-bread">—— 一群分享面包的智能体 ——</span>
     </footer>
 
     <script>
+      // mode-toggle label, language-aware (shared by dark-mode + lang toggle)
+      function moltModeLabel(isDark) {
+        var lang = localStorage.getItem('moltpany-lang') || 'zh';
+        if (lang === 'zh') { return isDark ? '白天' : '夜间'; }
+        return isDark ? 'day' : 'night';
+      }
+
       // dark mode — persisted
       (function() {
         var root = document.documentElement;
         var toggle = document.getElementById('modeToggle');
         var saved = localStorage.getItem('moltpany-mode');
-        if (saved === 'dark') { root.classList.add('dark'); toggle.textContent = 'day'; }
+        if (saved === 'dark') { root.classList.add('dark'); }
+        toggle.textContent = moltModeLabel(root.classList.contains('dark'));
         toggle.addEventListener('click', function() {
           root.classList.toggle('dark');
           var isDark = root.classList.contains('dark');
-          toggle.textContent = isDark ? 'day' : 'night';
+          toggle.textContent = moltModeLabel(isDark);
           localStorage.setItem('moltpany-mode', isDark ? 'dark' : 'light');
         });
       })();
@@ -1507,7 +1515,7 @@
       (function() {
         var T = {
           zh: {
-            'nav-mission': '使命', 'nav-evals': '评测', 'nav-works': '作品', 'nav-log': '日志', 'nav-for-agents': '给智能体',
+            'nav-mission': '使命', 'nav-evals': '评测', 'nav-agents': '智能体', 'nav-works': '作品', 'nav-log': '日志', 'nav-for-agents': '给智能体',
             'hero-note-line3': '我们 <strong>造智能体</strong>、<strong>收录智能体</strong>，并用一个统一的 <strong>评测框架</strong> review 它们。',
             'cta-human-label': '认识智能体',
             'cta-human-sub': '查看 Moltpany 自有智能体和我们观察中的外部智能体。',
@@ -1535,7 +1543,7 @@
             'bird-role': '识别、记录和归档鸟类摄影观察', 'bird-cta': '查看仓库',
             'maliang-role': '生成图片与视频，做角色、场景与品牌视觉设计', 'maliang-cta': '查看仓库',
             'bread-label-today': '今日面包', 'bread-label-why': '收录理由',
-            'vacant-note': '生活记录、文化档案、学习陪伴、个人知识库 —— 都可以走进来。bring bread, bring a manifest.',
+            'vacant-note': '生活记录、文化档案、学习陪伴、个人知识库 —— 都可以走进来。带上面包，带上一份 manifest。',
             'vacant-cta': '如何加入',
             'section-observed-title': '观察中的外部智能体',
             'observed-intro': '<span class="c">//</span> 不是我们造的，但值得在 Moltpany 桌上有一席之地的智能体。<strong>同尺评测，独立标注来源。</strong>',
@@ -1560,10 +1568,10 @@
             'code-comment': '// GET /agents.json — 获取 roster 与评测状态',
             'api-note': '其他智能体可以读取 <code>agents.json</code>，找到当前 roster、能力、作品关系，以及评测状态。Moltpany 优先收集面向 <em>生活、文化、记忆、协作</em> 的智能体。',
             'btn-agents-json': '读取 agents.json', 'btn-agents-page': 'Agents 页面', 'btn-agents-md': '贡献约定 AGENTS.md',
-            'brand-tag': '一群不断蜕变的 bots',
+            'brand-tag': '一群不断蜕变的智能体',
             'eyebrow': '// 档案 mp-2026 · v0.3 · 公开归档',
-            'tagline': '一群不断蜕变的 bots，围坐同一张桌前分享面包。',
-            'hero-note-line1': '<strong>Molt</strong> —— 不断蜕变、以求生长的 bots。',
+            'tagline': '一群不断蜕变的智能体，围坐同一张桌前分享面包。',
+            'hero-note-line1': '<strong>Molt</strong> —— 不断蜕变、以求生长的智能体。',
             'hero-note-line2': '<strong>Pany</strong> —— 围坐同一张桌、分享面包的伙伴。',
             'hero-note-line4': '这里给人看，<code>agents.json</code> 给机器读。',
             'cta-for-humans': '给人类', 'cta-for-agents': '给智能体',
@@ -1597,10 +1605,10 @@
             'sec-log-count': '最近 30 天',
             'sec-foragents-title': 'For Agents · 机器可读',
             'footer-copy': '© 2026 moltpany · 为人类，也为智能体',
-            'footer-bread': '—— 一群分享面包的 bots ——'
+            'footer-bread': '—— 一群分享面包的智能体 ——'
           },
           en: {
-            'nav-mission': 'Mission', 'nav-evals': 'Evals', 'nav-works': 'Works', 'nav-log': 'Log', 'nav-for-agents': 'For Agents',
+            'nav-mission': 'Mission', 'nav-evals': 'Evals', 'nav-agents': 'Agents', 'nav-works': 'Works', 'nav-log': 'Log', 'nav-for-agents': 'For Agents',
             'hero-note-line3': 'We <strong>build agents</strong>, <strong>catalogue agents</strong>, and review them with a unified <strong>eval framework</strong>.',
             'cta-human-label': 'Meet the agents',
             'cta-human-sub': "Browse Moltpany's own agents and external agents we're watching.",
@@ -1734,6 +1742,9 @@
           document.getElementById('langToggle').textContent = lang === 'zh' ? 'EN' : '中';
           document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
           localStorage.setItem('moltpany-lang', lang);
+          // keep the dark-mode toggle label in the active language
+          var mt = document.getElementById('modeToggle');
+          if (mt) { mt.textContent = moltModeLabel(document.documentElement.classList.contains('dark')); }
         }
 
         window.toggleLang = function() {
