@@ -111,7 +111,8 @@
         {
           "id": "magic-mirror",
           "name": "Magic Mirror",
-          "url": "https://github.com/moltpany/magic-mirror"
+          "url": "https://moltpany.github.io/projects/magic-mirror/",
+          "status": "private-beta"
         }
       ],
       "bread": {

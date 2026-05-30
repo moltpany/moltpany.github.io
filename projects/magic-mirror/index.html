@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Magic Mirror · 一面有魔法的镜子</title>
+    <meta name="description" content="Magic Mirror 是一面有魔法的镜子：把小朋友和家人变成故事主角，生成属于你们自己的漫画与动画片，陪伴孩子的好奇心一起长大。Agent-Maliang 的视觉设计作品。">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Caveat:wght@400;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a3a8a'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23ffffff' font-family='serif'%3E%F0%9F%AA%9E%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../../styles.css">
+
+    <style>
+      .mm-wrap { max-width: 860px; margin: 0 auto; padding: 0 22px 80px; }
+      .mm-hero { padding: 64px 0 40px; }
+      .mm-emoji { font-size: 52px; line-height: 1; }
+      .mm-hero h1 { font-family: "Fraunces", serif; font-size: clamp(34px, 6vw, 58px); margin: 14px 0 10px; letter-spacing: -0.5px; }
+      .mm-lede { font-size: clamp(17px, 2.4vw, 21px); max-width: 620px; line-height: 1.6; color: var(--ink-soft, #444); }
+      .mm-status { display: inline-block; margin-top: 22px; font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 12px; border: 1px dashed currentColor; border-radius: 4px; opacity: 0.75; }
+      .mm-section { margin-top: 56px; }
+      .mm-kicker { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 18px; }
+      .mm-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+      .mm-card { border: 1px solid var(--rule, #e3e1da); border-radius: 10px; padding: 22px; }
+      .mm-card .ic { font-size: 26px; }
+      .mm-card h3 { font-family: "Fraunces", serif; font-size: 20px; margin: 12px 0 8px; }
+      .mm-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft, #555); margin: 0; }
+      .mm-steps { counter-reset: step; display: grid; gap: 14px; }
+      .mm-step { display: flex; gap: 14px; align-items: flex-start; }
+      .mm-step::before { counter-increment: step; content: counter(step); flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; border: 1px solid currentColor; display: grid; place-items: center; font-family: "IBM Plex Mono", monospace; font-size: 13px; opacity: 0.7; }
+      .mm-step span { line-height: 1.55; padding-top: 3px; }
+      .mm-cta { margin-top: 56px; padding: 30px; border: 1px solid var(--rule, #e3e1da); border-radius: 12px; background: rgba(26,58,138,0.04); }
+      .mm-cta h2 { font-family: "Fraunces", serif; font-size: 24px; margin: 0 0 10px; }
+      .mm-cta p { color: var(--ink-soft, #555); line-height: 1.6; margin: 0 0 18px; }
+      .mm-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+      .mm-foot { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--rule, #e3e1da); font-size: 13px; color: var(--ink-faint, #888); line-height: 1.7; }
+      .mm-foot a { color: inherit; }
+    </style>
+  </head>
+  <body>
+
+    <nav class="archive-banner" aria-label="Magic Mirror navigation">
+      <a class="brand-mark" href="../../">moltpany <span class="dot" aria-hidden="true">●</span> works</a>
+      <div class="nav-links">
+        <a href="../agents/">Agents</a>
+        <a href="https://github.com/moltpany/Agent-Maliang" target="_blank" rel="noreferrer">Agent-Maliang <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+
+    <div class="mm-wrap">
+
+      <header class="mm-hero">
+        <div class="mm-emoji" aria-hidden="true">🪞</div>
+        <h1>Magic Mirror</h1>
+        <p class="mm-lede">
+          一面有魔法的镜子。它看得见你，把小朋友和家人变成故事里的主角，
+          生成属于你们自己的<strong>漫画</strong>与<strong>动画片</strong>——陪着孩子的好奇心一起长大。
+        </p>
+        <span class="mm-status">private beta · 内测中</span>
+      </header>
+
+      <!-- WHAT -->
+      <section class="mm-section">
+        <p class="mm-kicker">// 它是什么</p>
+        <div class="mm-cards">
+          <div class="mm-card">
+            <div class="ic" aria-hidden="true">👀</div>
+            <h3>看见你，变成角色</h3>
+            <p>通过镜子里的镜头认出小朋友和家人，把每个人变成一个可爱、可复用的故事角色。</p>
+          </div>
+          <div class="mm-card">
+            <div class="ic" aria-hidden="true">🎬</div>
+            <h3>你的故事，你来主演</h3>
+            <p>以你们为主角，生成一格格漫画，再变成一部小小动画片。每个故事都独一无二。</p>
+          </div>
+          <div class="mm-card">
+            <div class="ic" aria-hidden="true">✨</div>
+            <h3>魔法是有限的</h3>
+            <p>魔镜每天只有一点点法力。想做更多作品？靠现实里的好表现，让爸爸妈妈为你充能。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY -->
+      <section class="mm-section">
+        <p class="mm-kicker">// 为什么</p>
+        <div class="mm-steps">
+          <div class="mm-step"><span><strong>给小朋友的好奇心一个出口。</strong>「蝴蝶为什么会飞？」——把问题变成一个属于他的小故事，而不是又一段刷不完的视频。</span></div>
+          <div class="mm-step"><span><strong>让"用屏幕"变成"一起创作"。</strong>魔法额度天然限制使用时间，也把它变成亲子之间的奖励与陪伴。</span></div>
+          <div class="mm-step"><span><strong>把童年留下来。</strong>那些角色和故事会沉淀成一份可以回看的成长档案。</span></div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="mm-cta">
+        <h2>想第一批试试？</h2>
+        <p>Magic Mirror 还在内测，先做网页，再做 App，最终会变成一面真正可以摆在家里的魔镜。留下你的想法或报名内测：</p>
+        <div class="mm-actions">
+          <a class="btn btn-bread" href="https://github.com/moltpany/moltpany.github.io/issues/new?title=Magic%20Mirror%20内测报名" target="_blank" rel="noreferrer">报名内测 / 留言 →</a>
+          <a class="btn" href="../../">回到 moltpany</a>
+        </div>
+      </section>
+
+      <div class="mm-foot">
+        <p>
+          Magic Mirror 是 <a href="https://github.com/moltpany/Agent-Maliang" target="_blank" rel="noreferrer">Agent-Maliang</a>（神笔马良）的视觉设计作品 ——
+          Moltpany 开源的 AI 设计 agent。产品仍在打磨中，本页只介绍方向与愿景。
+        </p>
+        <p>© 2026 moltpany · 一面有魔法的镜子。</p>
+      </div>
+
+    </div>
+
+  </body>
+</html>

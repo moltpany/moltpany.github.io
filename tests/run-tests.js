@@ -12,7 +12,7 @@ const agentsPageStylesPath = path.join(agentsPageRoot, "styles.css");
 const MOZART_JOURNEY_URL = "https://moltpany.github.io/mozart-journey/";
 const AGENT_MAPPY_REPOSITORY = "https://github.com/moltpany/Agent-Mappy";
 const AGENT_MALIANG_REPOSITORY = "https://github.com/moltpany/Agent-Maliang";
-const MAGIC_MIRROR_URL = "https://github.com/moltpany/magic-mirror";
+const MAGIC_MIRROR_URL = "https://moltpany.github.io/projects/magic-mirror/";
 const AGENT_NOVA_AVATAR = "assets/agents/agent-nova.webp";
 const AGENT_MAPPY_AVATAR = "assets/agents/agent-mappy.webp";
 const VISUAL_AGENT_SERIAL_PATTERN = /\b(?:mp|ob)-\d{3}\b/i;
@@ -104,7 +104,7 @@ function testAgentsPage() {
   assert(html.includes("Agent-Maliang"), "agents page should include Agent-Maliang");
   assert(html.includes(AGENT_MALIANG_REPOSITORY), "agents page should link to Agent-Maliang on GitHub");
   assert(html.includes("Magic Mirror"), "agents page should link Agent-Maliang to Magic Mirror");
-  assert(html.includes(MAGIC_MIRROR_URL), "agents page should link to the Magic Mirror source repository");
+  assert(html.includes(MAGIC_MIRROR_URL), "agents page should link to the Magic Mirror public landing page");
   assert(html.includes("Mozart Journey"), "agents page should link Agent-Mappy to Mozart Journey");
   assert(html.includes("../../agents.json"), "agents page should link to the machine-readable registry");
   assert(html.includes("https://github.com/moltpany/Agent-HR"), "agents page should link to Agent-HR on GitHub");
@@ -117,7 +117,27 @@ function testAgentsPage() {
   assert(styles.includes(".registry-panel"), "agents page should style the registry panel");
 }
 
-const tests = [testPortfolioHome, testAgentsRegistry, testAgentsPage];
+const PRIVATE_MAGIC_MIRROR_REPO = "github.com/moltpany/magic-mirror";
+const magicMirrorLandingPath = path.join(root, "projects", "magic-mirror", "index.html");
+
+function testMagicMirrorLanding() {
+  // The product repo is private; the public site must only expose a what/why landing page,
+  // never link to the private source repository.
+  assert(fs.existsSync(magicMirrorLandingPath), "Magic Mirror public landing page should exist");
+  const landing = fs.readFileSync(magicMirrorLandingPath, "utf8");
+  assert(landing.includes("Magic Mirror"), "landing page should introduce Magic Mirror");
+  assert(landing.includes("private beta"), "landing page should mark Magic Mirror as private beta");
+  assert(!landing.includes(PRIVATE_MAGIC_MIRROR_REPO), "landing page should not expose the private product repository");
+
+  const home = fs.readFileSync(portfolioIndexPath, "utf8");
+  const agentsPage = fs.readFileSync(agentsPageIndexPath, "utf8");
+  const registryRaw = fs.readFileSync(agentsRegistryPath, "utf8");
+  assert(!home.includes(PRIVATE_MAGIC_MIRROR_REPO), "home should not link to the private Magic Mirror repository");
+  assert(!agentsPage.includes(PRIVATE_MAGIC_MIRROR_REPO), "agents page should not link to the private Magic Mirror repository");
+  assert(!registryRaw.includes(PRIVATE_MAGIC_MIRROR_REPO), "agents.json should not expose the private Magic Mirror repository");
+}
+
+const tests = [testPortfolioHome, testAgentsRegistry, testAgentsPage, testMagicMirrorLanding];
 
 (async () => {
   for (const test of tests) {

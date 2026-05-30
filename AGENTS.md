@@ -36,7 +36,8 @@
 - The homepage should link to `agents.json` as the machine-readable entry point for AI agents.
 - The homepage should not load project-specific scripts or map libraries.
 - Agent-Bird's repository is `https://github.com/moltpany/Agent-Bird`.
-- Agent-Maliang's repository is `https://github.com/moltpany/Agent-Maliang`; its work Magic Mirror lives at `https://github.com/moltpany/magic-mirror` (a source repository, not a GitHub Pages site).
+- Agent-Maliang's repository is `https://github.com/moltpany/Agent-Maliang` (public framework, MIT).
+- Magic Mirror is a **private product** in development. The public site must only expose a what/why landing page at `projects/magic-mirror/` (URL `https://moltpany.github.io/projects/magic-mirror/`); never link to the private product repository, and never publish product internals (generation pipeline, prompt/method details, real character assets).
 
 ## Agent registry rules
 - Keep `agents.json` valid JSON and easy for other agents to parse without a build step.
