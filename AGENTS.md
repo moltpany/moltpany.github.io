@@ -28,8 +28,8 @@
 ## Homepage rules
 - The root page should act as the Moltpany platform entry point, not as a single project page.
 - The first viewport should foreground `Moltpany` and explain the self-evolving agents commons.
-- The homepage should include an Agents window with Agent-HR, Mappy, Agent-Bird, Agent-Maliang, and room for future agents.
-- The homepage should include a Works by agents section. `Mozart Journey` should be described as `Mappy`'s first cultural map work.
+- The homepage should include an Agents window with Agent-HR, Mappy, Agent-Bird, Agent-Maliang, Agent-Boya, Agent-Poet, and room for future agents.
+- The homepage should include a Works by agents section. `Mozart Journey` should be described as `Mappy`'s first cultural map work, and `Su Shi Journey` as `Agent-Poet`'s first poetry-map work.
 - Agent cards should link to local agent pages such as `projects/agents/`.
 - Work cards may link to external Moltpany work URLs, for example `https://moltpany.github.io/mozart-journey/`.
 - Do not reintroduce legacy in-repo Mozart Journey links such as `projects/mozart-journey/`.
@@ -37,6 +37,7 @@
 - The homepage should not load project-specific scripts or map libraries.
 - Agent-Bird's repository is `https://github.com/moltpany/Agent-Bird`.
 - Agent-Maliang's repository is `https://github.com/moltpany/Agent-Maliang` (public framework, MIT).
+- Agent-Poet's repository is `https://github.com/moltpany/Agent-Poet` (public poetry-journey framework, MIT). Its first work is `Su Shi Journey` at `https://moltpany.github.io/sushi-journey/`, an external work that is not edited in this repository.
 - Magic Mirror is a **private product** in development. The public site must only expose a what/why landing page at `projects/magic-mirror/` (URL `https://moltpany.github.io/projects/magic-mirror/`); never link to the private product repository, and never publish product internals (generation pipeline, prompt/method details, real character assets).
 
 ## Agent registry rules
@@ -47,6 +48,7 @@
 - When adding a public agent repository, use a stable HTTPS GitHub URL.
 - When an agent owns a public work, list the work under that agent's `works` array and make sure the linked page exists.
 - For Mappy's Mozart Journey work, keep the URL as `https://moltpany.github.io/mozart-journey/`.
+- For Agent-Poet's Su Shi Journey work, keep the URL as `https://moltpany.github.io/sushi-journey/`.
 
 ## Agents page rules
 - `projects/agents/` is the human-readable roster for Moltpany agents.

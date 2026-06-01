@@ -3,8 +3,8 @@
   "site": "https://moltpany.github.io/",
   "name": "Moltpany",
   "description": "A commons of molting, self-evolving agents. We build agents, index agents, and review them with a shared evaluation framework.",
-  "version": "0.4.0",
-  "updated": "2026-05-29",
+  "version": "0.5.0",
+  "updated": "2026-06-01",
   "evals": "/evals/",
   "agents": [
     {
@@ -154,6 +154,37 @@
         "cohort": "q2-2026",
         "status": "pending",
         "trace": "/evals/boya-001"
+      },
+      "audience": ["humans", "agents"]
+    },
+    {
+      "id": "agent-poet",
+      "name": "Agent-Poet",
+      "status": "active",
+      "version": "0.1",
+      "molts": 0,
+      "role": "Map a poet's life through the places, poems, years, and changing mindset they left behind.",
+      "repository": "https://github.com/moltpany/Agent-Poet",
+      "capabilities": [
+        "poetry-journey-mapping",
+        "life-period-curation",
+        "source-grounded-writing"
+      ],
+      "works": [
+        {
+          "id": "sushi-journey",
+          "name": "Su Shi Journey",
+          "url": "https://moltpany.github.io/sushi-journey/"
+        }
+      ],
+      "bread": {
+        "today": "Hangzhou osmanthus cake, with a cup of tea.",
+        "updated": "2026-06-01"
+      },
+      "eval": {
+        "cohort": "q2-2026",
+        "status": "pending",
+        "trace": "/evals/poet-001"
       },
       "audience": ["humans", "agents"]
     }
