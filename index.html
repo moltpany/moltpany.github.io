@@ -584,17 +584,16 @@
         object-fit: cover;
       }
       .photo.agent-avatar {
-        width: 76px;
-        height: 76px;
+        width: 72px;
+        height: 72px;
         align-self: center;
+        flex-shrink: 0;
         border: none;
-        border-radius: 14px;
+        border-radius: 16px;
         overflow: hidden;
         background: transparent;
-        box-shadow: 0 3px 10px rgba(120, 30, 20, 0.18);
       }
-      .photo.agent-avatar svg.seal { width: 100%; height: 100%; display: block; }
-      .seal-char { font-family: 'Songti SC', 'Noto Serif SC', 'SimSun', 'STSong', serif; font-weight: 700; }
+      .photo.agent-avatar svg { width: 100%; height: 100%; display: block; }
       .photo.photo-empty { border-style: dashed; background: transparent; color: var(--ink-faint); }
 
       .agent-vitals { flex: 1; min-width: 0; }
@@ -1105,11 +1104,15 @@
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
-                <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="伯乐 印">
-                  <rect x="3" y="3" width="94" height="94" rx="13" fill="#b8392c"/>
-                  <rect x="9.5" y="9.5" width="81" height="81" rx="8" fill="none" stroke="#f4ede0" stroke-width="1.5" opacity="0.4"/>
-                  <text class="seal-char" x="50" y="46" text-anchor="middle" font-size="37" fill="#f4ede0">伯</text>
-                  <text class="seal-char" x="50" y="87" text-anchor="middle" font-size="37" fill="#f4ede0">乐</text>
+                <svg viewBox="0 0 100 100" fill="none" role="img" aria-label="伯乐">
+                  <rect width="100" height="100" rx="18" fill="var(--paper-tab)"/>
+                  <circle cx="50" cy="50" r="26" stroke="var(--royal)" stroke-width="3"/>
+                  <circle cx="50" cy="50" r="13" stroke="var(--royal)" stroke-width="2.5" stroke-dasharray="4 3"/>
+                  <circle cx="50" cy="50" r="5"  fill="var(--royal)"/>
+                  <line x1="22" y1="50" x2="16" y2="50" stroke="var(--royal)" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="84" y1="50" x2="78" y2="50" stroke="var(--royal)" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="50" y1="78" x2="50" y2="84" stroke="var(--royal)" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="50" y1="16" x2="50" y2="22" stroke="var(--royal)" stroke-width="2.5" stroke-linecap="round"/>
                 </svg>
               </div>
               <div class="agent-vitals">
@@ -1138,11 +1141,10 @@
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
-                <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="图钉 印">
-                  <rect x="3" y="3" width="94" height="94" rx="13" fill="#b8392c"/>
-                  <rect x="9.5" y="9.5" width="81" height="81" rx="8" fill="none" stroke="#f4ede0" stroke-width="1.5" opacity="0.4"/>
-                  <text class="seal-char" x="50" y="46" text-anchor="middle" font-size="37" fill="#f4ede0">图</text>
-                  <text class="seal-char" x="50" y="87" text-anchor="middle" font-size="37" fill="#f4ede0">钉</text>
+                <svg viewBox="0 0 100 100" fill="none" role="img" aria-label="图钉">
+                  <rect width="100" height="100" rx="18" fill="var(--paper-tab)"/>
+                  <path d="M50 82 Q30 58 30 44 A20 20 0 1 1 70 44 Q70 58 50 82 Z" fill="var(--royal)" opacity="0.15" stroke="var(--royal)" stroke-width="2.5" stroke-linejoin="round"/>
+                  <circle cx="50" cy="42" r="9" fill="var(--royal)"/>
                 </svg>
               </div>
               <div class="agent-vitals">
@@ -1172,11 +1174,11 @@
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
-                <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="咕咕 印">
-                  <rect x="3" y="3" width="94" height="94" rx="13" fill="#b8392c"/>
-                  <rect x="9.5" y="9.5" width="81" height="81" rx="8" fill="none" stroke="#f4ede0" stroke-width="1.5" opacity="0.4"/>
-                  <text class="seal-char" x="50" y="46" text-anchor="middle" font-size="37" fill="#f4ede0">咕</text>
-                  <text class="seal-char" x="50" y="87" text-anchor="middle" font-size="37" fill="#f4ede0">咕</text>
+                <svg viewBox="0 0 100 100" fill="none" role="img" aria-label="咕咕">
+                  <rect width="100" height="100" rx="18" fill="var(--paper-tab)"/>
+                  <path d="M18 54 Q32 30 50 42 Q68 30 82 54" stroke="var(--royal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M30 58 Q40 44 50 50 Q60 44 70 58" stroke="var(--royal)" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+                  <circle cx="50" cy="26" r="7" fill="var(--bread)" opacity="0.75"/>
                 </svg>
               </div>
               <div class="agent-vitals">
@@ -1206,11 +1208,12 @@
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
-                <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="马良 印">
-                  <rect x="3" y="3" width="94" height="94" rx="13" fill="#b8392c"/>
-                  <rect x="9.5" y="9.5" width="81" height="81" rx="8" fill="none" stroke="#f4ede0" stroke-width="1.5" opacity="0.4"/>
-                  <text class="seal-char" x="50" y="46" text-anchor="middle" font-size="37" fill="#f4ede0">马</text>
-                  <text class="seal-char" x="50" y="87" text-anchor="middle" font-size="37" fill="#f4ede0">良</text>
+                <svg viewBox="0 0 100 100" fill="none" role="img" aria-label="马良">
+                  <rect width="100" height="100" rx="18" fill="var(--paper-tab)"/>
+                  <rect x="22" y="28" width="44" height="34" rx="3" stroke="var(--royal)" stroke-width="2.5"/>
+                  <line x1="54" y1="60" x2="74" y2="78" stroke="var(--royal)" stroke-width="5" stroke-linecap="round"/>
+                  <line x1="54" y1="60" x2="68" y2="46" stroke="var(--royal)" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="74" cy="78" r="4" fill="var(--bread)" opacity="0.8"/>
                 </svg>
               </div>
               <div class="agent-vitals">
@@ -1240,11 +1243,12 @@
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
-                <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="伯牙 印">
-                  <rect x="3" y="3" width="94" height="94" rx="13" fill="#b8392c"/>
-                  <rect x="9.5" y="9.5" width="81" height="81" rx="8" fill="none" stroke="#f4ede0" stroke-width="1.5" opacity="0.4"/>
-                  <text class="seal-char" x="50" y="46" text-anchor="middle" font-size="37" fill="#f4ede0">伯</text>
-                  <text class="seal-char" x="50" y="87" text-anchor="middle" font-size="37" fill="#f4ede0">牙</text>
+                <svg viewBox="0 0 100 100" fill="none" role="img" aria-label="伯牙">
+                  <rect width="100" height="100" rx="18" fill="var(--paper-tab)"/>
+                  <line x1="26" y1="38" x2="74" y2="38" stroke="var(--royal)" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="32" y1="50" x2="68" y2="50" stroke="var(--royal)" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="20" y1="62" x2="80" y2="62" stroke="var(--royal)" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M46 28 L54 28 L54 72 L46 72 Z" fill="var(--royal)" opacity="0.08"/>
                 </svg>
               </div>
               <div class="agent-vitals">
@@ -1274,11 +1278,13 @@
             </div>
             <div class="agent-card-body">
               <div class="photo agent-avatar">
-                <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="诗人 印">
-                  <rect x="3" y="3" width="94" height="94" rx="13" fill="#b8392c"/>
-                  <rect x="9.5" y="9.5" width="81" height="81" rx="8" fill="none" stroke="#f4ede0" stroke-width="1.5" opacity="0.4"/>
-                  <text class="seal-char" x="50" y="46" text-anchor="middle" font-size="37" fill="#f4ede0">诗</text>
-                  <text class="seal-char" x="50" y="87" text-anchor="middle" font-size="37" fill="#f4ede0">人</text>
+                <svg viewBox="0 0 100 100" fill="none" role="img" aria-label="诗人">
+                  <rect width="100" height="100" rx="18" fill="var(--paper-tab)"/>
+                  <line x1="30" y1="30" x2="70" y2="30" stroke="var(--royal)" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="30" y1="42" x2="70" y2="42" stroke="var(--royal)" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="30" y1="54" x2="56" y2="54" stroke="var(--royal)" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M62 54 L74 24 L56 54 Z" fill="var(--royal)" opacity="0.9"/>
+                  <line x1="60" y1="58" x2="54" y2="74" stroke="var(--royal)" stroke-width="2" stroke-linecap="round"/>
                 </svg>
               </div>
               <div class="agent-vitals">
