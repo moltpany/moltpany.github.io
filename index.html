@@ -349,6 +349,15 @@
       .eval-legend .lvl { color: var(--royal); font-weight: 600; }
       .eval-legend strong { color: var(--ink-primary); font-weight: 600; }
 
+      /* Synthetic italic on CJK glyphs collides and reads poorly. Keep emphasis
+         upright in Chinese (colour + weight still carry it); restore the
+         Fraunces italic only in English mode, where it looks intentional. */
+      html[lang="zh-CN"] em,
+      html[lang="zh-CN"] .eval-intro strong,
+      html[lang="zh-CN"] .pillar h3 .en {
+        font-style: normal;
+      }
+
       .eval-pillars {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
