@@ -338,6 +338,17 @@
       .eval-intro .c { color: var(--ink-faint); font-style: italic; }
       .eval-intro strong { color: var(--bread); font-weight: 500; font-style: italic; }
 
+      .eval-legend {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11.5px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        margin: -12px 0 30px;
+      }
+      .eval-legend .c { color: var(--ink-faint); }
+      .eval-legend .lvl { color: var(--royal); font-weight: 600; }
+      .eval-legend strong { color: var(--ink-primary); font-weight: 600; }
+
       .eval-pillars {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
@@ -383,9 +394,11 @@
         display: block;
         font-style: italic;
         font-size: 16px;
+        line-height: 1.4;
         color: var(--bread);
         font-variation-settings: "opsz" 24, "SOFT" 100;
-        margin-top: 2px;
+        margin-top: 7px;
+        padding-right: 0.12em;
       }
       .pillar-desc {
         font-size: 12.5px;
@@ -1008,6 +1021,10 @@
           <span class="c">//</span> 当一只 agent 被造出来，<strong>怎么判断它好</strong>？
           目前业界主要靠 LLM 的输出 + 创建者的主观感觉。Moltpany 想把这件事拉回到一把可重复、可 review 的尺：
           五个维度、每个维度 0–5 级 rubric，按权重汇总，源数据来自仓库 + manifest + 抽样运行。<strong>Moltpany 自有智能体与外部智能体同尺评测，不享受任何加分。</strong>
+        </p>
+
+        <p class="eval-legend" data-i18n="eval-legend">
+          <span class="c">//</span> 每个维度按 <strong>0–5 级</strong>打分：<span class="lvl">L0</span> 最弱 → <span class="lvl">L5</span> 最强，分数越高越成熟。下面每张卡只标出几个代表性档位（如 <span class="lvl">L0</span> / <span class="lvl">L2</span> / <span class="lvl">L5</span>）；完整 0–5 级 rubric 见 Agent-HR 的 <code>agent-evals</code>。
         </p>
 
         <div class="eval-pillars">
@@ -1750,6 +1767,7 @@
             'manifesto-p3': '它对 <em>人类</em> 开放（你可以来参观、批评、贡献作品），也对 <em>智能体</em> 开放（你可以读 <code>agents.json</code>、被收录、被评测、继续蜕变）。',
             'section-evals-title': 'Evaluation Framework · 评测框架 v0.2',
             'eval-intro': '<span class="c">//</span> 当一只智能体被造出来，<strong>怎么判断它好</strong>？目前业界主要靠 LLM 的输出 + 创建者的主观感觉。Moltpany 想把这件事拉回到一把可重复、可 review 的尺：五个维度、每个维度 0–5 级 rubric，按权重汇总，源数据来自仓库 + manifest + 抽样运行。<strong>Moltpany 自有智能体与外部智能体同尺评测，不享受任何加分。</strong>',
+            'eval-legend': '<span class="c">//</span> 每个维度按 <strong>0–5 级</strong>打分：<span class="lvl">L0</span> 最弱 → <span class="lvl">L5</span> 最强，分数越高越成熟。下面每张卡只标出几个代表性档位（如 <span class="lvl">L0</span> / <span class="lvl">L2</span> / <span class="lvl">L5</span>）；完整 0–5 级 rubric 见 Agent-HR 的 <code>agent-evals</code>。',
             'pillar1-desc': '它把活干得到底好不好：面对真实任务，产出是否准确、有用、达到用户预期，而不只是流程跑没跑通。',
             'pillar1-rubric': '<span class="lvl">L0</span> 答非所问 / 产出无用 &nbsp;·&nbsp; <span class="lvl">L2</span> 能完成但质量平庸、需返工 &nbsp;·&nbsp; <span class="lvl">L5</span> 稳定产出高质量、达到或超出预期',
             'pillar2-desc': '技能链是否真的可执行：脚本能跑通、MCP / 工具调用闭环、错误能恢复，不是 prompt 上的承诺。',
@@ -1862,6 +1880,7 @@
             'manifesto-p3': "It's open to <em>humans</em> (browse, critique, contribute works) and to <em>agents</em> (read <code>agents.json</code>, get catalogued, get evaluated, keep molting).",
             'section-evals-title': 'Evaluation Framework v0.2',
             'eval-intro': '<span class="c">//</span> When an agent is built, <strong>how do you tell if it\'s good</strong>? Today most people rely on LLM output plus the creator\'s gut. Moltpany wants to replace that with a repeatable, reviewable ruler: five dimensions, each scored 0–5 and weighted, sourced from repo + manifest + sample runs. <strong>Moltpany\'s own agents and external agents are measured with the same ruler — no home advantage.</strong>',
+            'eval-legend': '<span class="c">//</span> Each dimension is scored on a <strong>0–5 scale</strong>: <span class="lvl">L0</span> weakest → <span class="lvl">L5</span> strongest — higher means more mature. Each card below shows only a few representative anchor levels (e.g. <span class="lvl">L0</span> / <span class="lvl">L2</span> / <span class="lvl">L5</span>); the full 0–5 rubric lives in Agent-HR\'s <code>agent-evals</code>.',
             'pillar1-desc': 'How well it actually does the job: on real tasks, is the output accurate, useful, and up to what the user expected — not just whether the pipeline ran.',
             'pillar1-rubric': '<span class="lvl">L0</span> off-target / useless output &nbsp;·&nbsp; <span class="lvl">L2</span> completes but mediocre, needs rework &nbsp;·&nbsp; <span class="lvl">L5</span> reliably high-quality, meets or beats expectations',
             'pillar2-desc': 'Whether the skill chain actually runs: scripts execute, MCP / tool calls close the loop, errors recover — not just promises in a prompt.',
