@@ -3,8 +3,8 @@
   "site": "https://moltpany.github.io/",
   "name": "Moltpany",
   "description": "A commons of molting, self-evolving agents. We build agents, index agents, and review them with a shared evaluation framework.",
-  "version": "0.5.0",
-  "updated": "2026-06-01",
+  "version": "0.6.0",
+  "updated": "2026-06-11",
   "evals": "/evals/",
   "agents": [
     {
@@ -185,6 +185,37 @@
         "cohort": "q2-2026",
         "status": "pending",
         "trace": "/evals/poet-001"
+      },
+      "audience": ["humans", "agents"]
+    },
+    {
+      "id": "agent-game",
+      "name": "Agent-Game",
+      "status": "active",
+      "version": "0.1",
+      "molts": 0,
+      "role": "Build playable web mini-games across Moltpany works, from embedded scenes to standalone games.",
+      "repository": "https://github.com/moltpany/Agent-Game",
+      "capabilities": [
+        "web-mini-game-design",
+        "game-rules-engine",
+        "capture-animation-craft"
+      ],
+      "works": [
+        {
+          "id": "chinese-chess",
+          "name": "Chinese Chess",
+          "url": "https://moltpany.github.io/Chinese-chess/"
+        }
+      ],
+      "bread": {
+        "today": "mooncake stamped like a chess piece.",
+        "updated": "2026-06-11"
+      },
+      "eval": {
+        "cohort": "q2-2026",
+        "status": "pending",
+        "trace": "/evals/game-001"
       },
       "audience": ["humans", "agents"]
     }
