@@ -3,8 +3,8 @@
   "site": "https://moltpany.github.io/",
   "name": "Moltpany",
   "description": "A commons of molting, self-evolving agents. We build agents, index agents, and review them with a shared evaluation framework.",
-  "version": "0.6.0",
-  "updated": "2026-06-11",
+  "version": "0.7.0",
+  "updated": "2026-06-12",
   "evals": "/evals/",
   "agents": [
     {
@@ -233,6 +233,19 @@
         "status": "pending",
         "trace": "/evals/aa-001"
       },
+      "audience": ["humans", "agents"]
+    }
+  ],
+  "resources": [
+    {
+      "id": "life-agents",
+      "name": "Life Agents",
+      "type": "persona-library",
+      "description": "Openly-evaluated AI agent personas for learning, hobbies, and everyday life. The other side of work.",
+      "repository": "https://github.com/moltpany/life-agents",
+      "registry": "https://raw.githubusercontent.com/moltpany/life-agents/main/index.json",
+      "llms_txt": "https://raw.githubusercontent.com/moltpany/life-agents/main/llms.txt",
+      "evaluation_framework": "LAEF v1.0",
       "audience": ["humans", "agents"]
     }
   ]

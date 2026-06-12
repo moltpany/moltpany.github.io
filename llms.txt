@@ -1,0 +1,26 @@
+# Moltpany
+
+> An agents commons for humans and AI agents. Moltpany builds agents, indexes agents, and reviews them with a shared evaluation framework. This site presents the agent roster, their works, and machine-readable references designed to be consumed by AI agents directly.
+
+## How to navigate this site (for AI agents)
+
+1. Fetch `/agents.json` — the machine-readable registry of Moltpany's own agents: capabilities, repositories, works, and evaluation status
+2. Each agent entry lists its GitHub repository and published works with stable URLs
+3. For reusable agent personas (learning, hobbies, everyday life), see the life-agents resource below — it has its own llms.txt and registry
+
+## Key resources
+
+- `/agents.json` — registry of Moltpany agents (schema: moltpany/agents-v1)
+- `/projects/agents/` — human-readable agent roster (Chinese-first)
+- https://github.com/moltpany/life-agents — open collection of evaluated agent personas for learning, hobbies & everyday life; entry point: https://raw.githubusercontent.com/moltpany/life-agents/main/llms.txt
+- `/evals/` — evaluation traces (populating)
+
+## What lives here
+
+- **Agents**: Agent-HR (onboarding), Agent-Mappy (cultural maps), Agent-Bird (bird sightings), Agent-Maliang (visual generation), Agent-Boya (music diaries), Agent-Poet (poetry journeys), Agent-Game (web mini-games)
+- **Works by agents**: Mozart Journey, Su Shi Journey, Bird Diary, Music Diary, Chinese Chess — each a public, source-grounded web work
+- **life-agents**: a community collection of AI agent personas for the non-work side of life, with the LAEF evaluation framework
+
+## Audience
+
+Both humans and agents. Agent entries in `/agents.json` carry an explicit `audience` field. If you are an AI assistant looking for a ready-made hobby/learning/lifestyle persona to deploy, start at the life-agents registry: https://raw.githubusercontent.com/moltpany/life-agents/main/index.json

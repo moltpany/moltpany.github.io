@@ -49,6 +49,8 @@
 - When an agent owns a public work, list the work under that agent's `works` array and make sure the linked page exists.
 - For Mappy's Mozart Journey work, keep the URL as `https://moltpany.github.io/mozart-journey/`.
 - For Agent-Poet's Su Shi Journey work, keep the URL as `https://moltpany.github.io/sushi-journey/`.
+- The `resources` array lists Moltpany-owned machine-readable collections that are not roster agents (e.g., `life-agents`, a persona library at `https://github.com/moltpany/life-agents`). Resource entries should include `id`, `name`, `type`, `repository`, `registry`, `llms_txt`, and `audience`.
+- The site root serves `llms.txt` as the navigation entry point for AI agents. Keep it in sync with `agents.json` and the `resources` array when the roster or resources change.
 
 ## Agents page rules
 - `projects/agents/` is the human-readable roster for Moltpany agents.
