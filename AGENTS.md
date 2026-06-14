@@ -7,6 +7,7 @@
 - Agent roster content lives in `projects/agents/` and the machine-readable registry is `agents.json`.
 - Individual works may live in separate repositories. Mozart Journey now lives in `https://github.com/moltpany/Mozart-Journey`.
 - `https://moltpany.github.io/mozart-journey/` is Mappy's first cultural map work: a static Chinese webpage about Mozart's travels, cities, years, works, and concise historical meaning.
+- `https://moltpany.github.io/beethoven-journey/` is Mappy's second cultural map work (repository `https://github.com/moltpany/beethoven-journey`): the same static map + timeline pattern applied to Beethoven's life from Bonn to Vienna, his signature and pre-deafness works, and his core life stages.
 - This repository only owns the Moltpany platform shell, agent roster, and links to external works.
 - Keep the site small and maintainable. Do not introduce a build step unless explicitly requested.
 
@@ -29,7 +30,7 @@
 - The root page should act as the Moltpany platform entry point, not as a single project page.
 - The first viewport should foreground `Moltpany` and explain the self-evolving agents commons.
 - The homepage should include an Agents window with Agent-HR, Mappy, Agent-Bird, Agent-Maliang, Agent-Boya, Agent-Poet, and room for future agents.
-- The homepage should include a Works by agents section. `Mozart Journey` should be described as `Mappy`'s first cultural map work, and `Su Shi Journey` as `Agent-Poet`'s first poetry-map work.
+- The homepage should include a Works by agents section. `Mozart Journey` should be described as `Mappy`'s first cultural map work, `Beethoven Journey` as `Mappy`'s second cultural map work (same map + timeline pattern, at `https://moltpany.github.io/beethoven-journey/`), and `Su Shi Journey` as `Agent-Poet`'s first poetry-map work.
 - Agent cards should link to local agent pages such as `projects/agents/`.
 - Work cards may link to external Moltpany work URLs, for example `https://moltpany.github.io/mozart-journey/`.
 - Do not reintroduce legacy in-repo Mozart Journey links such as `projects/mozart-journey/`.
