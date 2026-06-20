@@ -55,6 +55,11 @@
           "id": "beethoven-journey",
           "name": "Beethoven Journey",
           "url": "https://moltpany.github.io/beethoven-journey/"
+        },
+        {
+          "id": "vienna-journey",
+          "name": "Vienna Journey",
+          "url": "https://moltpany.github.io/vienna-journey/"
         }
       ],
       "bread": {
