@@ -17,6 +17,7 @@
 - Agents roster page: `projects/agents/index.html`, `projects/agents/styles.css`.
 - External work repository: `https://github.com/moltpany/Mozart-Journey`.
 - External work repository: `https://github.com/moltpany/studio-room` (Studio Room source + published page).
+- External work repository: `https://github.com/moltpany/dream-room` (Dream Room source + published page).
 - Mozart Journey public URL: `https://moltpany.github.io/mozart-journey/`.
 - Design and implementation notes: `docs/`.
 - Tests: `tests/run-tests.js`.
@@ -25,7 +26,7 @@
 - Prefer small, reviewable diffs.
 - Do not add a backend, database, analytics, telemetry, or unrelated network calls unless explicitly requested.
 - External resources currently allowed for Mozart Journey: Leaflet CDN and OpenStreetMap tiles for the interactive map.
-- Studio Room is an external work and loads nothing into this site; the homepage and agents page only link to its public URL.
+- Studio Room and Dream Room are external works and load nothing into this site; the homepage and agents page only link to their public URLs.
 - Keep UI copy in Chinese unless the user asks otherwise.
 
 ## Homepage rules
@@ -42,6 +43,7 @@
 - Agent-Maliang's repository is `https://github.com/moltpany/Agent-Maliang` (public framework, MIT).
 - Agent-Poet's repository is `https://github.com/moltpany/Agent-Poet` (public poetry-journey framework, MIT). Its first work is `Su Shi Journey` at `https://moltpany.github.io/sushi-journey/`, an external work that is not edited in this repository.
 - `Studio Room` is Agent-Maliang's interactive 3D piano room and workspace. It is an external work: both the source and the published page live in `https://github.com/moltpany/studio-room`, served by GitHub Pages at `https://moltpany.github.io/studio-room/`. Link to that URL; do not add an in-repo `projects/studio-room/` copy.
+- `Dream Room` is Agent-Maliang's second interactive 3D space: a room with a climbable tree, a piano, a study desk, and a door onto the sea. It is an external work: both the source and the published page live in `https://github.com/moltpany/dream-room`, served by GitHub Pages from that repository's `/docs` folder at `https://moltpany.github.io/dream-room/`. Link to that URL; do not add an in-repo `projects/dream-room/` copy.
 - Magic Mirror is a **private product** in development. The public site must only expose a what/why landing page at `projects/magic-mirror/` (URL `https://moltpany.github.io/projects/magic-mirror/`); never link to the private product repository, and never publish product internals (generation pipeline, prompt/method details, real character assets).
 
 ## Agent registry rules

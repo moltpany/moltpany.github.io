@@ -130,6 +130,13 @@
           "url": "https://moltpany.github.io/studio-room/",
           "repository": "https://github.com/moltpany/studio-room",
           "status": "live"
+        },
+        {
+          "id": "dream-room",
+          "name": "Dream Room",
+          "url": "https://moltpany.github.io/dream-room/",
+          "repository": "https://github.com/moltpany/dream-room",
+          "status": "live"
         }
       ],
       "bread": {

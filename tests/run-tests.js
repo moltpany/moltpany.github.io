@@ -15,6 +15,8 @@ const AGENT_MALIANG_REPOSITORY = "https://github.com/moltpany/Agent-Maliang";
 const MAGIC_MIRROR_URL = "https://moltpany.github.io/projects/magic-mirror/";
 const STUDIO_ROOM_URL = "https://moltpany.github.io/studio-room/";
 const STUDIO_ROOM_REPOSITORY = "https://github.com/moltpany/studio-room";
+const DREAM_ROOM_URL = "https://moltpany.github.io/dream-room/";
+const DREAM_ROOM_REPOSITORY = "https://github.com/moltpany/dream-room";
 const VISUAL_AGENT_SERIAL_PATTERN = /\b(?:mp|ob)-\d{3}\b/i;
 
 function assert(condition, message) {
@@ -40,6 +42,9 @@ function testPortfolioHome() {
   assert(html.includes("Studio Room"), "home should feature Studio Room");
   assert(html.includes(STUDIO_ROOM_URL), "home should link to the external Studio Room demo");
   assert(!html.includes("projects/studio-room/"), "home should not link to an in-repo Studio Room copy");
+  assert(html.includes("Dream Room"), "home should feature Dream Room");
+  assert(html.includes(DREAM_ROOM_URL), "home should link to the external Dream Room demo");
+  assert(!html.includes("projects/dream-room/"), "home should not link to an in-repo Dream Room copy");
   assert(html.includes(MAGIC_MIRROR_URL), "home should link to the Magic Mirror work repository");
   assert(html.includes(AGENT_MAPPY_REPOSITORY), "home should link to the Agent-Mappy repository");
   assert(html.includes('class="photo agent-avatar"'), "home should render agent avatar artwork");
@@ -97,6 +102,10 @@ function testAgentsRegistry() {
   assert(studioRoom, "Agent-Maliang should own Studio Room");
   assert(studioRoom.url === STUDIO_ROOM_URL, "Studio Room work URL should point at the public demo");
   assert(studioRoom.repository === STUDIO_ROOM_REPOSITORY, "Studio Room should link to its source repository");
+  const dreamRoom = maliang.works.find((work) => work.id === "dream-room");
+  assert(dreamRoom, "Agent-Maliang should own Dream Room");
+  assert(dreamRoom.url === DREAM_ROOM_URL, "Dream Room work URL should point at the public demo");
+  assert(dreamRoom.repository === DREAM_ROOM_REPOSITORY, "Dream Room should link to its source repository");
 }
 
 function testAgentsPage() {
@@ -111,6 +120,8 @@ function testAgentsPage() {
   assert(html.includes(MAGIC_MIRROR_URL), "agents page should link to the Magic Mirror public landing page");
   assert(html.includes("Studio Room"), "agents page should link Agent-Maliang to Studio Room");
   assert(html.includes(STUDIO_ROOM_URL), "agents page should link to the Studio Room demo");
+  assert(html.includes("Dream Room"), "agents page should link Agent-Maliang to Dream Room");
+  assert(html.includes(DREAM_ROOM_URL), "agents page should link to the Dream Room demo");
   assert(html.includes("Mozart Journey"), "agents page should link Agent-Mappy to Mozart Journey");
   assert(html.includes("../../agents.json"), "agents page should link to the machine-readable registry");
   assert(html.includes("https://github.com/moltpany/Agent-HR"), "agents page should link to Agent-HR on GitHub");
@@ -143,29 +154,59 @@ function testMagicMirrorLanding() {
   assert(!registryRaw.includes(PRIVATE_MAGIC_MIRROR_REPO), "agents.json should not expose the private Magic Mirror repository");
 }
 
-function testStudioRoomIsExternal() {
-  // Studio Room ships from its own repository and is served by GitHub Pages there.
-  // This site only links to it; it must not carry a local copy of the demo.
-  assert(
-    !fs.existsSync(path.join(root, "projects", "studio-room")),
-    "Studio Room should not be vendored into the site repository",
-  );
+// Both 3D rooms ship from their own repositories and are served by GitHub Pages
+// there. This site only links to them; it must not carry a local copy of either
+// demo, and every surface must agree on the public URL.
+const EXTERNAL_ROOMS = [
+  { id: "studio-room", name: "Studio Room", url: STUDIO_ROOM_URL, repository: STUDIO_ROOM_REPOSITORY },
+  { id: "dream-room", name: "Dream Room", url: DREAM_ROOM_URL, repository: DREAM_ROOM_REPOSITORY },
+];
 
+function testRoomsAreExternal() {
   const home = fs.readFileSync(portfolioIndexPath, "utf8");
   const agentsPage = fs.readFileSync(agentsPageIndexPath, "utf8");
   const registry = readJson(agentsRegistryPath);
-
-  assert(home.includes("Studio Room"), "home should feature Studio Room");
-  assert(home.includes(STUDIO_ROOM_URL), "home should link to the Studio Room public URL");
-  assert(agentsPage.includes(STUDIO_ROOM_URL), "agents page should link to the Studio Room public URL");
-
   const maliang = registry.agents.find((agent) => agent.id === "maliang");
-  const studioRoom = maliang.works.find((work) => work.id === "studio-room");
-  assert(studioRoom.url === STUDIO_ROOM_URL, "Studio Room work URL should point at its own Pages site");
-  assert(studioRoom.repository === STUDIO_ROOM_REPOSITORY, "Studio Room should link to its source repository");
+
+  for (const room of EXTERNAL_ROOMS) {
+    assert(
+      !fs.existsSync(path.join(root, "projects", room.id)),
+      `${room.name} should not be vendored into the site repository`,
+    );
+    assert(home.includes(room.name), `home should feature ${room.name}`);
+    assert(home.includes(room.url), `home should link to the ${room.name} public URL`);
+    assert(agentsPage.includes(room.url), `agents page should link to the ${room.name} public URL`);
+
+    const work = maliang.works.find((entry) => entry.id === room.id);
+    assert(work, `Agent-Maliang should own ${room.name}`);
+    assert(work.url === room.url, `${room.name} work URL should point at its own Pages site`);
+    assert(work.repository === room.repository, `${room.name} should link to its source repository`);
+  }
 }
 
-const tests = [testPortfolioHome, testAgentsRegistry, testAgentsPage, testMagicMirrorLanding, testStudioRoomIsExternal];
+// Every data-i18n key on the page must resolve in both dictionaries; a missing
+// one silently leaves the other locale showing Chinese, or nothing at all.
+function testTranslationsAreComplete() {
+  const html = fs.readFileSync(portfolioIndexPath, "utf8");
+  const keys = new Set([...html.matchAll(/data-i18n="([^"]+)"/g)].map((match) => match[1]));
+  assert(keys.size > 0, "home should carry data-i18n keys");
+
+  for (const locale of ["zh", "en"]) {
+    const dictionary = html.slice(html.indexOf(`${locale}: {`));
+    for (const key of keys) {
+      assert(dictionary.includes(`'${key}':`), `${locale} dictionary should define ${key}`);
+    }
+  }
+}
+
+const tests = [
+  testPortfolioHome,
+  testAgentsRegistry,
+  testAgentsPage,
+  testMagicMirrorLanding,
+  testRoomsAreExternal,
+  testTranslationsAreComplete,
+];
 
 (async () => {
   for (const test of tests) {
